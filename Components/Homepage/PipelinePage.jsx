@@ -13,6 +13,7 @@ function PipelinePage() {
     `iconshowAddStage ${active === name ? "active" : ""}`;
 
   const columns = ["new", "proposition", "qualified", "won"];
+  
 
  
 

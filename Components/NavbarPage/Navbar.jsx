@@ -20,9 +20,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import NewLead from "./NewLead";
 import SearchIcon from '@mui/icons-material/Search';
 import GenerateLead from "../Homepage/GenerateLead";
-import {Link, Navigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import Filter from "../SearchDropDown/Filter";
-
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 function Navbar() {
   const [search, setSearch] = useState("");
@@ -217,7 +217,9 @@ function Navbar() {
           <SearchIcon />
         </button>
         {selectedOption && (
+          
           <button className="filter-btn">
+            <div> <FilterAltIcon  /></div>
             {selectedOption}
             <CloseIcon
               onClick={(e) => {

@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Filter.css'; // Import the external CSS file
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const options = {
   filters: [
@@ -41,12 +43,47 @@ const Dateoption = {
 
 
 const Filter = () => {
+  const [openFilterDates, setOpenFilterDates] = useState({});
+
   const [selectedFilters, setSelectedFilters] = useState(['My Pipeline']);
   const [selectedGroups, setSelectedGroups] = useState([]);
   const [selectedDatefilter, setSelectedDatefilter] = useState([])
   const [selectedOpportunity, setSelectedOpportunity] = useState([])
   const [selectDategroup, setSelectedDategroup] = useState([])
+  // const [toggleOngroupbtn, settoggleOnGroupbtn] = useState(false)
+  const [openGroupDates, setOpenGroupDates] = useState({});
 
+  const toggleDateGroup = (gpdate) => {
+    setOpenGroupDates((prev) => ({
+      ...prev,
+      [gpdate]: !prev[gpdate],   // flip only this gpdate
+    }));
+  };
+
+
+  const handleDatesClickgroup = (gpdate) => {
+    setSelectedDategroup((prev) =>
+      prev.includes(gpdate)
+        ? prev.filter((item) => item !== gpdate)
+        : [...prev, gpdate]
+    );
+  };
+
+  const handleDatesClickfilter = (dates) => {
+    setSelectedDatefilter((prev) =>
+      prev.includes(dates)
+        ? prev.filter((item) => item !== dates)
+        : [...prev, dates]
+    );
+  };
+
+  const handleOpportunityClick = (opportunity) => {
+    setSelectedOpportunity((prev) =>
+      prev.includes(opportunity)
+        ? prev.filter((item) => item !== opportunity)
+        : [...prev, opportunity]
+    );
+  };
 
   const handleFilterClick = (filter) => {
     setSelectedFilters((prev) =>
@@ -56,23 +93,6 @@ const Filter = () => {
     );
   };
 
-
-
-  const handleDatesClick = (dates) => {
-    setSelectedDatefilter((prev) =>
-      prev.includes(dates)
-        ? prev.dates((item) => item !== dates)
-        : [...prev, dates]
-    );
-  };
-
-  const handleOpportunityClick = (opportunity) => {
-    setSelectedOpportunity((prev) =>
-      prev.includes(opportunity)
-        ? prev.opportunity((item) => item !== opportunity)
-        : [...prev, opportunity]
-    );
-  };
 
   const handleGroupClick = (group) => {
     setSelectedGroups((prev) =>
@@ -98,24 +118,48 @@ const Filter = () => {
                 onClick={() => handleFilterClick(filter)}
               >
                 <span className="checkbox">
-                  {selectedFilters.includes(filter) ? '✔️' : '◻️'}
+                  {selectedFilters.includes(filter) ? '✔️' : ''}
                 </span>
                 {filter}
               </div>
             ))}
 
+            
             {/* Date handling task */}
             <hr />
             {Dateoption.filterdate.map((dates) => (
               <div
                 key={dates}
                 className="option"
-                onClick={() => handleDatesClick(dates)}
+                onClick={() => handleDatesClickfilter(dates)} // your original function
               >
-                <span className="checkbox">
-                  {selectedDatefilter.includes(dates) ? '✔️' : '◻️'}
+                {/* Checkbox */}
+                <span
+                  className="checkbox"
+                  onClick={(e) => {
+                    e.stopPropagation(); // prevent parent div click
+                    handleDatesClickfilter(dates); // keep your function name
+                  }}
+                >
+                  {selectedDatefilter.includes(dates) ? '✔️' : ''}
                 </span>
+
+                {/* Date label */}
                 {dates}
+
+                {/* Arrow toggle */}
+                <span
+                  className="arrow-icon"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenFilterDates((prev) => ({
+                      ...prev,
+                      [dates]: !prev[dates], // toggle only this date
+                    }));
+                  }}
+                >
+                  {openFilterDates[dates] ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                </span>
               </div>
             ))}
 
@@ -129,7 +173,7 @@ const Filter = () => {
                 onClick={() => handleOpportunityClick(opportunity)}
               >
                 <span className="checkbox">
-                  {selectedOpportunity.includes(opportunity) ? '✔️' : '◻️'}
+                  {selectedOpportunity.includes(opportunity) ? '✔️' : ''}
                 </span>
                 {opportunity}
               </div>
@@ -154,18 +198,50 @@ const Filter = () => {
                 onClick={() => handleGroupClick(group)}
               >
                 <span className="checkbox">
-                  {selectedGroups.includes(group) ? '✔️' : '◻️'}
+                  {selectedGroups.includes(group) ? '✔️' : ''}
                 </span>
                 {group}
               </div>
             ))}
-
+            <hr />
             {/* dates for group */}
-            
+            {Dateoption.groupdate.map((gpdate) => (
+              <div
+                key={gpdate}
+                className="option"
+                onClick={() => handleDatesClickgroup(gpdate)}
+              >
+                <span
+                  className="checkbox"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDateGroup(gpdate);
+                  }}
+                >{selectDategroup.includes(gpdate) ? '✔️' : ''}
+                </span>
+                {gpdate}
+                <span
+                  className="arrow-icon"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDateGroup(gpdate);
+                  }}
+                >
+                  {openGroupDates[gpdate] ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                </span>
+              </div>
+            ))}
 
 
+            <hr />
+            <div className="option">
+              Pipeline
+              <span className='dropdown-field'
+              >
 
-
+              </span>
+            </div>
+            <hr />
             <div className="option">
               <span className="icon">+</span> Custom Group
             </div>
