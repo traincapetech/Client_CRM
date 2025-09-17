@@ -1,0 +1,127 @@
+/* Container centers the card */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f6fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card box */
+.card {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Logo placeholder */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2d3436;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 0.95rem;
+  color: #636e72;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styles */
+.form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #2d3436;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #0984e3;
+}
+
+/* Password wrapper with eye icon */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 2.5rem; /* ✅ adds space for the eye icon */
+  box-sizing: border-box;
+}
+
+.eye-icon {
+  position: absolute;
+  right: -20px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+    background-color:rgb(175, 172, 169);
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: #0984e3;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #0773c7;
+}
+
+/* Footer text */
+.footer-text {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: #636e72;
+}
+
+.footer-text .login-link {
+  color: #0984e3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-text .login-link:hover {
+  text-decoration: underline;
+}

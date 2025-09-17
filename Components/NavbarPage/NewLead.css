@@ -1,0 +1,117 @@
+.opportunity-card {
+  width: 320px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: sans-serif;
+position: absolute;
+top: 14%;
+right: 80%;
+}
+
+.opportunity-card .input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 4px;
+}
+
+.opportunity-card .input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.opportunity-card .icon {
+  margin-right: 8px;
+  color: #4b5563;
+}
+
+.opportunity-card .value-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 4px;
+}
+
+.opportunity-card .value-rating input {
+  width: 80px;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.opportunity-card .stars {
+  display: flex;
+}
+
+.opportunity-card .star {
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: #d1d5db;
+}
+
+.opportunity-card .star.selected {
+  color: #f59e0b;
+}
+
+.opportunity-card .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.opportunity-card .buttons .left-buttons button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+}
+
+.opportunity-card .buttons .left-buttons .add-btn {
+  background-color: #7c3aed;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.opportunity-card .buttons .left-buttons .edit-btn {
+  background-color: #e5e7eb;
+  color: #111827;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.opportunity-card .buttons .right-button {
+  padding: 4px;
+  border-radius: 6px;
+  background-color: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.opportunity-card .buttons .right-button:hover {
+  background-color: #fee2e2;
+}
+
+.opportunity-card .buttons .right-button svg {
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.opportunity-card .buttons .right-button:hover svg {
+  color: #dc2626;
+}

@@ -1,0 +1,76 @@
+.dropdown-menu-Search {
+  position: absolute;
+  width: auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 14px;
+  top: 10%;
+  right: 35%;
+}
+
+.section-container {
+  display: flex;
+  padding: 12px;
+}
+
+.section {
+  flex: 1;
+  margin-right: 20px;
+  min-width: 160px;
+}
+
+.section-filter{
+  padding-right: 5px;
+  border-right:1px solid #c5bdbd;
+}
+
+.section-group{
+  padding-right: 5px;
+  border-right:1px solid #c5bdbd;
+}
+
+.section-header {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.icon {
+  margin-right: 6px;
+  font-size: 1em;
+  color: #666;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+.option:hover {
+  background: #f5f5f5;
+}
+
+.option.active {
+  background: #e8f0fe;
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+.checkbox {
+  margin-right: 8px;
+  font-size: 1em;
+}

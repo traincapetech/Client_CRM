@@ -1,0 +1,355 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Section */
+.navbar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+}
+
+.logo-box {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(to right, purple, skyblue);
+  border-radius: 4px;
+}
+
+.logo-text {
+  color: #374151;
+}
+
+.navbar-left-top {
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-right: 12px;
+  transition: color 0.2s ease;
+}
+
+.menu a:hover {
+  color: #111827;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-lead-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background: #7c3aed;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.generate-lead {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e2338;
+  background: #d9dada;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover{
+    background-color: #ccc;
+  }
+}
+
+.pipeline {
+  font-size: 14px;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+}
+
+/* Center - Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f9fafb;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* Right Section */
+.navbar-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+
+}
+
+.notif {
+  position: relative;
+  font-size: 18px;
+  padding: 5px;
+
+  &:hover {
+    background-color: #edeff3;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -3px;
+  right: 2px;
+  font-size: 10px;
+  background: #dc2626;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 999px;
+}
+
+.avatar {
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* Icons */
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.text-gray {
+  color: #6b7280;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 12%;
+  /* appear right below button */
+  right: 40%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.dropdown-item a{
+  text-decoration: none;
+  font-weight: 400;
+  color: black;
+}
+
+.dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.dropdown-menu-sales {
+  position: absolute;
+  top: 5%;
+  /* appear right below button */
+  right: 88%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.sale-btn,
+.report-btn,
+.configuration-btn,
+.setting-icon {
+  background: none;
+  /* no background */
+  border: none;
+  /* no border */
+  padding: 0;
+  /* remove padding */
+  margin: 0;
+  color: inherit;
+  /* inherit text color */
+  font: inherit;
+  /* inherit font style */
+  cursor: pointer;
+  margin-left: 5px;
+
+
+}
+
+.dropdown-menu-report {
+  position: absolute;
+  top: 5%;
+  /* appear right below button */
+  right: 85%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.dropdown-menu-setting {
+  position: absolute;
+  top: 11%;
+  /* appear right below button */
+  right: 75%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.dropdown-menu-configuration {
+  position: absolute;
+  top: 5%;
+  /* appear right below button */
+  right: 77%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.dropdown-menu-filter {
+  position: absolute;
+  top: 12%;
+  /* appear right below button */
+  right: 35%;
+  /* align with button (you can use left:0 if you prefer left align) */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  width: fit-content;
+  z-index: 1000;
+}
+
+.navbar-right-top {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-right-bottom {
+  display: flex;
+  gap: 2px;
+
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+hr {
+  border: none;
+  /* Remove default border */
+  border-top: 1px solid #ccc;
+  /* Adjust thickness and style as needed */
+}
+
+.icon-btn {
+  padding: 4px 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  /* no border by default */
+  border-radius: 6px;
+  background-color: #edeff3;
+
+  &:hover {
+    background-color: #a8afb8;
+  }
+}
+
+.icon-btn.active {
+  border-color: blue;
+  /* active border */
+}
+
+.selected-field {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.search-btn {
+  border: none;
+  background: none;
+  margin-top: 4px;
+  cursor: pointer;
+  
+}

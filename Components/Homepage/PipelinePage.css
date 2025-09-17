@@ -1,0 +1,97 @@
+.pipeline-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.pipeline-board {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Columns */
+.pipeline-column {
+    flex: 1;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 370px;
+    height: 80vh;
+    /* important for popup positioning */
+}
+
+.pipeline-items {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: space-between;
+
+}
+
+.left-side-pipelineItems {
+    display: flex;
+    align-items: center;
+     position: relative;
+}
+.left-side-pipelineClick{
+    display: flex;
+    align-items: center;
+    margin-left: 60%;
+}
+
+
+.setting-icon-pipeline {
+    cursor: pointer;
+    color: #666;
+}
+
+/* Create button */
+.createLead-btn {
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+
+
+/* Popup appears relative to column */
+.lead-popup {
+    position: relative;
+      top: 40px;       /* show below the + button */
+  right: 0;
+    right: 0;
+    z-index: 1000;
+    width: fit-content;
+}
+
+/* Add stage block */
+.pipeline-addStage {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.addstage-btn {
+    padding: 6px 12px;
+    border: none;
+    background: #6b3fa0;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.addstage-btn:hover {
+    background: #532d80;
+}
+
+.iconshowAddStage.active {
+    border: 1px solid #6b3fa0;
+    border-radius: 6px;
+}
+
+.pipeline-empty {
+    height: 100px;
+}
