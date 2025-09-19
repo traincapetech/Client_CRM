@@ -70,6 +70,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 105%;
 }
 
 .password-wrapper input {
@@ -80,12 +81,12 @@
 
 .eye-icon {
   position: absolute;
-  right: -20px;
+  right: 0;
   cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
-    background-color:rgb(175, 172, 169);
+  
     padding: 10px;
     border-radius: 10px;
 

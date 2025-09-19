@@ -84,7 +84,7 @@ function Login() {
 
         <p className="footer-text">
           Don’t have an account?{" "}
-          <Link to="/signup" className="login-link">
+          <Link to="/" className="login-link">
             Sign up
           </Link>
         </p>

@@ -53,7 +53,7 @@ function PipelinePage() {
         ))}
 
         {/* Add Stage */}
-        <div className="pipeline-addStage">
+        {/* <div className="pipeline-addStage">
           <span>
             <FastForwardIcon />
           </span>
@@ -63,7 +63,7 @@ function PipelinePage() {
           >
             <button className="addstage-btn">ADD Stages</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="pipeline-empty"></div>

@@ -20,15 +20,22 @@ import CloseIcon from '@mui/icons-material/Close';
 import NewLead from "./NewLead";
 import SearchIcon from '@mui/icons-material/Search';
 import GenerateLead from "../Homepage/GenerateLead";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import Filter from "../SearchDropDown/Filter";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import EditIcon from '@mui/icons-material/Edit';
+import FilterSelectedComponent from "../FilterSelectComponent/FilterSelectedComponent";
+
+
 
 function Navbar() {
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
   const dropdownWrapperRef = useRef(null);
+  const [hoverFilterIcon, sethoverFilterIcon] = useState(false)
+  const [openFilter, setopenFilter] = useState(false)
+  const [openLead, setOpenLead] = useState(false);
 
   const handleSelect = (option) => {
     setSelectedOption(option); // update selected option
@@ -38,9 +45,9 @@ function Navbar() {
 
 
   // Function when search is triggered
- const handleSearch = () => {
+  const handleSearch = () => {
     if (search.trim() !== "") {
-     alert(`Searched word : ${search}`)
+      alert(`Searched word : ${search}`)
       // 🔹 Put your logic here (API call, filter, redirect, etc.)
     }
   };
@@ -70,13 +77,12 @@ function Navbar() {
     `icon-btn ${active === name ? "active" : ""}`;
 
   // For handling the Search button while enter press search start searching 
-   const handleKeyDown = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
 
-   const [openLead, setOpenLead] = useState(false);
 
   return (
     <div className="navbar" ref={dropdownWrapperRef}>
@@ -86,7 +92,7 @@ function Navbar() {
           {/* Logo */}
           <div className="logo">
             <div className="logo-box"></div>
-            
+
             <span className="logo-text"><Link to={"/home"}>CRM</Link></span>
           </div>
 
@@ -180,7 +186,7 @@ function Navbar() {
             </button>
             {openMenu === "newLead" && <NewLead />}
 
-            <button className="generate-lead"  onClick={() => setOpenLead(true)}>Generate Leads</button>
+            <button className="generate-lead" onClick={() => setOpenLead(true)}>Generate Leads</button>
             <GenerateLead isOpen={openLead} onClose={() => setOpenLead(false)} />
             <span className="selected-field">
               {selectedOption ? selectedOption : "pipeline "}
@@ -208,18 +214,22 @@ function Navbar() {
 
       {/* Center - Search */}
       <div className="search-bar">
-         {/* 🔍 Search Button */}
-        <button 
-        title="Search"
+        {/* 🔍 Search Button */}
+        <button
+          title="Search"
           className="search-btn"
           onClick={(handleSearch)}
         >
           <SearchIcon />
         </button>
         {selectedOption && (
-          
-          <button className="filter-btn">
-            <div> <FilterAltIcon  /></div>
+
+          <button className="filter-btn"
+            onMouseEnter={() => sethoverFilterIcon(true)}
+            onMouseLeave={() => sethoverFilterIcon(false)}
+          >
+
+            <div onClick={() => setOpenMenu(openMenu === "filter-btn" ? null : "filter-btn")}>{hoverFilterIcon ? <EditIcon sx={{ color: '#ffffff' }} /> : < FilterAltIcon sx={{ color: '#ffffff' }} />} </div>
             {selectedOption}
             <CloseIcon
               onClick={(e) => {
@@ -229,20 +239,28 @@ function Navbar() {
             />
           </button>
         )}
+
+        {openMenu === "filter-btn" && (
+          <FilterSelectedComponent
+            isOpen={openMenu === "filter-btn"}
+            onClose={() => setOpenMenu(null)}   // ✅ close popup properly
+          />
+        )}
+
         <input
           type="text"
           placeholder="Search..."
           className="search-input"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-           onKeyDown={handleKeyDown}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={() => toggleMenu("filter")} className="filter-btn">
           <ArrowDropDownIcon />
         </button>
-       
 
-        {openMenu === "filter" && <Filter/>}
+
+        {openMenu === "filter" && <Filter />}
       </div>
 
       {/* Right Section - Icons */}

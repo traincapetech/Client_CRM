@@ -1,102 +1,27 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import './FilterSelectedComponent.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 // A simple component to represent the 'Select a field' popup
 const FieldSelectionPopup = ({ onSelectField, onClose }) => {
   const fields = [
-    "Action Needed",
-  "Active",
-  "Activities",
-  "Activity Exception Decoration",
-  "Activity State",
-  "Activity Type Icon",
-  "Assignment Date",
-  "Automated Probability",
-  "Blacklist",
-  "Bounce",
-  "Campaign",
-  "City",
-  "Closed Date",
-  "Color Index",
-  "Company",
-  "Company Name",
-  "Contact Name",
-  "Conversion Date",
-  "Country",
-  "Created by",
-  "Created on",
-  "Customer",
-  "Days To Convert",
-  "Days to Assign",
-  "Days to Close",
-  "Display Name",
-  "Email",
-  "Email Domain Criterion",
-  "Email Quality",
-  "Email cc",
-  "Enrichment Done",
-  "Exceeded Closing Days",
-  "Expected Closing",
-  "Expected MRR",
-  "Expected revenue",
-  "Followers",
-  "Followers (partners)",
-  "has message",
-  "ID",
-  "Is Followers",
-  "job position",
-  "Language",
-  "Last Action",
-  "Last Stage Update",
-  "Last Updated by",
-  "Last Updated on",
-  "Lead mining Request",
-  "Locale Code",
-  "Lost Reason",
-  "Medium",
-  "Meeting",
-  "Message Delivers Error",
-  "messages",
-  "My Activity Deadline",
-  "Next Activity Deadline",
-  "Next Activity Summary",
-  "Next Activity Type",
-  "Normalized Email",
-  "Notes",
-  "Opportunity",
-  "Partner is Blacklisted",
-  "Phone",
-  "Phone Blacklisted",
-  "Phone Number",
-  "Phone Quality",
-  "Priority",
-  "Probability",
-  "Properties",
-  "Prorated MRR",
-  "Prorated Recurring Revenue",
-  "Prorated revenue",
-  "Recurring Plan",
-  "Recurring Revenue",
-  "Referred by",
-  "Responsible User",
-  "Reveal id",
-  "SMS Delivery Error",
-  "Sales Team",
-  "Salesperson",
-  "Sanitized Number",
-  "Source",
-  "Stage",
-  "State",
-  "Street",
-  "Streets",
-  "Tags",
-  "Types",
-  "website",
-  "website messages",
-  "won/Lost",
-  "Zip"
-    // Add other fields as needed
+    "Action Needed", "Active", "Activities", "Activity Exception Decoration", "Activity State",
+    "Activity Type Icon", "Assignment Date", "Automated Probability", "Blacklist", "Bounce",
+    "Campaign", "City", "Closed Date", "Color Index", "Company", "Company Name", "Contact Name",
+    "Conversion Date", "Country", "Created by", "Created on", "Customer", "Days To Convert",
+    "Days to Assign", "Days to Close", "Display Name", "Email", "Email Domain Criterion",
+    "Email Quality", "Email cc", "Enrichment Done", "Exceeded Closing Days", "Expected Closing",
+    "Expected MRR", "Expected revenue", "Followers", "Followers (partners)", "has message", "ID",
+    "Is Followers", "job position", "Language", "Last Action", "Last Stage Update",
+    "Last Updated by", "Last Updated on", "Lead mining Request", "Locale Code", "Lost Reason",
+    "Medium", "Meeting", "Message Delivers Error", "messages", "My Activity Deadline",
+    "Next Activity Deadline", "Next Activity Summary", "Next Activity Type", "Normalized Email",
+    "Notes", "Opportunity", "Partner is Blacklisted", "Phone", "Phone Blacklisted", "Phone Number",
+    "Phone Quality", "Priority", "Probability", "Properties", "Prorated MRR",
+    "Prorated Recurring Revenue", "Prorated revenue", "Recurring Plan", "Recurring Revenue",
+    "Referred by", "Responsible User", "Reveal id", "SMS Delivery Error", "Sales Team",
+    "Salesperson", "Sanitized Number", "Source", "Stage", "State", "Street", "Streets", "Tags",
+    "Types", "website", "website messages", "won/Lost", "Zip"
   ];
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -130,51 +55,13 @@ const FieldSelectionPopup = ({ onSelectField, onClose }) => {
   );
 };
 
-const FilterSelectedComponent = () => {
+const FilterSelectedComponent = ({ isOpen, onClose }) => {
   const [matchAll, setMatchAll] = useState(true);
   const [includeArchived, setIncludeArchived] = useState(false);
   const [rules, setRules] = useState([{ field: 'Salesperson', condition: 'equals', value: 'uid' }]);
 
   // State to manage the popup visibility for a specific rule
   const [popupIndex, setPopupIndex] = useState(null);
-
-  const componentRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (isDragging) {
-        setPosition({
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y,
-        });
-      }
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging, dragOffset]);
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setDragOffset({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    });
-  };
 
   const handleMatchAllChange = () => {
     setMatchAll(!matchAll);
@@ -191,17 +78,17 @@ const FilterSelectedComponent = () => {
     setRules(newRules);
   };
 
-  // New handler for showing the popup
+  // Show popup for selecting a field
   const handleShowPopup = (index) => {
     setPopupIndex(index);
   };
 
-  // New handler for selecting a field from the popup
+  // Select a field from popup
   const handleSelectField = (field) => {
     const newRules = [...rules];
     newRules[popupIndex].field = field;
     setRules(newRules);
-    setPopupIndex(null); // Close the popup
+    setPopupIndex(null); // Close popup
   };
 
   const handleAddRule = () => {
@@ -210,23 +97,18 @@ const FilterSelectedComponent = () => {
 
   const handleRemoveRule = (index) => {
     const newRules = [...rules];
-    newRules.splice(index, 1);
+    newRules.splice(index, 1); // this line use to remove the rules by slicing it
     setRules(newRules);
   };
 
+  if (!isOpen) return null;
+
   return (
-    <div
-      ref={componentRef}
-      className="custom-filter-container"
-      style={{ top: position.y, left: position.x }}
-    >
-      <div
-        className="custom-filter-header"
-        onMouseDown={handleMouseDown}
-        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-      >
+      <div className='custom-filter-model-overlay'>         
+    <div className="custom-filter-container">
+      <div className="custom-filter-header">
         <h2>Custom Filter</h2>
-        <button className="close-button" >×</button>
+        <button className="close-button" onClick={onClose}>×</button>
       </div>
       <div className="custom-filter-body">
         <div className="filter-options">
@@ -253,24 +135,24 @@ const FilterSelectedComponent = () => {
         {rules.map((rule, index) => (
           <div key={index} className="rule-row">
             <div className="rule-input-container">
-                <input
-                  type="text"
-                  name="field"
-                  value={rule.field}
-                  onClick={() => handleShowPopup(index)}
-                  onChange={(e) => handleRuleChange(index, e)}
-                  className="rule-input"
-                  readOnly
-                />
-                {/* Conditionally render the popup */}
-                {popupIndex === index && (
-                 <div className='filterfieldshow'>
-                 <FieldSelectionPopup 
+              <input
+                type="text"
+                name="field"
+                value={rule.field}
+                onClick={() => handleShowPopup(index)}
+                onChange={(e) => handleRuleChange(index, e)}
+                className="rule-input"
+                readOnly
+              />
+              {/* Conditionally render the popup */}
+              {popupIndex === index && (
+                <div className='filterfieldshow'>
+                  <FieldSelectionPopup
                     onSelectField={handleSelectField}
                     onClose={() => setPopupIndex(null)}
                   />
-                  </div>
-                )}
+                </div>
+              )}
             </div>
             <select
               name="condition"
@@ -308,6 +190,7 @@ const FilterSelectedComponent = () => {
         <button className="search-button">Search</button>
         <button className="discard-button">Discard</button>
       </div>
+        </div>
     </div>
   );
 };

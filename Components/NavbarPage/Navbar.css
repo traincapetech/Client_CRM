@@ -17,9 +17,9 @@
 
 .logo {
   display: flex;
-  align-items: center;
   gap: 6px;
   font-size: 18px;
+  justify-content: center;
 }
 
 .logo-box {

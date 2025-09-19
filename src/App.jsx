@@ -6,8 +6,7 @@ import Login from '../Components/AuthenticationPage/Login';
 import Signup from '../Components/AuthenticationPage/Signup';
 import Navbar from '../Components/NavbarPage/Navbar';
 import PipelinePage from '../Components/Homepage/PipelinePage';
-import GenerateLead from '../Components/Homepage/GenerateLead';
-import FilterSelectedComponent from '../Components/FilterSelectComponent/FilterSelectedComponent';
+import My_Activity from '../Components/My_activity/My_Activity';
 
 
 function App() {
@@ -24,8 +23,7 @@ const hideNavbar = location.pathname === "/" || location.pathname === "/login";
           <Route path='/login' element={<Login />}/>
           <Route path='/home' element={<Homepage />} />
           <Route path='/pipeline' element={<PipelinePage />} />
-          <Route path='/generatelead' element ={<GenerateLead />} />
-          <Route path='/filter' element={<FilterSelectedComponent />}/>
+          <Route path='/myActivity' element={<My_Activity/>} />
           </Routes>
         
         

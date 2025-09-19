@@ -235,10 +235,9 @@ const Filter = () => {
 
             <hr />
             <div className="option">
-              Pipeline
+              Properties 
               <span className='dropdown-field'
-              >
-
+              ><ArrowDropDownIcon />
               </span>
             </div>
             <hr />

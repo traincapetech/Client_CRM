@@ -106,12 +106,12 @@
 
 .eye-icon {
   position: absolute;
-  right: -20px;
+  right: 0;
   cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
- 
+  color: #714b67;
   padding: 7px;
   border-radius: 10px;
 
