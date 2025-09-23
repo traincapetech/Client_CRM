@@ -20,22 +20,27 @@ import CloseIcon from '@mui/icons-material/Close';
 import NewLead from "./NewLead";
 import SearchIcon from '@mui/icons-material/Search';
 import GenerateLead from "../Homepage/GenerateLead";
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import Filter from "../SearchDropDown/Filter";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import FilterSelectedComponent from "../FilterSelectComponent/FilterSelectedComponent";
-
+import { useContext } from "react";
+import { LeadContext } from "../../leadProvider/LeadContext"
 
 
 function Navbar() {
+    const { addLead } = useContext(LeadContext);
+  const [openNewLead, setOpenNewLead] = useState(false);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
   const dropdownWrapperRef = useRef(null);
   const [hoverFilterIcon, sethoverFilterIcon] = useState(false)
-  const [openFilter, setopenFilter] = useState(false)
+  // const [openFilter, setopenFilter] = useState(false)
   const [openLead, setOpenLead] = useState(false);
+  const [UserProfile, setUserProfile] = useState(false)
+
 
   const handleSelect = (option) => {
     setSelectedOption(option); // update selected option
@@ -84,6 +89,19 @@ function Navbar() {
   };
 
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // Get first letter from firstName
+  const firstLetter = user?.firstName ? user.firstName.charAt(0).toUpperCase() : "";
+  const OrganizationName = user?.organizationName ?? "orgName";
+
   return (
     <div className="navbar" ref={dropdownWrapperRef}>
       {/* Left Section - Logo + Menu */}
@@ -114,7 +132,7 @@ function Navbar() {
               {openMenu === "sales" && (
                 <div className="dropdown-menu-sales">
                   <div className="dropdown-item" onClick={() => handleSelect("Pipeline")}> <Link to={"/pipeline"}>Pipeline</Link> </div>
-                  <div className="dropdown-item" onClick={() => handleSelect("My Activity")}> <Link> My Activity </Link></div>
+                  <div className="dropdown-item" onClick={() => handleSelect("My Activity")}> <Link to={"/myActivity"}> My Activity </Link></div>
                   <div className="dropdown-item" onClick={() => handleSelect("Lead")}> <Link>Lead</Link></div>
                   <div className="dropdown-item" onClick={() => handleSelect("Customers")}> <Link> Customers </Link> </div>
                 </div>
@@ -184,7 +202,7 @@ function Navbar() {
             >
               New
             </button>
-            {openMenu === "newLead" && <NewLead />}
+            {openMenu === "newLead" &&    <NewLead onAdd={(leadData) => {addLead("new", leadData)} }/>}
 
             <button className="generate-lead" onClick={() => setOpenLead(true)}>Generate Leads</button>
             <GenerateLead isOpen={openLead} onClose={() => setOpenLead(false)} />
@@ -272,8 +290,9 @@ function Navbar() {
           </span>
           <span><QueryBuilderIcon /> </span>
           <span><ConstructionIcon /></span>
-          <span>TTTT</span>
-          <button className="avatar">A</button>
+          <span className="organisationNameshow">{OrganizationName}</span>
+          <button className="avatar" onClick={() => setUserProfile(!UserProfile)}>{firstLetter}</button>
+          {UserProfile ? <UserIconDropDown /> : " "}
         </div>
 
         <div className="navbar-right-bottom">
@@ -325,3 +344,79 @@ function Navbar() {
 }
 
 export default Navbar;
+
+const UserIconDropDown = () => {
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await fetch("http://localhost:3000/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+    } catch (err) {
+      console.error("Logout failed:", err);
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      alert("logout Successfully !")
+      navigate("/login");
+    }
+  };
+  // redirect
+
+
+  return (
+
+    <div className="menu-container">
+      <ul className="menu-list">
+        <li className="menu-item">
+          <button href="#" className="menu-link">Help</button>
+        </li>
+        <li className="menu-item">
+          <span className="menu-text">Shortcuts</span>
+          <span className="menu-shortcut">CTRL+K</span>
+        </li>
+        <li className="menu-item">
+          <span className="menu-text">Dark Mode</span>
+          <label className="switch">
+            <input type="checkbox" />
+            <span className="slider"></span>
+          </label>
+        </li>
+      </ul>
+
+      <hr className="menu-divider" />
+
+      <ul className="menu-list">
+        <li className="menu-item selected">
+
+          <span className="menu-text">Offline</span>
+        </li>
+        <li className="menu-item">
+          <button href="#" className="menu-link">Preferences</button>
+        </li>
+        <li className="menu-item">
+          <button href="#" className="menu-link">My databases</button>
+        </li>
+        <li className="menu-item">
+          <button href="#" className="menu-link">My subscription</button>
+        </li>
+      </ul>
+
+      <hr className="menu-divider" />
+
+      <ul className="menu-list">
+        <li className="menu-item">
+          <button href="#" className="menu-link">Install App</button>
+        </li>
+        <li className="menu-item">
+          <button className="menu-link" onClick={handleLogOut}>Log out</button>
+        </li>
+      </ul>
+    </div>
+
+  )
+}

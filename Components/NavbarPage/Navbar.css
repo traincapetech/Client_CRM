@@ -353,3 +353,139 @@ hr {
   cursor: pointer;
   
 }
+/* Container and list styling */
+.menu-container {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  padding: 8px 0;
+  position: absolute;
+  top: 50px;     /* adjust as needed */
+  right: 10px;   /* adjust as needed */
+  z-index: 1000;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 8px 0;
+}
+
+/* Menu item styling */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-item span {
+  padding: 10px 16px;
+}
+
+.menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-item.selected {
+  background-color: #f0f0f0;
+}
+
+/* Links and text styling */
+.menu-link {
+  text-decoration: none;
+  padding: 10px 16px;
+  color: #333;
+  border: none;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background: transparent; /* ✅ fix */
+  width: 100%;
+  text-align: left;
+}
+
+.menu-text {
+  color: #333;
+  flex-grow: 1;
+}
+
+.menu-shortcut {
+  color: #999;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+/* Toggle switch styling (Dark Mode) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+/* Radio button styling (Offline) */
+.radio-button {
+  height: 12px;
+  width: 12px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid #999;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.selected .radio-button {
+  background-color: #555;
+  border-color: #555;
+}
+.organisationNameshow{
+  margin: 8px;
+  font-size: 16px;
+}

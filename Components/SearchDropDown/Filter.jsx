@@ -260,3 +260,95 @@ const Filter = () => {
 };
 
 export default Filter;
+
+
+// {
+//     "success": true,
+//     "message": "User registered successfully",
+//     "data": {
+//         "user": {
+//             "_id": "68d1066d957a1774775b5238",
+//             "email": "amit@gmail.com",
+//             "firstName": "Amit",
+//             "lastName": "yadav",
+//             "role": "admin",
+//             "organizationId": {
+//                 "settings": {
+//                     "timezone": "UTC",
+//                     "currency": "USD",
+//                     "dateFormat": "MM/DD/YYYY",
+//                     "language": "en",
+//                     "features": [
+//                         "leads",
+//                         "contacts",
+//                         "opportunities",
+//                         "tasks",
+//                         "reports"
+//                     ]
+//                 },
+//                 "subscription": {
+//                     "plan": "basic",
+//                     "maxUsers": 5,
+//                     "maxContacts": 1000,
+//                     "features": [
+//                         "leads",
+//                         "contacts",
+//                         "opportunities",
+//                         "tasks"
+//                     ],
+//                     "price": 0,
+//                     "billingCycle": "monthly"
+//                 },
+//                 "_id": "68d1066d957a1774775b5236",
+//                 "name": "TTTT",
+//                 "domain": "tttt",
+//                 "isActive": true,
+//                 "createdAt": "2025-09-22T08:18:53.890Z",
+//                 "updatedAt": "2025-09-22T08:18:53.890Z",
+//                 "__v": 0
+//             },
+//             "isActive": true,
+//             "emailVerified": false,
+//             "createdAt": "2025-09-22T08:18:53.953Z",
+//             "updatedAt": "2025-09-22T08:18:53.953Z",
+//             "__v": 0
+//         },
+//         "organization": {
+//             "name": "TTTT",
+//             "domain": "tttt",
+//             "settings": {
+//                 "timezone": "UTC",
+//                 "currency": "USD",
+//                 "dateFormat": "MM/DD/YYYY",
+//                 "language": "en",
+//                 "features": [
+//                     "leads",
+//                     "contacts",
+//                     "opportunities",
+//                     "tasks",
+//                     "reports"
+//                 ]
+//             },
+//             "subscription": {
+//                 "plan": "basic",
+//                 "maxUsers": 5,
+//                 "maxContacts": 1000,
+//                 "features": [
+//                     "leads",
+//                     "contacts",
+//                     "opportunities",
+//                     "tasks"
+//                 ],
+//                 "price": 0,
+//                 "billingCycle": "monthly"
+//             },
+//             "isActive": true,
+//             "_id": "68d1066d957a1774775b5236",
+//             "createdAt": "2025-09-22T08:18:53.890Z",
+//             "updatedAt": "2025-09-22T08:18:53.890Z",
+//             "__v": 0
+//         },
+//         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGQxMDY2ZDk1N2ExNzc0Nzc1YjUyMzgiLCJpYXQiOjE3NTg1MjkxMzQsImV4cCI6MTc1ODYxNTUzNH0.69Xgj-UUCR7ihyJfVQKHWdiKBf_Q5Uy0GNSKFBrZzyw",
+//         "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGQxMDY2ZDk1N2ExNzc0Nzc1YjUyMzgiLCJpYXQiOjE3NTg1MjkxMzQsImV4cCI6MTc1OTEzMzkzNH0.tgR1z23HFzk_gDYXTV7wrT-9Fb0i2pjIEFMH9o2iSQw"
+//     }
+// }

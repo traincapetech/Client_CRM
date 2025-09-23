@@ -1,105 +1,81 @@
-
-import {
-  TableHead,
-  TableRow,
-  TableCell,
-  Checkbox,
-  IconButton
-} from '@mui/material';
-import TuneIcon from '@mui/icons-material/Tune';
 import { useState } from 'react';
+import './My_Activity.css';
+import SortIcon from '@mui/icons-material/Sort';
 
-const FieldSelectionPopup = ({ onSelectField, onClose }) => {
+
+const FieldSelectionPopup = () => {
   const fields = [
-    "Action Needed", "Active", "Activities", "Activity Exception Decoration", "Activity State",
-    "Activity Type Icon", "Assignment Date", "Automated Probability", "Blacklist", "Bounce",
-    "Campaign", "City", "Closed Date", "Color Index", "Company", "Company Name", "Contact Name",
-    "Conversion Date", "Country", "Created by", "Created on", "Customer", "Days To Convert",
-    "Days to Assign", "Days to Close", "Display Name", "Email", "Email Domain Criterion",
-    "Email Quality", "Email cc", "Enrichment Done", "Exceeded Closing Days", "Expected Closing",
-    "Expected MRR", "Expected revenue", "Followers", "Followers (partners)", "has message", "ID",
-    "Is Followers", "job position", "Language", "Last Action", "Last Stage Update",
-    "Last Updated by", "Last Updated on", "Lead mining Request", "Locale Code", "Lost Reason",
-    "Medium", "Meeting", "Message Delivers Error", "messages", "My Activity Deadline",
-    "Next Activity Deadline", "Next Activity Summary", "Next Activity Type", "Normalized Email",
-    "Notes", "Opportunity", "Partner is Blacklisted", "Phone", "Phone Blacklisted", "Phone Number",
-    "Phone Quality", "Priority", "Probability", "Properties", "Prorated MRR",
-    "Prorated Recurring Revenue", "Prorated revenue", "Recurring Plan", "Recurring Revenue",
-    "Referred by", "Responsible User", "Reveal id", "SMS Delivery Error", "Sales Team",
-    "Salesperson", "Sanitized Number", "Source", "Stage", "State", "Street", "Streets", "Tags",
-    "Types", "website", "website messages", "won/Lost", "Zip"
+    'Salesperson',
+    'Sales Team',
+    'Stage',
+    'City',
+    'Country',
+    'Lost Reason',
+    'Campaign',
+    'Medium',
+    'Source',
+    'Properties',
   ];
-
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredFields = fields.filter(field =>
-    field.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+   const [selectedGroups, setSelectedGroups] = useState([]);
+   
+  const handleGroupClick = (group) => {
+    setSelectedGroups((prev) =>
+      prev.includes(group)
+        ? prev.filter((item) => item !== group)
+        : [...prev, group]
+    );
+  };
 
   return (
-    <div className="field-selection-popup">
-      <div className="popup-header">
-        <span className="popup-title">Select a field</span>
-        <button className="popup-close" onClick={onClose}>×</button>
-      </div>
-      <div className="popup-search">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      <ul className="field-list">
-        {filteredFields.map((field, index) => (
-          <li key={index} onClick={() => onSelectField(field)}>
-            {field}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-
-
-
-
-
+    <div className='selection-container'>
+      <div className="selection-box">
+          <div className='section-groupInMyActivity'>
+            {fields.map((group) => (
+              <div
+                key={group}
+                className="optionInMyActivity"
+                onClick={() => handleGroupClick(group)}
+              >
+                <span className="checkbox">
+                  {selectedGroups.includes(group) ? '✔️' : ''}
+                </span>
+                {group}
+              </div>
+            ))}
+            </div>
+            </div>
+            </div>
+  )
+}
 
 
 const My_Activity = () => {
-  const headers = ['Opportunity', 'Contact Name', 'Email', 'City', 'State', 'Salesperson', 'Priority'];
-    const [ShowPopup,setShowPopup]=useState(false)
+  const options = ["Created on", "Opportunity",
+    "Customer",
+    "Contact Name",
+    "Email",
+    "Priority",
+    "My Deadline",
+    "Medium"
+  ]
+
+  const [showOptions, setshowOptions] = useState(false)
 
   return (
-    <div className='myActivity-container'>
-    <TableHead>
-      <TableRow>
-        {headers.map((header) => (
-          <TableCell key={header}>
-            {header === 'Opportunity' ? (
-              <>
-                <Checkbox color="primary" />
-                {header}
-              </>
-            ) : (
-              header
-            )}
-          </TableCell>
-        ))}
-        {/* The last cell for the sort/filter icon */}
-        <TableCell align="right">
-          <IconButton  onClick={() => setShowPopup(true)}>
-            { ShowPopup? <FieldSelectionPopup />: " "}
-           <TuneIcon />
-          </IconButton>
-        </TableCell>
-      </TableRow>
-    </TableHead>
-
-  </div>
-
+    <div className="table-header-container">
+      <div className="table-header-row">
+        <div className='header-container-items'>
+          <div className="header-cell checkbox-cell">
+            <input type="checkbox" className="header-checkbox" />
+          </div>
+          {options.map((item, index) => (
+            <div className="header-cell" key={index}>{item}</div>
+          ))}
+        </div>
+        <div className='addheader-option'> <button className='sortOption' onClick={() => setshowOptions(!showOptions)}> <SortIcon /></button> </div>
+        <div className='optionDropDownField'>{showOptions ? <FieldSelectionPopup /> : " "}</div>
+      </div>
+    </div>
   );
 };
 
