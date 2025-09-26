@@ -17,11 +17,10 @@ export const LeadProvider = ({ children }) => {
   const addLead = (col, data) => {
     setLeads((prev) => ({
       ...prev,
-      [col]: [...prev[col], data],
+      [col]: [...(prev[col] || []), data],   // ✅ safe spread
     }));
   };
 
-  // 👇 add this function
   const deleteLead = (col, index) => {
     setLeads((prev) => ({
       ...prev,
@@ -29,8 +28,15 @@ export const LeadProvider = ({ children }) => {
     }));
   };
 
+  const addStage = (colName) => {
+    setLeads((prev) => ({
+      ...prev,
+      [colName]: prev[colName] || [],  // ✅ initialize empty column
+    }));
+  };
+
   return (
-    <LeadContext.Provider value={{ leads, addLead, deleteLead }}>
+    <LeadContext.Provider value={{ leads, addLead, deleteLead, addStage }}>
       {children}
     </LeadContext.Provider>
   );

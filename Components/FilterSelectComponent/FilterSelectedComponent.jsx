@@ -171,13 +171,14 @@ const FilterSelectedComponent = ({ isOpen, onClose }) => {
               value={rule.value}
               onChange={(e) => handleRuleChange(index, e)}
               className="rule-input"
-            />
+            /><div className="rule-actions">
             <button className="rule-action-button delete-button" onClick={() => handleRemoveRule(index)}>
               <span role="img" aria-label="Delete"><DeleteIcon /></span>
             </button>
             <button className="rule-action-button copy-button">
               <span role="img" aria-label="Copy">📋</span>
             </button>
+          </div>
           </div>
         ))}
 

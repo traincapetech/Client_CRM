@@ -3,63 +3,67 @@ import './My_Activity.css';
 import SortIcon from '@mui/icons-material/Sort';
 
 
-const FieldSelectionPopup = () => {
+const FieldSelectionPopup = ({ onSelectField }) => {
   const fields = [
-    'Salesperson',
-    'Sales Team',
-    'Stage',
-    'City',
-    'Country',
-    'Lost Reason',
-    'Campaign',
-    'Medium',
-    'Source',
-    'Properties',
+    "Created on",
+    "Customer",
+    "Contact Name",
+    "Phone",
+    "City",
+    "State",
+    "Country",
+    "Salesperson",
+    "Sales Team",
+    "Priority",
+    "Activities",
+    "Activity by",
+    "My Deadline",
+    "Campaign",
+    "Medium",
+    "Source",
+    "Expected Revenue",
+    "Expected Closing",
+    "Stage",
+    "Probability (%)",
+    "Lost Reason",
+    "Tags"
   ];
-   const [selectedGroups, setSelectedGroups] = useState([]);
-   
-  const handleGroupClick = (group) => {
-    setSelectedGroups((prev) =>
-      prev.includes(group)
-        ? prev.filter((item) => item !== group)
-        : [...prev, group]
-    );
-  };
-
   return (
-    <div className='selection-container'>
-      <div className="selection-box">
-          <div className='section-groupInMyActivity'>
-            {fields.map((group) => (
-              <div
-                key={group}
-                className="optionInMyActivity"
-                onClick={() => handleGroupClick(group)}
-              >
-                <span className="checkbox">
-                  {selectedGroups.includes(group) ? '✔️' : ''}
-                </span>
-                {group}
-              </div>
-            ))}
-            </div>
-            </div>
-            </div>
+    <div className="custom-fields-menu-container">
+      <ul className="fields-list">
+        {fields.map((field, index) => (
+          <li
+            className="field-item checked"
+            key={index}
+            onClick={() => onSelectField(field)} // ✅ handle click
+          >
+            <label className="checkbox-container">
+              <input type="checkbox" />
+              <span className="checkmark"></span>
+            </label>
+            <span className="field-name">{field}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
   )
 }
 
 
 const My_Activity = () => {
-  const options = ["Created on", "Opportunity",
+  const [optionMyActivity,setoptionMyActivity] =useState([
+    "Created on",
+    "Opportunity",
     "Customer",
     "Contact Name",
     "Email",
     "Priority",
     "My Deadline",
     "Medium"
-  ]
+  ])
 
-  const [showOptions, setshowOptions] = useState(false)
+  const [showoptionMyActivity, setshowoptionMyActivity] = useState(false)
 
   return (
     <div className="table-header-container">
@@ -68,12 +72,20 @@ const My_Activity = () => {
           <div className="header-cell checkbox-cell">
             <input type="checkbox" className="header-checkbox" />
           </div>
-          {options.map((item, index) => (
+          {optionMyActivity.map((item, index) => (
             <div className="header-cell" key={index}>{item}</div>
           ))}
         </div>
-        <div className='addheader-option'> <button className='sortOption' onClick={() => setshowOptions(!showOptions)}> <SortIcon /></button> </div>
-        <div className='optionDropDownField'>{showOptions ? <FieldSelectionPopup /> : " "}</div>
+        <div className='addheader-option'> <button className='sortOption'
+          onClick={() => setshowoptionMyActivity(!showoptionMyActivity)}> <SortIcon /></button> </div>
+        <div className='optionDropDownField'>
+          {showoptionMyActivity ?
+            <FieldSelectionPopup
+              onSelectField={(field) => {
+                if (!optionMyActivity.includes(field)) {
+                  setoptionMyActivity([...optionMyActivity, field]);
+                }
+              }} /> : " "}</div>
       </div>
     </div>
   );

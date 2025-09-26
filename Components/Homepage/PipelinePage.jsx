@@ -6,13 +6,20 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { LeadContext } from "../../leadProvider/LeadContext";
 import FastForwardIcon from '@mui/icons-material/FastForward';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from '@mui/icons-material/Check';
 
 function PipelinePage() {
   const { leads, addLead } = useContext(LeadContext);
   const [activeColumn, setActiveColumn] = useState(null);
   const [openCard, setOpenCard] = useState(null); // { col, index } or null
 
-  const columns = ["new", "proposition", "qualified", "won"];
+  const [columns, setColumns] = useState(["new", "proposition", "qualified", "won"]);
+
+  const [AddStage, setAddStage] = useState(false)
+  function handleAddStage() {
+    setAddStage(!AddStage)
+  }
 
   const handleLead = (column) => {
     setActiveColumn((prev) => (prev === column ? null : column));
@@ -101,11 +108,28 @@ function PipelinePage() {
             )}
           </div>
         ))}
+        <div className="pipeline-AddStage-mobile">
+          <span className="iconshowAddStage" ><FastForwardIcon sx={{ color: "#212121" }} />   </span>
+
+          <button className="addstage-btn" onClick={handleAddStage}>Add stages...</button>
+          {AddStage && (
+            <AddStageInputBox
+              onClose={() => setAddStage(false)}
+              onAddStage={(stage) => setColumns([...columns, stage])}
+            />
+          )}
+        </div>
       </div>
 
-      <div className="pipeline-empty">
-        <button>Add stages...</button>
-        <span><FastForwardIcon /></span>
+      <div className="pipeline-AddStage">
+        <button className="addstage-btn" onClick={handleAddStage}>Add stages...</button>
+        <span className="iconshowAddStage" ><FastForwardIcon sx={{ color: "#212121" }} /></span>
+        {AddStage && (
+          <AddStageInputBox
+            onClose={() => setAddStage(false)}
+            onAddStage={(stage) => setColumns([...columns, stage])}
+          />
+        )}
       </div>
     </div>
   );
@@ -125,6 +149,40 @@ const ShowLeadCardOption = ({ col, index }) => {
       <div className="editCard-model">
         <button>Edit</button>
         <button onClick={() => deleteLead(col, index)}>Delete</button>
+      </div>
+    </div>
+  );
+};
+const AddStageInputBox = ({ onClose, onAddStage }) => {
+  const [inputAddStage, setinputAddStage] = useState("");
+
+  function handleChangeInStage(event) {
+    setinputAddStage(event.target.value);
+  }
+
+  function handleAddStage() {
+    if (inputAddStage.trim()) {
+      onAddStage(inputAddStage.trim()); // send stage to parent
+      setinputAddStage("");
+      onClose(); // close after adding
+    }
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="StageName"
+        value={inputAddStage}
+        onChange={handleChangeInStage}
+      />
+      <div>
+        <button onClick={onClose}>
+          <CloseIcon sx={{ background: "red" }} />
+        </button>
+        <button onClick={handleAddStage}>
+          <CheckIcon sx={{ background: "green" }} />
+        </button>
       </div>
     </div>
   );

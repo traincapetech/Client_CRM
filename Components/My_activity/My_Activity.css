@@ -93,7 +93,8 @@
 
 .optionDropDownField{
   position: absolute;
-    left: 82%;
+    left: 86.5%;
+    top: 18%;
 }
 
 .selection-container{
@@ -112,4 +113,130 @@
 
   background-color: #bbb;
   border-radius:5px ;
+}
+
+
+/* Container and Menu */
+.custom-fields-menu-container {
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.menu-header {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.options-icon {
+  background: none;
+  border: none;
+  /* Add styling for the icon, possibly using an SVG or background image */
+}
+
+/* Fields List */
+.fields-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.field-item {
+  padding: 10px 16px;
+
+  align-items: center;
+  
+  cursor: pointer;
+}
+
+.field-item:hover {
+  background-color: #f5f5f5;
+}
+
+.field-name {
+  color: #333;
+  font-size: 14px;
+  padding: 30px;
+}
+
+/* Custom Checkbox */
+.checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Menu Footer */
+.menu-footer {
+  border-top: 1px solid #eee;
+  padding: 12px 16px;
+}
+
+.add-field-button {
+  background: none;
+  border: none;
+  color: #2196F3;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plus-icon {
+  font-size: 16px;
+  font-weight: bold;
 }

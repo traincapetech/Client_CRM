@@ -1,0 +1,312 @@
+.contact-card {
+    /* Make this the reference for absolute children */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.contact-card-border {
+    width: 4px;
+    background-color: #2196F3;
+}
+
+.contact-card-content {
+    flex-grow: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.options-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+.card-email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.email-icon {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.email-address {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.card-action {
+    display: flex;
+    justify-content: end;
+    padding: 8px 16px;
+}
+
+.action-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.opened-editCard {
+    position: absolute;
+    top: 25%;
+    z-index: 100;
+    left: 20%;
+}
+
+.edit-ContainerTeam {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0e6d2;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Parent container for positioning */
+.card-container {
+    position: relative;
+    /* This is crucial for positioning the dropdown */
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+/* Basic card header style */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+/* Three dots button */
+.options-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Main Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    /* Positions the menu right below the button */
+    right: 0;
+    width: 400px;
+    /* Adjust width as needed */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout for the columns */
+.dropdown-columns {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 16px;
+}
+
+.menu-column {
+    flex: 1;
+    padding: 0 8px;
+}
+
+.column-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 6px 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    color: #2196F3;
+}
+
+/* Horizontal Divider */
+.menu-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 8px 0;
+}
+
+/* Color Palette and Configuration */
+.dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8px;
+}
+
+.color-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.color-row {
+    display: flex;
+    gap: 4px;
+}
+
+.color-box {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Specific color definitions */
+.red {
+    background-color: #e57373;
+}
+
+.orange {
+    background-color: #ffb74d;
+}
+
+.yellow {
+    background-color: #ffd54f;
+}
+
+.blue {
+    background-color: #64b5f6;
+}
+
+.purple {
+    background-color: #ba68c8;
+}
+
+.brown {
+    background-color: #a1887f;
+}
+
+.cyan {
+    background-color: #4dd0e1;
+}
+
+.green {
+    background-color: #81c784;
+}
+
+.pink {
+    background-color: #f06292;
+}
+
+.violet {
+    background-color: #7e57c2;
+}
+
+.configuration-text {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .contact-card {
+        max-width: 98%; /* Card takes most of screen */
+    }
+
+    .dropdown-menu {
+        max-width: 80%;
+        left: 28%;
+        transform: translateX(-50%); /* Center it on smaller devices */
+    }
+
+    .dropdown-columns {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 12px;
+    }
+
+    .menu-column {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-title {
+        font-size: 1em;
+    }
+
+    .opened-editCard{
+        width: 100%;
+    }
+
+    .email-address {
+        font-size: 0.8em;
+    }
+
+    .action-button {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9em;
+    }
+}
+
+
