@@ -1,0 +1,284 @@
+.ForecastContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.forecast-board {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
+/* Columns */
+.forecast-column {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forecast-setting-icon {
+  cursor: pointer;
+  color: #666;
+}
+
+.forecast-items {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.left-side-forecastItems {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.left-side-forecastClick {
+  display: flex;
+  align-items: center;
+  margin-left: 60%;
+}
+
+/* Create button */
+.forecast-createLead-btn {
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+/* Popup appears relative to column */
+.forecast-lead-popup {
+  position: relative;
+  top: 0;
+  /* show below the + button */
+  left: 100%;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.forecast-addstage-btn {
+  padding: 6px 12px;
+  border: none;
+  background: #6b3fa0;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.forecast-addstage-btn:hover {
+  background: #532d80;
+}
+
+.forecast-iconshowAddStage.active {
+  border: 1px solid #6b3fa0;
+  border-radius: 6px;
+}
+
+.forecast-AddStage {
+  height: 100px;
+  width: 20%;
+  background: #f8f9fa;
+}
+
+.forecast-product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.forecast-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-product-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333;
+}
+
+.forecast-options-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.forecast-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #666;
+  border-radius: 50%;
+}
+
+.forecast-product-price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #555;
+}
+
+.forecast-product-tag-container {
+  display: flex;
+}
+
+.forecast-product-tag {
+  background-color: #fce6e6;
+  color: #c94c4c;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.forecast-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.forecast-star {
+  font-size: 1em;
+}
+
+.forecast-clock-icon {
+  font-size: 1em;
+  color: #999;
+  margin-left: 4px;
+}
+
+.forecast-product-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forecast-action-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-star.selected {
+  color: goldenrod;
+}
+
+.editCard-container {
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: #cfcfcf;
+  position: absolute;
+  margin-left: 290px;
+}
+
+.forecast-showoptionCardEdit {
+  position: absolute;
+}
+
+.forecast-AddStage-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  .forecast-AddStage {
+    display: none;
+  }
+
+  .forecast-addstage-btn {
+    width: 100%;
+  }
+
+  .forecast-AddStage-mobile {
+    display: inline;
+    background: #f8f9fa;
+  }
+
+  .ForecastContainer {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .forecast-board {
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+    /* allow scrolling */
+  }
+
+  .forecast-column {
+    min-width: 250px;
+    /* for smaller devices */
+    max-width: 250px;
+  }
+
+  .forecast-product-card {
+    padding: 12px;
+  }
+
+  .forecast-product-title {
+    font-size: 1em;
+  }
+
+  .forecast-product-price {
+    font-size: 1em;
+  }
+
+  .forecast-product-tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+  }
+
+  .forecast-action-button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9em;
+  }
+
+  .forecast-createLead-btn {
+    font-size: 0.9em;
+    padding: 4px;
+  }
+
+}

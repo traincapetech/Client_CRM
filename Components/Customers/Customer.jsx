@@ -1,5 +1,5 @@
 import "./Customer.css";
-import { useState } from "react";
+import { useState,useEffect,useRef } from "react";
 import SortIcon from "@mui/icons-material/Sort";
 
 function Customer() {
@@ -13,6 +13,22 @@ function Customer() {
     ]);
 
     const [showOptionsCustomer, setShowOptionsCustomer] = useState(false);
+      const OptionCustomerRef = useRef(null);
+    
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (OptionCustomerRef.current && !OptionCustomerRef.current.contains(event.target)) {
+        setShowOptionsCustomer(false); // close if clicked outside
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
 
     return (
         <div className="customer-page-container">
@@ -35,13 +51,14 @@ function Customer() {
                 ))}
 
                 <button
-                    className="customer-sort-option"
+                    className="customer-sort-option" 
+
                     onClick={() => setShowOptionsCustomer(!showOptionsCustomer)}
                 >
                     <SortIcon />
                 </button>
                 {showOptionsCustomer && (
-                    <div className="customer-option-dropdown-field">
+                    <div ref={OptionCustomerRef} className="customer-option-dropdown-field">
                         <CustomerFieldSelectionPopup
                             onSelectField={(field) => {
                                 if (!columns.find((c) => c.name === field)) {

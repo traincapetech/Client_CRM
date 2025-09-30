@@ -195,6 +195,7 @@
   cursor: pointer;
   color: #000;
   margin: 0;
+  margin-bottom: -20px;
 }
 
 .dropdown-item a {
@@ -672,6 +673,11 @@ input:checked+.slider:before {
 
   .salesIn-hamburger a {
     text-decoration: none;
+    color: black;
+  }
+
+  .reportingIn-hamburger a {
+      text-decoration: none;
     color: black;
   }
 

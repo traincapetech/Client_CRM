@@ -106,7 +106,7 @@ function Navbar() {
 
 
 
-// Get first letter from firstName
+  // Get first letter from firstName
   const firstLetter = user?.firstName ? user.firstName.charAt(0).toUpperCase() : "";
   const OrganizationName = user?.organizationName ?? "orgName";
   const fullname = user?.firstName ?? ""
@@ -136,17 +136,17 @@ function Navbar() {
             <div className="hamburger-menu">
               <div className="salesIn-hamburger">
                 <label> Sales</label>
-                <Link to={"/pipeline"}><div className="menu-btn" onClick={() => handleSelect("Pipeline")}> Pipeline </div></Link>
+                <Link to={"/pipeline"}>  <div className="menu-btn" onClick={() => handleSelect("Pipeline")}> Pipeline </div></Link>
                 <Link to={"/pipeline"}> <div className="menu-btn" onClick={() => handleSelect("My Activity")}>My Activity</div> </Link>
                 <Link to={"/team"}><div className="menu-btn" onClick={() => handleSelect("Team")}> Team</div></Link>
                 <Link to={"/customer"}><div className="menu-btn" onClick={() => handleSelect("Customers")}>  Customers </div> </Link>
               </div>
-              <div className="reporingIn-hamburger">
+              <div className="reportingIn-hamburger">
                 <label>Reporting</label>
-                <div className="menu-btn" onClick={() => handleSelect("Forecast")}> <Link>Forecast</Link> </div>
-                <div className="menu-btn" onClick={() => handleSelect("Pipeline")}> <Link>Pipeline</Link> </div>
-                <div className="menu-btn" onClick={() => handleSelect("Lead")}> <Link>Lead</Link> </div>
-                <div className="menu-btn" onClick={() => handleSelect("My Activity")}> <Link> My Activity </Link></div>
+                <Link to={"/report/forecast"}> <div className="menu-btn" onClick={() => handleSelect("Forecast")}>Forecast</div></Link>
+                <Link to={"/report/pipeline"}> <div className="menu-btn" onClick={() => handleSelect("Pipeline")}>Pipeline </div></Link>
+                <Link to={"/report/leads"}>    <div className="menu-btn" onClick={() => handleSelect("Lead")}>Leads </div></Link>
+                <Link to={"/report/activity"}> <div className="menu-btn" onClick={() => handleSelect("My Activity")}> My Activity</div></Link>
               </div>
               <div className="configurationIn-hamburger">
                 <label>Configuration</label>
@@ -205,10 +205,10 @@ function Navbar() {
               </button>
               {openMenu === "report" && (
                 <div className="dropdown-menu-report">
-                  <div className="dropdown-item" onClick={() => handleSelect("Forecast")}> <Link>Forecast</Link> </div>
-                  <div className="dropdown-item" onClick={() => handleSelect("Pipeline")}> <Link>Pipeline</Link> </div>
-                  <div className="dropdown-item" onClick={() => handleSelect("Lead")}> <Link>Lead</Link> </div>
-                  <div className="dropdown-item" onClick={() => handleSelect("My Activity")}> <Link> My Activity </Link></div>
+                  <Link to={"/report/forecast"}> <div className="dropdown-item" onClick={() => handleSelect("Forecast")}>Forecast</div></Link>
+                  <Link to={"/report/pipeline"}> <div className="dropdown-item" onClick={() => handleSelect("Pipeline Analysis")}>Pipeline </div></Link>
+                  <Link to={"/report/leads"}>    <div className="dropdown-item" onClick={() => handleSelect("Leads Analysis")}>Leads </div></Link>
+                  <Link to={"/report/activity"}> <div className="dropdown-item" onClick={() => handleSelect("Activities")}> My Activity</div></Link>
                 </div>
               )}
             </span>
@@ -228,16 +228,16 @@ function Navbar() {
               </button>
               {openMenu === "configuration" && (
                 <div className="dropdown-menu-configuration">
-                  <div className="dropdown-item"> <Link>Setting</Link> </div>
-                  <div className="dropdown-item"><Link>Sales team</Link></div>
-                  <div className="dropdown-item"><b>Activities</b></div>
-                  <div className="dropdown-item"> <Link>Activity Types</Link> </div>
-                  <div className="dropdown-item"><Link>Activity Types</Link></div>
-                  <div className="dropdown-item"><b>Pipeline</b></div>
-                  <div className="dropdown-item"> <Link>Tags</Link> </div>
-                  <div className="dropdown-item"><Link>Lost Reasons</Link></div>
-                  <div className="dropdown-item"><b>Lead Generation</b></div>
-                  <div className="dropdown-item"><Link>Lead Mining Request</Link></div>
+                  <div className="menu-btn"> <Link>Setting</Link> </div>
+                  <div className="menu-btn"><Link>Sales team</Link></div>
+                  <div className="menu-btn"><b>Activities</b></div>
+                  <div className="menu-btn"> <Link>Activity Types</Link> </div>
+                  <div className="menu-btn"><Link>Activity Types</Link></div>
+                  <div className="menu-btn"><b>Pipeline</b></div>
+                  <div className="menu-btn"> <Link>Tags</Link> </div>
+                  <div className="menu-btn"><Link>Lost Reasons</Link></div>
+                  <div className="menu-btn"><b>Lead Generation</b></div>
+                  <div className="menu-btn"><Link>Lead Mining Request</Link></div>
                 </div>
               )}
             </span>
@@ -247,7 +247,7 @@ function Navbar() {
         {/* Buttons */}
         <div className="navbar-left-bottom">
           <div className="actions">
-            {selectedOption !== "Team" && (
+            {!["Team", "Pipeline Analysis","Leads Analysis","Activities"].includes(selectedOption) && (
               <button
                 className="new-lead-btn"
                 onClick={() => setOpenMenu(openMenu === "newLead" ? null : "newLead")}
@@ -257,8 +257,8 @@ function Navbar() {
             {/* Lead box*/}
             {openMenu === "newLead" && <NewLead onAdd={(leadData) => { addLead("new", leadData) }} />}
 
-              {/*  desktop code  */}
-            {selectedOption !== "Team" && selectedOption !== "Customers" && (
+            {/*  desktop code  */}
+            {!["Team", "Customers","Pipeline Analysis","Leads Analysis","Activities"].includes(selectedOption) &&  (
               <button className="generate-lead"
                 onClick={() => setOpenLead(true)}>
                 Generate Leads
@@ -462,7 +462,7 @@ function Navbar() {
               />
 
 
-              
+
             )}
 
             <input
@@ -477,8 +477,8 @@ function Navbar() {
               <ArrowDropDownIcon />
             </button>
             {openMenu === "filter" && <Filter
-                isOpen={true}
-                onClose={() => setOpenMenu(null)}/>}
+              isOpen={true}
+              onClose={() => setOpenMenu(null)} />}
           </div>
         )}
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './My_Activity.css';
 import SortIcon from '@mui/icons-material/Sort';
 
@@ -40,8 +40,8 @@ const FieldSelectionPopup = ({ onSelectField }) => {
             <label className="checkbox-container">
               <input type="checkbox" />
               <span className="checkmark"></span>
+              <span className="field-name">{field}</span>
             </label>
-            <span className="field-name">{field}</span>
           </li>
         ))}
       </ul>
@@ -52,7 +52,7 @@ const FieldSelectionPopup = ({ onSelectField }) => {
 
 
 const My_Activity = () => {
-  const [optionMyActivity,setoptionMyActivity] =useState([
+  const [optionMyActivity, setoptionMyActivity] = useState([
     "Created on",
     "Opportunity",
     "Customer",
@@ -64,6 +64,22 @@ const My_Activity = () => {
   ])
 
   const [showoptionMyActivity, setshowoptionMyActivity] = useState(false)
+  const ViewOptionMyActivityRef = useRef(null);
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ViewOptionMyActivityRef.current && !ViewOptionMyActivityRef.current.contains(event.target)) {
+        setshowoptionMyActivity(false); // ✅ not setoptionMyActivity
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
+
 
   return (
     <div className="table-header-container">
@@ -76,9 +92,13 @@ const My_Activity = () => {
             <div className="header-cell" key={index}>{item}</div>
           ))}
         </div>
-        <div className='addheader-option'> <button className='sortOption'
-          onClick={() => setshowoptionMyActivity(!showoptionMyActivity)}> <SortIcon /></button> </div>
-        <div className='optionDropDownField'>
+        <div className='addheader-option'><button className='sortOption'
+          onClick={() => setshowoptionMyActivity(!showoptionMyActivity)}>
+          <SortIcon />
+        </button>
+        </div>
+        <div ref={ViewOptionMyActivityRef}
+          className='optionDropDownField'>
           {showoptionMyActivity ?
             <FieldSelectionPopup
               onSelectField={(field) => {
