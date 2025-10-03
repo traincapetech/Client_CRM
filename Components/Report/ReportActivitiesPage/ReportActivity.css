@@ -1,0 +1,283 @@
+/* =========================================
+   1. Global Styles and Layout
+   ========================================= */
+
+.report-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* =========================================
+   2. Toolbar Header
+   ========================================= */
+
+.report-toolbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: #f0eeee;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.report-toolbar-left,
+.report-toolbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Measures Dropdown Button */
+.report-measures-dropdown {
+    background-color: #e5e5e5;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #444;
+}
+
+.report-insert-spreadsheet {
+    background-color: #bebebe;
+    border: none;
+    padding: 4px 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #444;
+    opacity: 0.8;
+}
+
+/* View Icons Group */
+.report-view-icons {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: white;
+    height: 30px;
+}
+
+.report-icon-btn {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #777;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #eee;
+}
+
+.report-icon-btn:last-child {
+    border-right: none;
+}
+
+.report-icon-btn.report-active {
+    background-color: #e6e6e6;
+    color: #555;
+}
+
+/* Header Legend (Months) */
+.report-header-legend {
+    margin-right: 20px;
+    font-size: 13px;
+    display: flex;
+    gap: 15px;
+}
+
+.report-legend-item::before {
+    content: '•';
+    margin-right: 4px;
+    font-size: 1.5em;
+    line-height: 0.5;
+    vertical-align: middle;
+}
+
+.report-legend-blue::before { color: #80c2d3; }
+.report-legend-green::before { color: #9fccb9; }
+.report-legend-pink::before { color: #f2a6b4; }
+.report-legend-red::before { color: #f8c983; }
+
+/* SAMPLE DATA Banner */
+.report-sample-data-banner {
+    position: absolute;
+    top: 130px;
+    right: 2px;
+    background-color: #eb6161;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 3px 15px;
+    transform: skewX(-15deg);
+    transform-origin: 100% 0;
+    white-space: nowrap;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+    overflow: hidden;
+    transform: rotateZ(45deg);
+}
+
+/* =========================================
+   3. Main Content and Chart Area
+   ========================================= */
+
+.report-main-content {
+    flex-grow: 1;
+    position: relative;
+    overflow: auto;
+}
+
+.report-chart-area {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 30px 20px 0 60px;
+    position: relative;
+    height: 90%;
+    min-height: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   4. Background Chart Elements (Axes and Faint Bars)
+   ========================================= */
+
+.report-background-chart-elements {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    right: 20px;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.report-y-axis-labels {
+    position: absolute;
+    top: 0;
+    left: -60px;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.report-y-axis-label {
+    font-size: 12px;
+    color: #777;
+    text-align: right;
+    width: 50px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 2px;
+}
+
+.report-y-axis-label:last-child {
+    border-bottom: 1px solid #aaa;
+}
+
+.report-x-axis-labels {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    white-space: nowrap;
+    opacity: 0.2;
+}
+
+.report-x-axis-label {
+    flex: 1;
+    max-width: 25%;
+    padding: 0 5px;
+}
+
+.report-background-chart-elements::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    background-image:
+        linear-gradient(to top, rgba(173, 216, 230, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        linear-gradient(to top, rgba(255, 192, 203, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        linear-gradient(to top, rgba(255, 222, 173, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        linear-gradient(to top, rgba(173, 230, 226, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    background-size: calc(25% - 20px) 100%;
+    background-repeat: no-repeat;
+    background-position: 2% 0, 27% 0, 52% 0, 77% 0;
+}
+
+/* =========================================
+   5. No Data Placeholder
+   ========================================= */
+
+.report-no-data-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 300px;
+    color: #888;
+    padding-bottom: 50px;
+    z-index: 20;
+}
+
+.report-no-data-title {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 5px 0;
+    color: #555;
+}
+
+.report-no-data-tip {
+    font-size: 13px;
+    color: #777;
+}
+
+/* =========================================
+   6. Measure Options Dropdown
+   ========================================= */
+
+.report-measure-options-container {
+    background: white;
+    padding: 10px 16px;
+    position: absolute;
+    top: 100%;
+    z-index: 100;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.report-measure-options-container div {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.report-measure-option {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.report-checkbox {
+    display: inline-block;
+    width: 16px;
+}

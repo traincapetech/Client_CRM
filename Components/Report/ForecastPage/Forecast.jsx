@@ -1,5 +1,5 @@
 
-import { useContext, useState } from "react";
+import { useContext, useState,useRef,useEffect } from "react";
 import "./Forecast.css";
 import AddIcon from "@mui/icons-material/Add";
 import NewLead from "../../NavbarPage/NewLead"
@@ -7,28 +7,109 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { LeadContext } from "../../../leadProvider/LeadContext"
 import FastForwardIcon from '@mui/icons-material/FastForward';
-import CloseIcon from '@mui/icons-material/Close';
-import CheckIcon from '@mui/icons-material/Check';
 
 
 
 function Forecast() {
+
+// here is the code for the make the page grabbable to scroll the page //
+
+
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const mouseDown = (e) => {
+      isDown = true;
+      el.classList.add("active");
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+    };
+
+    const mouseLeave = () => {
+      isDown = false;
+      el.classList.remove("active");
+    };
+
+    const mouseUp = () => {
+      isDown = false;
+      el.classList.remove("active");
+    };
+
+    const mouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX) * 2; // scroll-fastness factor
+      el.scrollLeft = scrollLeft - walk;
+    };
+
+    el.addEventListener("mousedown", mouseDown);
+    el.addEventListener("mouseleave", mouseLeave);
+    el.addEventListener("mouseup", mouseUp);
+    el.addEventListener("mousemove", mouseMove);
+
+    return () => {
+      el.removeEventListener("mousedown", mouseDown);
+      el.removeEventListener("mouseleave", mouseLeave);
+      el.removeEventListener("mouseup", mouseUp);
+      el.removeEventListener("mousemove", mouseMove);
+    };
+  }, []);
+
+
+
+  /////////////////////
+
     const { leads, addLead } = useContext(LeadContext);
     const [activeColumn, setActiveColumn] = useState(null);
-    const [openCard, setOpenCard] = useState(null); // { col, index } or null
+    const [openCard, setOpenCard] = useState(null);
 
-    const [columns, setColumns] = useState(["September ", "October", "November", "December"]);
+    const [columns, setColumns] = useState([
+        "September 2025",
+        "October 2025",
+        "November 2025",
+        "December 2025",
+    ]);
 
-    const [AddStage, setAddStage] = useState(false)
+    const [AddStage, setAddStage] = useState(false);
+
+    // months array for reference
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    // ✅ logic: add the next month automatically
     function handleAddStage() {
-        setAddStage(!AddStage)
+        setColumns((prev) => {
+            const last = prev[prev.length - 1].trim(); // e.g. "December 2025"
+            const [lastMonthName, lastYear] = last.split(" ");
+            const monthIndex = months.indexOf(lastMonthName);
+
+            let nextMonthIndex = (monthIndex + 1) % 12;
+            let nextYear = parseInt(lastYear, 10);
+
+            if (monthIndex === 11) {
+                nextYear++;
+            }
+
+            const nextMonthName = months[nextMonthIndex];
+            return [...prev, `${nextMonthName} ${nextYear}`];
+        });
     }
 
     const handleLead = (column) => {
         setActiveColumn((prev) => (prev === column ? null : column));
-    }
+    };
+
     return (
-        <div className="ForecastContainer">
+        <div className="ForecastContainer"  ref={containerRef}>
             <div className="forecast-board">
                 {columns.map((col) => (
                     <div className="forecast-column" key={col}>
@@ -68,7 +149,6 @@ function Forecast() {
                                                 <MoreVertIcon />
                                             </button>
 
-                                            {/* Only open on the clicked card */}
                                             {openCard?.col === col && openCard?.index === index && (
                                                 <div className="forecast-showoptionCardEdit">
                                                     <ShowLeadCardOption col={col} index={index} />
@@ -84,8 +164,9 @@ function Forecast() {
                                             {[1, 2, 3].map((star) => (
                                                 <span
                                                     key={star}
-                                                    className={`forecast-star ${lead.rating >= star ? "selected" : ""
-                                                        }`}
+                                                    className={`forecast-star ${
+                                                        lead.rating >= star ? "selected" : ""
+                                                    }`}
                                                 >
                                                     ★
                                                 </span>
@@ -99,7 +180,6 @@ function Forecast() {
                                 </div>
                             ))}
 
-                        {/* Popup BELOW header */}
                         {activeColumn === col && (
                             <div className="forecast-lead-popup">
                                 <NewLead
@@ -110,37 +190,28 @@ function Forecast() {
                         )}
                     </div>
                 ))}
-
+    
+                    {/* this is used only for the responsive view  */}
                 <div className="forecast-AddStage-mobile">
                     <span className="forecast-iconshowAddStage">
                         <FastForwardIcon sx={{ color: "#212121" }} />
                     </span>
                     <button className="forecast-addstage-btn" onClick={handleAddStage}>
-                        Add stages...
+                        Add Month
                     </button>
-                    {AddStage && (
-                        <AddStageInputBox
-                            onClose={() => setAddStage(false)}
-                            onAddStage={(stage) => setColumns([...columns, stage])}
-                        />
-                    )}
                 </div>
+
+                <div className="forecast-AddStage">
+                <button className="forecast-addstage-btn" onClick={handleAddStage}>
+                    Add Month
+                </button>
+                
             </div>
 
-            <div className="forecast-AddStage">
-                <button className="forecast-addstage-btn" onClick={handleAddStage}>
-                   Add Month
-                </button>
-                <span className="forecast-iconshowAddStage">
-                    <FastForwardIcon sx={{ color: "#212121" }} />
-                </span>
-                {AddStage && (
-                    <AddStageInputBox
-                        onClose={() => setAddStage(false)}
-                        onAddStage={(stage) => setColumns([...columns, stage])}
-                    />
-                )}
             </div>
+
+
+            
         </div>
     )
 
@@ -164,38 +235,3 @@ const ShowLeadCardOption = ({ col, index }) => {
     );
 };
 
-
-const AddStageInputBox = ({ onClose, onAddStage }) => {
-    const [inputAddStage, setinputAddStage] = useState("");
-
-    function handleChangeInStage(event) {
-        setinputAddStage(event.target.value);
-    }
-
-    function handleAddStage() {
-        if (inputAddStage.trim()) {
-            onAddStage(inputAddStage.trim()); // send stage to parent
-            setinputAddStage("");
-            onClose(); // close after adding
-        }
-    }
-
-    return (
-        <div>
-            <input
-                type="text"
-                placeholder="Add month"
-                value={inputAddStage}
-                onChange={handleChangeInStage}
-            />
-            <div>
-                <button onClick={onClose}>
-                    <CloseIcon sx={{ background: "red" }} />
-                </button>
-                <button onClick={handleAddStage}>
-                    <CheckIcon sx={{ background: "green" }} />
-                </button>
-            </div>
-        </div>
-    );
-};

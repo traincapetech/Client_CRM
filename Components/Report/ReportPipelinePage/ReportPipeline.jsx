@@ -3,6 +3,9 @@ import PieChartIcon from '@mui/icons-material/PieChart';
 import TableRowsIcon from '@mui/icons-material/TableRows';
 import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
+import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowDownOutlined';
+import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
 
 import "./ReportPipeline.css"
 import { useState } from 'react';
@@ -36,17 +39,22 @@ function ReportPipeline() {
                     <button className="measures-dropdown" onClick={handleShowOption}>
                         {showMesureOption ? "Measures ▲ " : "Measures ▼"}
                     </button>
+                    {showMesureOption ? <ShowMeasureOptions /> : ""}
                     <button className="insertSpreadsheet">
                         insert Spreadsheet
                     </button>
                     <div className="view-icons">
                         <button title="Chart View" className={getClassofPipeline("report-icon-btn")} onClick={() => setActiveReportBtn("report-icon-btn")}><BarChartIcon /></button>
                         <button className={getClassofPipeline("pie-chart-btn")} onClick={() => setActiveReportBtn("pie-chart-btn")} title="PieChart View"><PieChartIcon /></button>
-                        <button className={getClassofPipeline("table-btn")} onClick={() => setActiveReportBtn("table-btn")} title="Table View"><TableRowsIcon /></button>
+                        <button className={getClassofPipeline("table-btn")} onClick={() => setActiveReportBtn("table-btn")} title="Stack View"><TableRowsIcon /></button>
                         <button className={getClassofPipeline("pivot-Table-btn")} onClick={() => setActiveReportBtn("pivot-Table-btn")} title="Pivot Table"><PivotTableChartIcon /></button>
-                        <button className={getClassofPipeline("bulletedIcon-btn")} onClick={() => setActiveReportBtn("BulletedIcon-btn")} title="List View"><FormatListBulletedIcon /></button>
+                        <button className={getClassofPipeline("list-btn")} onClick={() => setActiveReportBtn("list-btn")} title="List View"><FormatListBulletedIcon /></button>
+                        <button className={getClassofPipeline("cumulative-btn")} onClick={() => setActiveReportBtn("cumulative-btn")} title="cumulative View"><SignalCellularAltOutlinedIcon /></button>
+                        <button className={getClassofPipeline("descending-btn")} onClick={() => setActiveReportBtn("descending-btn")} title="Desending Order"><KeyboardDoubleArrowDownOutlinedIcon /></button>
+                        <button className={getClassofPipeline("ascending-btn")} onClick={() => setActiveReportBtn("ascending-btn")} title="Ascending Order"><KeyboardDoubleArrowUpOutlinedIcon /></button>
                     </div>
                 </div>
+
 
                 {/* Right Side: "SAMPLE DATA" Banner and Legend */}
                 <div className="toolbar-right">
@@ -98,3 +106,46 @@ function ReportPipeline() {
 }
 
 export default ReportPipeline
+
+const ShowMeasureOptions = () => {
+    const [selectedMeasureOption, setselectedMeasureOption] = useState([])
+    const measurOptions = [
+        "Days to Assign",
+        "Days to Close",
+        "Days To Convert",
+        "Exceeded Closing Days",
+        "Expected Revenue",
+        "Prorated Revenue",
+
+    ]
+
+
+    const handleMeasureOptionClick = (Opt) => {
+        setselectedMeasureOption((prev) =>
+            prev.includes(Opt)
+                ? prev.filter((item) => item !== Opt)
+                : [...prev, Opt]
+        );
+    };
+
+    const [showCountOptionPipeline, setshowCountOptionPipeline] = useState(false)
+
+
+    return (
+        <div className='measureOption-container'>
+            {measurOptions.map((Opt, index) => (
+                <div key={index} onClick={() => handleMeasureOptionClick(Opt)}>
+                    <span className="checkbox">
+                        {selectedMeasureOption.includes(Opt) ? '✔️' : ''}
+                    </span>
+                    {Opt}</div>
+            ))}
+            <hr />
+            <div onClick={() => setshowCountOptionPipeline(!showCountOptionPipeline)}>
+                {showCountOptionPipeline ? '✔️' : ''}
+                Count
+            </div>
+        </div>
+
+    )
+}

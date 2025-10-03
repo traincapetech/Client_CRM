@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './FilterSelectedComponent.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 // A simple component to represent the 'Select a field' popup
 const FieldSelectionPopup = ({ onSelectField, onClose }) => {
   const fields = [
@@ -176,7 +176,7 @@ const FilterSelectedComponent = ({ isOpen, onClose }) => {
               <span role="img" aria-label="Delete"><DeleteIcon /></span>
             </button>
             <button className="rule-action-button copy-button">
-              <span role="img" aria-label="Copy">📋</span>
+              <span role="img" aria-label="Copy"><AccountTreeOutlinedIcon/></span>
             </button>
           </div>
           </div>
