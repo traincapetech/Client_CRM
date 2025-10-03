@@ -69,12 +69,14 @@
 }
 
 /* Dropdown menu */
-.customer-option-dropdown-field {
-    position: absolute;
-    top: 50px;
-    left: 20px;
+
+   .customer-option-dropdown-field {
+    position: relative;
+    top: 22px;
     z-index: 100;
+    right: 15%;
 }
+
 
 /* Field selection popup */
 .customer-fields-menu-container {

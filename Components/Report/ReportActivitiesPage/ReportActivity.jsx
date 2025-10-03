@@ -32,7 +32,7 @@ function ReportActivity() {
 
 
     return (
-        <div className="report-dashboard-container">
+        <div className="report-dashboard-container-Activity">
             {/* 1. Header/Toolbar Area */}
             <div className="report-toolbar-header">
                 {/* Left Side: Measures Dropdown and View Icons */}
@@ -106,29 +106,29 @@ function ReportActivity() {
 export default ReportActivity
 
 const ShowMeasureOptions = () => {
-    const [selectedMeasureOption, setSelectedMeasureOption] = useState([])
-    const measureOptions = [
-        "Days to Assign",
-        "Days to Close",
-        "Days To Convert",
-        "Exceeded Closing Days",
-        "Expected Revenue",
-        "Prorated Revenue",
-    ]
+    // const [selectedMeasureOption, setSelectedMeasureOption] = useState([])
+    // const measureOptions = [
+    //     "Days to Assign",
+    //     "Days to Close",
+    //     "Days To Convert",
+    //     "Exceeded Closing Days",
+    //     "Expected Revenue",
+    //     "Prorated Revenue",
+    // ]
 
-    const handleMeasureOptionClick = (opt) => {
-        setSelectedMeasureOption((prev) =>
-            prev.includes(opt)
-                ? prev.filter((item) => item !== opt)
-                : [...prev, opt]
-        );
-    };
+    // const handleMeasureOptionClick = (opt) => {
+    //     setSelectedMeasureOption((prev) =>
+    //         prev.includes(opt)
+    //             ? prev.filter((item) => item !== opt)
+    //             : [...prev, opt]
+    //     );
+    // };
 
     const [showCountOptionPipeline, setShowCountOptionPipeline] = useState(false)
 
     return (
         <div className='report-measure-options-container'>
-            {measureOptions.map((opt, index) => (
+            {/* {measureOptions.map((opt, index) => (
                 <div key={index} className="report-measure-option" onClick={() => handleMeasureOptionClick(opt)}>
                     <span className="report-checkbox">
                         {selectedMeasureOption.includes(opt) ? '✔️' : ''}
@@ -136,7 +136,7 @@ const ShowMeasureOptions = () => {
                     {opt}
                 </div>
             ))}
-            <hr />
+            <hr /> */}
             <div className="report-measure-count" onClick={() => setShowCountOptionPipeline(!showCountOptionPipeline)}>
                 {showCountOptionPipeline ? '✔️' : ''} Count
             </div>

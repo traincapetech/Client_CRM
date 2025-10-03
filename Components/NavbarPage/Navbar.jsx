@@ -146,7 +146,7 @@ function Navbar() {
                 <Link to={"/report/forecast"}> <div className="menu-btn" onClick={() => handleSelect("Forecast")}>Forecast</div></Link>
                 <Link to={"/report/pipeline"}> <div className="menu-btn" onClick={() => handleSelect("Pipeline")}>Pipeline </div></Link>
                 <Link to={"/report/leads"}>    <div className="menu-btn" onClick={() => handleSelect("Lead")}>Leads </div></Link>
-                <Link to={"/report/activity"}> <div className="menu-btn" onClick={() => handleSelect("My Activity")}> My Activity</div></Link>
+                <Link to={"/report/activity"}> <div className="menu-btn" onClick={() => handleSelect("Activities")}> Activities</div></Link>
               </div>
               <div className="configurationIn-hamburger">
                 <label>Configuration</label>
@@ -208,7 +208,7 @@ function Navbar() {
                   <Link to={"/report/forecast"}> <div className="dropdown-item" onClick={() => handleSelect("Forecast")}>Forecast</div></Link>
                   <Link to={"/report/pipeline"}> <div className="dropdown-item" onClick={() => handleSelect("Pipeline Analysis")}>Pipeline </div></Link>
                   <Link to={"/report/leads"}>    <div className="dropdown-item" onClick={() => handleSelect("Leads Analysis")}>Leads </div></Link>
-                  <Link to={"/report/activity"}> <div className="dropdown-item" onClick={() => handleSelect("Activities")}> My Activity</div></Link>
+                  <Link to={"/report/activity"}> <div className="dropdown-item" onClick={() => handleSelect("Activities")}>Activities</div></Link>
                 </div>
               )}
             </span>
@@ -228,16 +228,16 @@ function Navbar() {
               </button>
               {openMenu === "configuration" && (
                 <div className="dropdown-menu-configuration">
-                  <div className="menu-btn"> <Link>Setting</Link> </div>
-                  <div className="menu-btn"><Link>Sales team</Link></div>
-                  <div className="menu-btn"><b>Activities</b></div>
-                  <div className="menu-btn"> <Link>Activity Types</Link> </div>
-                  <div className="menu-btn"><Link>Activity Types</Link></div>
-                  <div className="menu-btn"><b>Pipeline</b></div>
-                  <div className="menu-btn"> <Link>Tags</Link> </div>
-                  <div className="menu-btn"><Link>Lost Reasons</Link></div>
-                  <div className="menu-btn"><b>Lead Generation</b></div>
-                  <div className="menu-btn"><Link>Lead Mining Request</Link></div>
+                  <div className="dropdown-item"> <Link>Setting</Link> </div>
+                  <div className="dropdown-item"><Link>Sales team</Link></div>
+                  <div className="dropdown-item"><b>Activities</b></div>
+                  <div className="dropdown-item"> <Link>Activity Types</Link> </div>
+                  <div className="dropdown-item"><Link>Activity Types</Link></div>
+                  <div className="dropdown-item"><b>Pipeline</b></div>
+                  <div className="dropdown-item"> <Link>Tags</Link> </div>
+                  <div className="dropdown-item"><Link>Lost Reasons</Link></div>
+                  <div className="dropdown-item"><b>Lead Generation</b></div>
+                  <div className="dropdown-item"><Link>Lead Mining Request</Link></div>
                 </div>
               )}
             </span>

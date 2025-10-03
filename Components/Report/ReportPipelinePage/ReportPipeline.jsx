@@ -41,7 +41,7 @@ function ReportPipeline() {
                     </button>
                     {showMesureOption ? <ShowMeasureOptions /> : ""}
                     <button className="insertSpreadsheet">
-                        insert Spreadsheet
+                        Insert Spreadsheet
                     </button>
                     <div className="view-icons">
                         <button title="Chart View" className={getClassofPipeline("report-icon-btn")} onClick={() => setActiveReportBtn("report-icon-btn")}><BarChartIcon /></button>

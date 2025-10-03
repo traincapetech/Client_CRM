@@ -1,8 +1,6 @@
-/* =========================================
-   1. Global Styles and Layout
-   ========================================= */
 
-.report-dashboard-container {
+
+.report-dashboard-container-Activity {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -10,10 +8,6 @@
     font-family: Arial, sans-serif;
     color: #333;
 }
-
-/* =========================================
-   2. Toolbar Header
-   ========================================= */
 
 .report-toolbar-header {
     display: flex;
@@ -128,9 +122,6 @@
     transform: rotateZ(45deg);
 }
 
-/* =========================================
-   3. Main Content and Chart Area
-   ========================================= */
 
 .report-main-content {
     flex-grow: 1;
@@ -148,10 +139,6 @@
     min-height: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
-/* =========================================
-   4. Background Chart Elements (Axes and Faint Bars)
-   ========================================= */
 
 .report-background-chart-elements {
     position: absolute;
@@ -222,11 +209,6 @@
     background-repeat: no-repeat;
     background-position: 2% 0, 27% 0, 52% 0, 77% 0;
 }
-
-/* =========================================
-   5. No Data Placeholder
-   ========================================= */
-
 .report-no-data-placeholder {
     position: absolute;
     top: 50%;
@@ -250,10 +232,6 @@
     font-size: 13px;
     color: #777;
 }
-
-/* =========================================
-   6. Measure Options Dropdown
-   ========================================= */
 
 .report-measure-options-container {
     background: white;

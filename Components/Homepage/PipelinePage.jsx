@@ -82,8 +82,7 @@ function PipelinePage() {
                       {[1, 2, 3].map((star) => (
                         <span
                           key={star}
-                          className={`star ${lead.rating >= star ? "selected" : ""
-                            }`}
+                          className={`star ${lead.rating >= star ? "selected" : ""}`}
                         >
                           ★
                         </span>
@@ -108,11 +107,17 @@ function PipelinePage() {
             )}
           </div>
         ))}
-        <div className="pipeline-AddStage-mobile">
-          <span className="iconshowAddStage" ><FastForwardIcon sx={{ color: "#212121" }} />   </span>
 
-          <button className="addstage-btn" onClick={handleAddStage}>Add stages...</button>
-          {AddStage && (
+        {/* Mobile Add Stage */}
+        <div className="pipeline-AddStage-mobile">
+          <span className="iconshowAddStage">
+            <FastForwardIcon sx={{ color: "#212121" }} />
+          </span>
+          {!AddStage ? (
+            <button className="addstage-btn" onClick={handleAddStage}>
+              Add stages...
+            </button>
+          ) : (
             <AddStageInputBox
               onClose={() => setAddStage(false)}
               onAddStage={(stage) => setColumns([...columns, stage])}
@@ -121,10 +126,13 @@ function PipelinePage() {
         </div>
       </div>
 
+      {/* Desktop Add Stage */}
       <div className="pipeline-AddStage">
-        <button className="addstage-btn" onClick={handleAddStage}>Add stages...</button>
-        <span className="iconshowAddStage" ><FastForwardIcon sx={{ color: "#212121" }} /></span>
-        {AddStage && (
+        {!AddStage ? (
+          <button className="addstage-btn" onClick={handleAddStage}>
+            Add stages...
+          </button>
+        ) : (
           <AddStageInputBox
             onClose={() => setAddStage(false)}
             onAddStage={(stage) => setColumns([...columns, stage])}
@@ -138,9 +146,7 @@ function PipelinePage() {
 export default PipelinePage;
 
 
-
-// This is use to show the Edti and Delete option for the each card
-
+// This is used to show the Edit and Delete option for each card
 const ShowLeadCardOption = ({ col, index }) => {
   const { deleteLead } = useContext(LeadContext);
 
@@ -153,6 +159,7 @@ const ShowLeadCardOption = ({ col, index }) => {
     </div>
   );
 };
+
 const AddStageInputBox = ({ onClose, onAddStage }) => {
   const [inputAddStage, setinputAddStage] = useState("");
 
@@ -169,19 +176,20 @@ const AddStageInputBox = ({ onClose, onAddStage }) => {
   }
 
   return (
-    <div>
+    <div className="addStageBox">
       <input
         type="text"
         placeholder="StageName"
         value={inputAddStage}
         onChange={handleChangeInStage}
+        className="addStageInput"
       />
-      <div>
-        <button onClick={onClose}>
-          <CloseIcon sx={{ background: "red" }} />
+      <div className="addStageButtons">
+        <button onClick={onClose} className="closeBtn">
+          <CloseIcon />
         </button>
-        <button onClick={handleAddStage}>
-          <CheckIcon sx={{ background: "green" }} />
+        <button onClick={handleAddStage} className="checkBtn">
+          <CheckIcon />
         </button>
       </div>
     </div>

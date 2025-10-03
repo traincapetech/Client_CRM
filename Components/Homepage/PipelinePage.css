@@ -1,13 +1,12 @@
 .pipeline-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .pipeline-board {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
 }
 
 /* Columns */
@@ -16,7 +15,7 @@
   background: #f8f9fa;
   border-radius: 8px;
   padding: 10px;
-  max-width: 370px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
 }
@@ -84,6 +83,9 @@
   color: white;
   border-radius: 6px;
   cursor: pointer;
+  transform: rotate(90deg);
+  margin-top: 85px;
+  width: max-content;
 }
 
 .addstage-btn:hover {
@@ -96,10 +98,66 @@
 }
 
 .pipeline-AddStage {
-  height: 100px;
-  width: 20%;
   background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.2;
+  width: fit-content;
 }
+.pipeline-AddStage:hover{
+  opacity: 1;
+}
+
+/* AddStage Input Box */
+.addStageBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background: #fff;
+  margin-top: 8px;
+}
+
+.addStageInput {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+.addStageButtons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.closeBtn,
+.checkBtn {
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn {
+  background: #f44336; /* red */
+  color: white;
+}
+
+.checkBtn {
+  background: #4caf50; /* green */
+  color: white;
+}
+
+
+
+
 
 .product-card {
   border: 1px solid #e0e0e0;
@@ -224,18 +282,18 @@
 
 @media screen and (max-width: 768px) {
 
-  .pipeline-AddStage{
+  .pipeline-AddStage {
     display: none;
   }
 
-  .addstage-btn{
+  .addstage-btn {
     width: 100%;
   }
 
-.pipeline-AddStage-mobile{
-  display: inline;
-  background: #f8f9fa;
-}
+  .pipeline-AddStage-mobile {
+    display: inline;
+    background: #f8f9fa;
+  }
 
   .pipeline-container {
     width: 100%;
