@@ -31,13 +31,11 @@ import { LeadContext } from "../../leadProvider/LeadContext"
 
 function Navbar() {
   const { addLead } = useContext(LeadContext);
-  // const [openNewLead, setOpenNewLead] = useState(false);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
   const dropdownWrapperRef = useRef(null);
   const [hoverFilterIcon, sethoverFilterIcon] = useState(false)
-  // const [openFilter, setopenFilter] = useState(false)
   const [openLead, setOpenLead] = useState(false);
   const [UserProfile, setUserProfile] = useState(false)
   const [showMenu, setShowMenu] = useState(false);
@@ -46,15 +44,18 @@ function Navbar() {
 
   const handleSelect = (option) => {
     setSelectedOption(option); // update selected option
+
     setOpenMenu(null);         // close the dropdown after selecting
+  
     // ⛔ Don't show "Team" in the search bar
-    if (option !== "Team" && option !== "Customers") {
+    if ( option !=="Activity_Types" &&  option !=="Activity-plans" && option !== "Team" && option !=="Customers" && option !=="SalesTeam" ) {
       setSearch(option);  // also push it into search bar
     } else {
       setSearch(""); // clear search if Team is clicked
     }
     setOpenMenu(null); // close the dropdown after selecting
   };
+  
 
   // Function when search is triggered
   const handleSearch = () => {
@@ -228,16 +229,16 @@ function Navbar() {
               </button>
               {openMenu === "configuration" && (
                 <div className="dropdown-menu-configuration">
-                  <div className="dropdown-item"> <Link>Setting</Link> </div>
-                  <div className="dropdown-item"><Link>Sales team</Link></div>
-                  <div className="dropdown-item"><b>Activities</b></div>
-                  <div className="dropdown-item"> <Link>Activity Types</Link> </div>
-                  <div className="dropdown-item"><Link>Activity Types</Link></div>
-                  <div className="dropdown-item"><b>Pipeline</b></div>
-                  <div className="dropdown-item"> <Link>Tags</Link> </div>
-                  <div className="dropdown-item"><Link>Lost Reasons</Link></div>
-                  <div className="dropdown-item"><b>Lead Generation</b></div>
-                  <div className="dropdown-item"><Link>Lead Mining Request</Link></div>
+                  <Link to={'/setting'}> <div className="dropdown-item" onClick={() => handleSelect("Setting")}> Setting </div></Link>
+                  <Link to={'/config/team'} ><div className="dropdown-item" onClick={() => handleSelect("Salesteam")}>Sales team</div></Link>
+                  <div className="dropdown-item-heading" ><b>Activities</b></div>
+                  <Link to={'/config/activitytypes'}>  <div className="dropdown-item" onClick={() => handleSelect("Activity_Types")}> Activity Types </div></Link>
+                  <Link to={'/config/activityplans'}>  <div className="dropdown-item" onClick={() => handleSelect("Activity-plans")}>Activity Plans</div></Link>
+                  <div className="dropdown-item-heading"><b>Pipeline</b></div>
+                  <Link> <div className="dropdown-item" onClick={() => handleSelect("tags")}> Tags </div></Link>
+                  <Link> <div className="dropdown-item" onClick={() => handleSelect("LostReason")}>Lost Reasons</div></Link>
+                  <div className="dropdown-item-heading"><b>Lead Generation</b></div>
+                  <Link> <div className="dropdown-item" onClick={() => handleSelect("Lead_Mining")}>Lead Mining Request</div></Link>
                 </div>
               )}
             </span>
@@ -247,7 +248,7 @@ function Navbar() {
         {/* Buttons */}
         <div className="navbar-left-bottom">
           <div className="actions">
-            {!["Team", "Pipeline Analysis","Leads Analysis","Activities"].includes(selectedOption) && (
+            {!["Team", "Pipeline Analysis", "Leads Analysis", "Activities"].includes(selectedOption) && (
               <button
                 className="new-lead-btn"
                 onClick={() => setOpenMenu(openMenu === "newLead" ? null : "newLead")}
@@ -258,7 +259,7 @@ function Navbar() {
             {openMenu === "newLead" && <NewLead onAdd={(leadData) => { addLead("new", leadData) }} />}
 
             {/*  desktop code  */}
-            {!["Team", "Customers","Pipeline Analysis","Leads Analysis","Activities"].includes(selectedOption) &&  (
+            {!["Team", "Customers", "Pipeline Analysis", "Leads Analysis", "Activities","Salesteam","Activity_Types","Activity-plans"].includes(selectedOption) && (
               <button className="generate-lead"
                 onClick={() => setOpenLead(true)}>
                 Generate Leads
@@ -320,7 +321,7 @@ function Navbar() {
         >
           <SearchIcon />
         </button>
-        {selectedOption && selectedOption !== "Team" && selectedOption !== "Customers" && (
+        {!["Team", "Customers", "Salesteam","Activity_Types","Activity-plans"].includes(selectedOption) &&(
 
           <button className="filter-btn"
             onMouseEnter={() => sethoverFilterIcon(true)}

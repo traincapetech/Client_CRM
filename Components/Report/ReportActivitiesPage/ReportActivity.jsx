@@ -37,6 +37,7 @@ function ReportActivity() {
             <div className="report-toolbar-header">
                 {/* Left Side: Measures Dropdown and View Icons */}
                 <div className="report-toolbar-left">
+                    <div className='toolbar-left-btn'>
                     <button className="report-measures-dropdown" onClick={handleShowOption}>
                         {showMeasureOption ? "Measures ▲ " : "Measures ▼"}
                     </button>
@@ -44,6 +45,7 @@ function ReportActivity() {
                     <button className="report-insert-spreadsheet">
                         Insert Spreadsheet
                     </button>
+                    </div>
                     <div className="report-view-icons">
                         <button title="Chart View" className={getClassOfReportBtn("report-icon-btn")} onClick={() => setActiveReportBtn("report-icon-btn")}><BarChartIcon /></button>
                         <button className={getClassOfReportBtn("pie-chart-btn")} onClick={() => setActiveReportBtn("pie-chart-btn")} title="PieChart View"><PieChartIcon /></button>
@@ -106,23 +108,6 @@ function ReportActivity() {
 export default ReportActivity
 
 const ShowMeasureOptions = () => {
-    // const [selectedMeasureOption, setSelectedMeasureOption] = useState([])
-    // const measureOptions = [
-    //     "Days to Assign",
-    //     "Days to Close",
-    //     "Days To Convert",
-    //     "Exceeded Closing Days",
-    //     "Expected Revenue",
-    //     "Prorated Revenue",
-    // ]
-
-    // const handleMeasureOptionClick = (opt) => {
-    //     setSelectedMeasureOption((prev) =>
-    //         prev.includes(opt)
-    //             ? prev.filter((item) => item !== opt)
-    //             : [...prev, opt]
-    //     );
-    // };
 
     const [showCountOptionPipeline, setShowCountOptionPipeline] = useState(false)
 

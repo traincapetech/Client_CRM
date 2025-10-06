@@ -118,8 +118,6 @@ const ShowMeasureOptions = () => {
         "Prorated Revenue",
 
     ]
-
-
     const handleMeasureOptionClick = (Opt) => {
         setselectedMeasureOption((prev) =>
             prev.includes(Opt)

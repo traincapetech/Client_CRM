@@ -259,3 +259,87 @@
     display: inline-block;
     width: 16px;
 }
+
+
+
+/* 📱 Mobile (up to 600px) */
+@media (max-width: 600px) {
+    .report-toolbar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .report-toolbar-left, 
+    .report-toolbar-right {
+        width: 100%;
+        display: block;
+    }
+
+    .report-measures-dropdown,
+    .report-insert-spreadsheet {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .report-icon-btn {
+        font-size: 14px;
+        padding: 0 6px;
+    }
+
+    .report-chart-area {
+        padding: 20px 10px;
+        min-height: 300px;
+    }
+
+    .report-header-legend {
+        font-size: 11px;
+        gap: 10px;
+    }
+
+    .report-no-data-title {
+        font-size: 16px;
+    }
+
+    .report-no-data-tip {
+        font-size: 12px;
+    }
+  
+    .report-sample-data-banner{
+        top: 160px;
+    }
+
+    .report-view-icons{
+        width: 75%;
+    }
+}
+
+/* 💻 Tablet (601px - 900px) */
+@media (max-width: 900px) and (min-width: 601px) {
+    .report-toolbar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .report-toolbar-left,
+    .report-toolbar-right {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .report-chart-area {
+        padding: 25px 15px;
+    }
+
+    .report-header-legend {
+        gap: 12px;
+        font-size: 12px;
+    }
+}
+
+/* 🖥️ Desktop (above 900px) */
+@media (min-width: 901px) {
+    .report-toolbar-header {
+        flex-wrap: nowrap;
+    }
+}

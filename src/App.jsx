@@ -1,5 +1,5 @@
 
-import {Routes, Route,useLocation  } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css'
 import Homepage from '../Components/Homepage/Homepage';
 import Login from '../Components/AuthenticationPage/Login';
@@ -13,37 +13,49 @@ import Forecast from '../Components/Report/ForecastPage/Forecast';
 import ReportPipeline from '../Components/Report/ReportPipelinePage/ReportPipeline';
 import ReportActivity from '../Components/Report/ReportActivitiesPage/ReportActivity';
 import ReportLeads from '../Components/Report/ReportLeadsPage/ReportLeads';
+import TeamConfig from '../Components/Teams/TeamConfig';
+import ConfigActivityTypes from '../Components/My_activity/ConfigActivityTypes';
+import ConfigActivityPlans from '../Components/My_activity/ConfigActivityPlans';
+import Setting from '../Components/SettingPage/Setting';
 
 
 function App() {
-const location=useLocation()
-const hideNavbar = location.pathname === "/" || location.pathname === "/login";
+  const location = useLocation()
+  const hideNavbar = location.pathname === "/" || location.pathname === "/login";
 
   return (
     <>
-     <div>
-       {!hideNavbar && <Navbar />}
-         
+      <div>
+        {!hideNavbar && <Navbar />}
+
         <Routes>
-          <Route path='/' element={<Signup/> } />
-          <Route path='/login' element={<Login />}/>
+          <Route path='/' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Homepage />} />
 
           {/* this is the part of Sales option  */}
           <Route path='/pipeline' element={<PipelinePage />} />
-          <Route path='/myActivity' element={<My_Activity/>} />
-          <Route path='/team' element={<Team/>} />
-          <Route path='/customer' element={<Customer/>} />
+          <Route path='/myActivity' element={<My_Activity />} />
+          <Route path='/team' element={<Team />} />
+          <Route path='/customer' element={<Customer />} />
 
           {/* this is a part of reporting option */}
-          <Route path='/report/forecast' element={<Forecast/>} />
-          <Route path='/report/pipeline' element={<ReportPipeline/>} />
-          <Route path='/report/activity' element={<ReportActivity/>} />
-          <Route path='/report/leads' element={<ReportLeads/>} />
-          </Routes>
-        
-        
-     </div>
+          <Route path='/report/forecast' element={<Forecast />} />
+          <Route path='/report/pipeline' element={<ReportPipeline />} />
+          <Route path='/report/activity' element={<ReportActivity />} />
+          <Route path='/report/leads' element={<ReportLeads />} />
+
+          {/* Configuration Routes */}
+          <Route path='/config/team' element={<TeamConfig />} />
+          <Route path='/config/activitytypes' element={<ConfigActivityTypes />} />
+          <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
+
+        {/* Setting Router */}
+    <Route path='/setting' element={<Setting/>} />
+        </Routes>
+
+
+      </div>
     </>
   )
 }

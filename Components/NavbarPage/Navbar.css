@@ -190,17 +190,80 @@
   z-index: 1000;
 }
 
-.dropdown-item {
-  padding: 8px 16px;
-  cursor: pointer;
-  color: #000;
-  margin: 0;
+
+
+/* Smooth dropdown animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* Individual Items */
+.dropdown-item {
+    padding: 10px 16px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    width: inherit;
+}
+
+
+/* Bold section titles */
+.dropdown-item-heading {
+  font-weight: 600;
+  font-size: 13px;
+  color: #6b3fa0; /* Accent color for section headers */
+  margin-top: 6px;
+  padding: 8px 18px;
+  width: 100%;
+}
+
+.dropdown-item:hover {
+  text-decoration: none;
+}
+
+/* Hover effect for clickable links */
+.dropdown-item:hover {
+  background-color: #f0eef9;
+  color: #6b3fa0;
+}
+
+/* Remove link underline */
+.dropdown-menu-configuration a {
+  text-decoration: none;
+  display: block;
+}
+
+/* Divider between sections (optional) */
+.dropdown-item + .dropdown-item b {
+  border-top: 1px solid #eee;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .dropdown-item a {
   text-decoration: none;
   font-weight: 400;
   color: black;
+  width: 10px;
 }
 
 .dropdown-item:hover {
@@ -676,7 +739,7 @@ input:checked+.slider:before {
   }
 
   .reportingIn-hamburger a {
-      text-decoration: none;
+    text-decoration: none;
     color: black;
   }
 
@@ -803,6 +866,7 @@ input:checked+.slider:before {
     margin-top: 25%;
     margin-right: 75%;
     border-radius: 5px;
+    z-index: 1;
   }
 
   /* Search button */
@@ -892,6 +956,7 @@ input:checked+.slider:before {
     width: 120px;
     position: absolute;
     top: 14%;
+    z-index: 1;
   }
 
   .generate-lead-menu .dropdown-item {

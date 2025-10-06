@@ -1,0 +1,147 @@
+/* ===== Container & List Structure ===== */
+.configTeam-table-container {
+  overflow-x: auto;
+  background-color: white;
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+}
+
+/* ===== Header Section ===== */
+.configTeam-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb; /* Divider below header */
+}
+
+.configTeam-header-cell {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.configTeam-actions {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+/* ===== Screen Reader Only (sr-only) ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== Table Body ===== */
+.configTeam-body {
+  background-color: white;
+}
+
+/* ===== Data Rows ===== */
+.configTeam-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.configTeam-row:last-child {
+  border-bottom: none;
+}
+
+/* ===== Data Cells ===== */
+.configTeam-cell {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+}
+
+.configTeam-team {
+  font-weight: 500;
+  color: #111827;
+}
+
+.configTeam-alias {
+  color: #6b7280;
+}
+
+.configTeam-leader {
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+/* ===== Team Leader Badge ===== */
+.configTeam-leader-badge {
+  height: 1rem;
+  width: 1rem;
+  background-color: #10b981; /* green */
+  border-radius: 0.125rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ===== Checkbox Styles ===== */
+.configTeam-table-checkbox {
+  height: 1rem;
+  width: 1rem;
+  border-color: #d1d5db;
+  border-radius: 0.25rem;
+  color: #4f46e5;
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-checkbox {
+  border: none;
+  width: 16px;
+  padding: 16px;
+}
+
+/* ===== Action Buttons ===== */
+.configTeam-actions {
+  justify-content: flex-end;
+  font-weight: 500;
+}
+
+.configTeam-action-button-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.configTeam-add-custom-field-button:hover {
+  background-color: #f9fafb;
+}
+
+.configTeam-add-custom-field-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4f46e5;
+}
+
+.configTeam-button-icon {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}

@@ -257,3 +257,86 @@
     display: inline-block;
     width: 16px;
 }
+
+/* 📱 Mobile (up to 600px) */
+@media (max-width: 600px) {
+    .reportlead-toolbar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .reportlead-toolbar-left, 
+    .reportlead-toolbar-right {
+        width: 100%;
+        display: block;
+    }
+
+    .reportlead-measures-dropdown,
+    .reportlead-insert-spreadsheet {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .reportlead-icon-btn {
+        font-size: 14px;
+        padding: 0 6px;
+    }
+
+    .reportlead-chart-area {
+        padding: 20px 10px;
+        min-height: 300px;
+    }
+
+    .reportlead-header-legend {
+        font-size: 11px;
+        gap: 10px;
+    }
+
+    .reportlead-no-data-title {
+        font-size: 16px;
+    }
+
+    .reportlead-no-data-tip {
+        font-size: 12px;
+    }
+  
+    .reportlead-sample-data-banner {
+        top: 160px;
+    }
+
+    .reportlead-view-icons {
+        width: 75%;
+    }
+}
+
+/* 💻 Tablet (601px - 900px) */
+@media (max-width: 900px) and (min-width: 601px) {
+    .reportlead-toolbar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .reportlead-toolbar-left,
+    .reportlead-toolbar-right {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .reportlead-chart-area {
+        padding: 25px 15px;
+    }
+
+    .reportlead-header-legend {
+        gap: 12px;
+        font-size: 12px;
+    }
+}
+
+/* 🖥️ Desktop (above 900px) */
+@media (min-width: 901px) {
+    .reportlead-toolbar-header {
+        flex-wrap: nowrap;
+    }
+}
+
