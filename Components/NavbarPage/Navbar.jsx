@@ -46,16 +46,16 @@ function Navbar() {
     setSelectedOption(option); // update selected option
 
     setOpenMenu(null);         // close the dropdown after selecting
-  
+
     // ⛔ Don't show "Team" in the search bar
-    if ( option !=="Activity_Types" &&  option !=="Activity-plans" && option !== "Team" && option !=="Customers" && option !=="SalesTeam" ) {
+    if (option !== "Activity_Types" && option !== "Activity-plans" && option !== "Team" && option !== "Customers" && option !== "SalesTeam") {
       setSearch(option);  // also push it into search bar
     } else {
       setSearch(""); // clear search if Team is clicked
     }
     setOpenMenu(null); // close the dropdown after selecting
   };
-  
+
 
   // Function when search is triggered
   const handleSearch = () => {
@@ -259,7 +259,7 @@ function Navbar() {
             {openMenu === "newLead" && <NewLead onAdd={(leadData) => { addLead("new", leadData) }} />}
 
             {/*  desktop code  */}
-            {!["Team", "Customers", "Pipeline Analysis", "Leads Analysis", "Activities","Salesteam","Activity_Types","Activity-plans"].includes(selectedOption) && (
+            {!["Team", "Customers", "Pipeline Analysis", "Leads Analysis", "Activities", "Salesteam", "Activity_Types", "Activity-plans"].includes(selectedOption) && (
               <button className="generate-lead"
                 onClick={() => setOpenLead(true)}>
                 Generate Leads
@@ -321,13 +321,15 @@ function Navbar() {
         >
           <SearchIcon />
         </button>
-        {!["Team", "Customers", "Salesteam","Activity_Types","Activity-plans"].includes(selectedOption) &&(
+
+        {selectedOption && 
+        !["Team", "Customers", "Salesteam", "Activity_Types", "Activity-plans"].includes(selectedOption) && (
 
           <button className="filter-btn"
             onMouseEnter={() => sethoverFilterIcon(true)}
             onMouseLeave={() => sethoverFilterIcon(false)}
           >
-            <div onClick={() => setOpenMenu(openMenu === "filter-btn" ? null : "filter-btn")}>
+            <div onClick={() => setOpenMenu(openMenu === "filte`r-btn" ? null : "filter-btn")} >
               {hoverFilterIcon ?
                 <EditIcon sx={{ color: '#ffffff' }} />
                 : < FilterAltIcon sx={{ color: '#ffffff' }} />}

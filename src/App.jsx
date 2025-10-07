@@ -17,6 +17,8 @@ import TeamConfig from '../Components/Teams/TeamConfig';
 import ConfigActivityTypes from '../Components/My_activity/ConfigActivityTypes';
 import ConfigActivityPlans from '../Components/My_activity/ConfigActivityPlans';
 import Setting from '../Components/SettingPage/Setting';
+import SettingSideBar from '../Components/SettingPage/SettingSideBar';
+import GeneralSetting from '../Components/SettingPage/GeneralSetting';
 
 
 function App() {
@@ -33,13 +35,13 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Homepage />} />
 
-          {/* this is the part of Sales option  */}
+          {/* Sales routes */}
           <Route path='/pipeline' element={<PipelinePage />} />
           <Route path='/myActivity' element={<My_Activity />} />
           <Route path='/team' element={<Team />} />
           <Route path='/customer' element={<Customer />} />
 
-          {/* this is a part of reporting option */}
+          {/* reporting Routes */}
           <Route path='/report/forecast' element={<Forecast />} />
           <Route path='/report/pipeline' element={<ReportPipeline />} />
           <Route path='/report/activity' element={<ReportActivity />} />
@@ -50,8 +52,9 @@ function App() {
           <Route path='/config/activitytypes' element={<ConfigActivityTypes />} />
           <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
 
-        {/* Setting Router */}
-    <Route path='/setting' element={<Setting/>} />
+          {/* Setting Router */}
+          <Route path='/setting' element={<Setting />} />
+          <Route path='/generalsetting' element={<GeneralSetting />} />
         </Routes>
 
 

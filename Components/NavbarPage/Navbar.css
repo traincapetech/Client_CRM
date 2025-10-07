@@ -325,7 +325,7 @@
   position: absolute;
   top: 11%;
   /* appear right below button */
-  right: 75%;
+  right: 80%;
   /* align with button (you can use left:0 if you prefer left align) */
   background: white;
   border: 1px solid #ddd;
