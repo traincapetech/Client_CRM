@@ -1,85 +1,74 @@
-/* Page Container */
-.customer-page-container {
-    height: 100vh;
-    /* Full page height */
-    width: 100%;
-    padding: 16px;
-    background-color: #f7f7f7;
-    box-sizing: border-box;
+/* Container for table */
+.customer-table-container {
     overflow-x: auto;
-}
-
-/* Horizontal scroll for pipeline */
-.customer-pipeline-scroll {
-    display: flex;
-    gap: 12px;
-    height: 100%;
-    align-items: flex-start;
-}
-
-/* Individual card */
-.customer-pipeline-card {
-    min-width: 200px;
-    background-color: #fff;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    overflow-y: auto;
 }
 
-/* Card Header */
-.customer-pipeline-card-header {
-    padding: 12px;
-    font-weight: 600;
+/* Table styling */
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
     font-size: 14px;
-    border-bottom: 1px solid #eee;
+}
+
+.customer-table thead tr {
+    border-bottom: 1px solid #e0e0e0;
+    color: #666;
+    background-color: #f7f9fc;
+}
+
+.customer-table th, .customer-table td {
+    padding: 12px 15px;
+    text-align: left;
+    white-space: nowrap; /* Prevents long text from wrapping */
+}
+
+.customer-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.customer-table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Name column styling */
+.customer-name-cell .name-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
-/* Card Body (data items) */
-.customer-pipeline-card-body {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.customer-pipeline-card-item {
-    background-color: #f0f0f0;
-    padding: 6px 8px;
+.initial-badge {
+    width: 24px;
+    height: 24px;
     border-radius: 4px;
-    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
 }
 
-/* Sort button */
-.customer-sort-option {
-    background: none;
-    border: none;
+/* Activity icon */
+.activity-icon {
+    font-size: 18px;
+    color: #8c8c8c;
     cursor: pointer;
-    color: #555;
+    line-height: 1;
 }
 
-.customer-sort-option:hover {
-    color: #2196F3;
+/* Sort icon button */
+.sort-icon {
+    font-size: 16px;
+    cursor: pointer;
 }
-
-/* Dropdown menu */
-
-   .customer-option-dropdown-field {
-    position: relative;
-    top: 22px;
-    z-index: 100;
-    right: 15%;
-}
-
 
 /* Field selection popup */
 .customer-fields-menu-container {
+    position: absolute;
+    right: 6%;
     width: 250px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -111,12 +100,13 @@
     margin-left: 8px;
     font-size: 14px;
 }
+
 .customer-checkbox-container {
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px; /* space between checkbox and label text */
+  gap: 8px;
   user-select: none;
   font-size: 14px;
 }
@@ -129,14 +119,14 @@
 }
 
 .customer-checkmark {
-  position: relative; /* Needed so :after aligns properly */
+  position: relative;
   width: 18px;
   height: 18px;
   background-color: #f5f5f5;
   border: 2px solid #ccc;
   border-radius: 4px;
   transition: all 0.2s ease;
-  flex-shrink: 0; /* keeps size consistent */
+  flex-shrink: 0;
 }
 
 .customer-checkbox-container input:checked ~ .customer-checkmark {
@@ -166,17 +156,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .customer-pipeline-card {
-        min-width: 150px;
-    }
-
-    .customer-option-dropdown-field {
-        top: 94px;
-        left: -64%;
-        z-index: 100;
-        position: relative;
-    }
-
     .customer-fields-menu-container {
         width: 50vw;
     }

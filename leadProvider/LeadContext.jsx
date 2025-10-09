@@ -7,19 +7,27 @@ export const LeadProvider = ({ children }) => {
     const stored = localStorage.getItem("leads");
     return stored
       ? JSON.parse(stored)
-      : { new: [], proposition: [], qualified: [], won: [] };
+      : { new: [], proposition: [], qualified: [], won: [], Lost:[] };
   });
 
   useEffect(() => {
     localStorage.setItem("leads", JSON.stringify(leads));
   }, [leads]);
 
-  const addLead = (col, data) => {
-    setLeads((prev) => ({
-      ...prev,
-      [col]: [...(prev[col] || []), data],   // ✅ safe spread
-    }));
-  };
+ const addLead = (targetCol, newLead, sourceCol = null, index = null) => {
+  setLeads((prev) => {
+    const updated = { ...prev };
+
+    // If moved from another column, remove it from there
+    if (sourceCol && index !== null) {
+      updated[sourceCol] = updated[sourceCol].filter((_, i) => i !== Number(index));
+    }
+
+    // Add to target column
+    updated[targetCol] = [...(updated[targetCol] || []), newLead];
+    return updated;
+  });
+};
 
   const deleteLead = (col, index) => {
     setLeads((prev) => ({

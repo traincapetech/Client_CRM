@@ -19,6 +19,8 @@ import ConfigActivityPlans from '../Components/My_activity/ConfigActivityPlans';
 import Setting from '../Components/SettingPage/Setting';
 import SettingSideBar from '../Components/SettingPage/SettingSideBar';
 import GeneralSetting from '../Components/SettingPage/GeneralSetting';
+import Tags from '../Components/ConfigPipelineOption/Tags';
+import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
           <Route path='/config/team' element={<TeamConfig />} />
           <Route path='/config/activitytypes' element={<ConfigActivityTypes />} />
           <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
+          <Route path='/config/tags' element={<Tags />} />
+          <Route path='/config/lostreason' element={<Lost_Reason/>} />
 
           {/* Setting Router */}
           <Route path='/setting' element={<Setting />} />

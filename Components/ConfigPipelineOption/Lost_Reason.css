@@ -1,0 +1,143 @@
+/* ------------------------------------------------ */
+/* === Enhanced CSS for LostReasonActivityTypes Table === */
+/* ------------------------------------------------ */
+
+/* Table Container */
+.LostReason-table {
+    overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    font-family: 'Inter', sans-serif;
+}
+
+/* === Header Row === */
+.LostReason-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f3f4f6; /* Light gray */
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+    color: #374151;
+    padding: 0.75rem 1.5rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Header Cells */
+.LostReason-header > div {
+    display: flex;
+    align-items: center;
+    gap: 10;
+    width: fit-content;
+}
+
+/* Header Checkbox + Text */
+.LostReason-header-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.Lost.LostReason-table-checkbox{
+    width: 16px;
+}
+
+.LostReason-checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #6b3fa0; /* Purple checkbox */
+    display: flex;
+    width: fit-content;
+    gap: 10px;
+}
+
+.LostReason-header-text {
+    font-weight: 600;
+}
+
+/* Filter Icon */
+.LostReason-filter-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+/* === Data Rows === */
+/* .LostReason-body {
+    display: flex;
+} */
+
+.LostReason-row {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.LostReason-row:hover {
+    background-color: #f9fafb;
+}
+
+/* Name Cell */
+.LostReason-cell-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.LostReason-name-text {
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Drag Handle Icon */
+.drag-handle-icon {
+    width: 1rem;
+    height: 1rem;
+    color: #9ca3af;
+    cursor: grab;
+}
+
+/* Other Cells */
+.LostReason-cell-summary,
+.LostReason-cell-planned,
+.LostReason-cell-type,
+.LostReason-cell-actions {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+/* Planned & Type cells text alignment */
+.LostReason-cell-planned,
+.LostReason-cell-type {
+    display: flex;
+    align-items: flex-end; /* bottom alignment */
+}
+
+/* Actions cell alignment */
+.LostReason-cell-actions {
+    justify-content: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .LostReason-header,
+    .LostReason-row {
+        grid-template-columns: 2fr 2fr 2fr 3fr 1fr;
+        padding: 0.5rem 1rem;
+    }
+
+    .LostReason-name-text {
+        font-size: 0.9rem;
+    }
+}
+.LostReason-cell-planned{
+justify-items: right;
+}

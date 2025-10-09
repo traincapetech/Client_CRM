@@ -1,16 +1,71 @@
 import "./Customer.css";
 import { useState,useEffect,useRef } from "react";
-import SortIcon from "@mui/icons-material/Sort";
+const customerData = [
+  { 
+    id: 1, 
+    name: 'Amit', 
+    initial: 'A', 
+    statusColor: 'green', 
+    email: 'amit@traincapetech.in', 
+    phone: '+91 96650 54555', 
+    activities: true, 
+    country: '' 
+  },
+  { 
+    id: 2, 
+    name: 'TTTT', 
+    initial: 'T', 
+    statusColor: 'purple', 
+    email: 'amit@traincapetech.in', 
+    phone: '', 
+    activities: true, 
+    country: 'India' 
+  },
+  { 
+    id: 3, 
+    name: 'TTTT, amir', 
+    initial: 'T', 
+    statusColor: 'orange', 
+    email: 'abc@gmail.com', 
+    phone: '+91 1234 567 890', 
+    activities: true, 
+    country: '' 
+  },
+  { 
+    id: 3, 
+    name: 'TTTT, amir', 
+    initial: 'T', 
+    statusColor: 'orange', 
+    email: 'abc@gmail.com', 
+    phone: '+91 1234 567 890', 
+    activities: true, 
+    country: '' 
+  },
+  { 
+    id: 1, 
+    name: 'Amit', 
+    initial: 'A', 
+    statusColor: 'green', 
+    email: 'amit@traincapetech.in', 
+    phone: '+91 96650 54555', 
+    activities: true, 
+    country: '' 
+  },
+  { 
+    id: 3, 
+    name: 'TTTT, amir', 
+    initial: 'T', 
+    statusColor: 'orange', 
+    email: 'abc@gmail.com', 
+    phone: '+91 1234 567 890', 
+    activities: true, 
+    country: '' 
+  },
+  // ... more customer objects
+];
 
-function Customer() {
-    const [columns, setColumns] = useState([
-        { name: "Name", data: ["Amit Yadav", "Riya Sharma", "John Doe"] },
-        { name: "Email", data: ["amit@example.com", "riya@example.com", "john@example.com"] },
-        { name: "Phone", data: ["+91-9876543210", "+91-9123456780", "+1-555-123-4567"] },
-        { name: "Country", data: ["India", "India", "USA"] },
-        { name: "Activity", data: ["Call", "Meeting", "Email"] },
-        { name: "City", data: ["Delhi", "UP", "J&K"] }
-    ]);
+function Customer({ customers = customerData }) {
+  
 
     const [showOptionsCustomer, setShowOptionsCustomer] = useState(false);
       const OptionCustomerRef = useRef(null);
@@ -30,53 +85,84 @@ function Customer() {
 
 
 
-    return (
-        <div className="customer-page-container">
-            <div className="customer-pipeline-scroll">
-                {columns.map((col, index) => (
-                    <div className="customer-pipeline-card" key={index}>
-                        <div className="customer-pipeline-card-header">
-                            {col.name}
-                        </div>
+  const renderInitialBadge = (initial, color) => (
+    <div 
+      className="initial-badge" 
+      style={{ backgroundColor: color }}
+    >
+      {initial}
+    </div>
+  );
 
+  return (
+    <div className="customer-table-container">
+      <table className="customer-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th> {/* Checkbox column */}
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Activities</th>
+            <th>Country</th>
+            <th><button className="sort-icon"   onClick={() => setShowOptionsCustomer(!showOptionsCustomer)}>⇵</button></th> {/* Sort/Settings Icon */}
+          </tr>
+        </thead>
+        {showOptionsCustomer && (
+          <div ref={OptionCustomerRef}>
+            <CustomerFieldSelectionPopup />
+          </div>
+        )}
+        <tbody>
+          {customers.map((customer) => (
+            <tr key={customer.id}>
+              {/* Checkbox Column */}
+              <td>
+                <input type="checkbox" />
+              </td>
 
-                        <div className="customer-pipeline-card-body">
-                            {col.data.map((item, idx) => (
-                                <div className="customer-pipeline-card-item" key={idx}>
-                                    {item}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+              {/* Name Column (Badge + Name) */}
+              <td className="customer-name-cell">
+                <div className="name-content">
+                  {renderInitialBadge(customer.initial, customer.statusColor)}
+                  <span>{customer.name}</span>
+                </div>
+              </td>
 
-                <button
-                    className="customer-sort-option" 
+              {/* Email Column */}
+              <td>{customer.email}</td>
 
-                    onClick={() => setShowOptionsCustomer(!showOptionsCustomer)}
-                >
-                    <SortIcon />
-                </button>
-                {showOptionsCustomer && (
-                    <div ref={OptionCustomerRef} className="customer-option-dropdown-field">
-                        <CustomerFieldSelectionPopup
-                            onSelectField={(field) => {
-                                if (!columns.find((c) => c.name === field)) {
-                                    setColumns([...columns, { name: field, data: [] }]);
-                                    // 👇 remove auto-close here
-                                }
-                            }}
-                        />
-                    </div>
+              {/* Phone Column */}
+              <td>{customer.phone}</td>
+
+              {/* Activities Column (Icon) */}
+              <td>
+                {customer.activities && (
+                  <div className="activity-icon-container">
+                    <span className="activity-icon">
+                      {/* Placeholder for a circular icon, maybe an eye or info symbol */}
+                      &#x24D8; 
+                    </span>
+                  </div>
                 )}
-            </div>
-        </div>
-    );
-}
+              </td>
 
+              {/* Country Column */}
+              <td>{customer.country}</td>
+              
+              {/* Empty Column for alignment/spacer */}
+              <td></td> 
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+ 
 export default Customer;
 
-// Field Selection Popup
+
 const CustomerFieldSelectionPopup = ({ onSelectField }) => {
 
   const fields = [

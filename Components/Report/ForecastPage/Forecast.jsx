@@ -14,8 +14,6 @@ function Forecast() {
 
 // here is the code for the make the page grabbable to scroll the page //
 
-
-
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -77,7 +75,7 @@ function Forecast() {
         "December 2025",
     ]);
 
-    const [AddStage, setAddStage] = useState(false);
+    // const [AddStage, setAddStage] = useState(false);
 
     // months array for reference
     const months = [

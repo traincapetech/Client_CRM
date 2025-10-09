@@ -151,16 +151,16 @@ function Navbar() {
               </div>
               <div className="configurationIn-hamburger">
                 <label>Configuration</label>
-                <div className="menu-btn"> <Link>Setting</Link> </div>
-                <div className="menu-btn"><Link>Sales team</Link></div>
+                <Link to={'/setting'}><div className="menu-btn">Setting </div></Link>
+                <Link to={'/config/team'}> <div className="menu-btn">Sales team</div></Link>
                 <div className="menu-btn"><b>Activities</b></div>
-                <div className="menu-btn"> <Link>Activity Types</Link> </div>
-                <div className="menu-btn"><Link>Activity Types</Link></div>
+                <Link to={'/config/activitytypes'} > <div className="menu-btn"> Activity Types</div></Link>
+                <Link to={'/config/activityplans'}><div className="menu-btn">Activity Types</div></Link>
                 <div className="menu-btn"><b>Pipeline</b></div>
-                <div className="menu-btn"> <Link>Tags</Link> </div>
-                <div className="menu-btn"><Link>Lost Reasons</Link></div>
+                <Link to={'/config/tags'}><div className="menu-btn"> Tags</div></Link>
+                <Link to={'/config/lostreason'}><div className="menu-btn"> Lost Reason</div></Link>
                 <div className="menu-btn"><b>Lead Generation</b></div>
-                <div className="menu-btn"><Link>Lead Mining Request</Link></div>
+                <Link> <div className="menu-btn">Lead Mining Request</div></Link>
               </div>
             </div>
           )}
@@ -235,8 +235,8 @@ function Navbar() {
                   <Link to={'/config/activitytypes'}>  <div className="dropdown-item" onClick={() => handleSelect("Activity_Types")}> Activity Types </div></Link>
                   <Link to={'/config/activityplans'}>  <div className="dropdown-item" onClick={() => handleSelect("Activity-plans")}>Activity Plans</div></Link>
                   <div className="dropdown-item-heading"><b>Pipeline</b></div>
-                  <Link> <div className="dropdown-item" onClick={() => handleSelect("tags")}> Tags </div></Link>
-                  <Link> <div className="dropdown-item" onClick={() => handleSelect("LostReason")}>Lost Reasons</div></Link>
+                  <Link to={'/config/tags'}> <div className="dropdown-item" onClick={() => handleSelect("tags")}> Tags </div></Link>
+                  <Link to={'/config/lostreason'} > <div className="dropdown-item" onClick={() => handleSelect("LostReason")}>Lost Reasons</div></Link>
                   <div className="dropdown-item-heading"><b>Lead Generation</b></div>
                   <Link> <div className="dropdown-item" onClick={() => handleSelect("Lead_Mining")}>Lead Mining Request</div></Link>
                 </div>
@@ -255,6 +255,7 @@ function Navbar() {
               >
                 New
               </button>)}
+              
             {/* Lead box*/}
             {openMenu === "newLead" && <NewLead onAdd={(leadData) => { addLead("new", leadData) }} />}
 
@@ -282,9 +283,8 @@ function Navbar() {
                   Generate Leads
                 </button>
               </div>
-
             )}
-            <GenerateLead isOpen={openLead} onClose={() => setOpenLead(false)} />
+            
 
 
 
@@ -322,27 +322,27 @@ function Navbar() {
           <SearchIcon />
         </button>
 
-        {selectedOption && 
-        !["Team", "Customers", "Salesteam", "Activity_Types", "Activity-plans"].includes(selectedOption) && (
+        {selectedOption &&
+          !["Team", "Customers", "Salesteam", "Activity_Types", "Activity-plans"].includes(selectedOption) && (
 
-          <button className="filter-btn"
-            onMouseEnter={() => sethoverFilterIcon(true)}
-            onMouseLeave={() => sethoverFilterIcon(false)}
-          >
-            <div onClick={() => setOpenMenu(openMenu === "filte`r-btn" ? null : "filter-btn")} >
-              {hoverFilterIcon ?
-                <EditIcon sx={{ color: '#ffffff' }} />
-                : < FilterAltIcon sx={{ color: '#ffffff' }} />}
-            </div>
-            {selectedOption}
-            <CloseIcon
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedOption(null); // remove selected option
-              }}
-            />
-          </button>
-        )}
+            <button className="filter-btn"
+              onMouseEnter={() => sethoverFilterIcon(true)}
+              onMouseLeave={() => sethoverFilterIcon(false)}
+            >
+              <div onClick={() => setOpenMenu(openMenu === "filte`r-btn" ? null : "filter-btn")} >
+                {hoverFilterIcon ?
+                  <EditIcon sx={{ color: '#ffffff' }} />
+                  : < FilterAltIcon sx={{ color: '#ffffff' }} />}
+              </div>
+              {selectedOption}
+              <CloseIcon
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedOption(null); // remove selected option
+                }}
+              />
+            </button>
+          )}
 
         {openMenu === "filter-btn" && (
           <FilterSelectedComponent
@@ -370,12 +370,8 @@ function Navbar() {
       {/* Right Section - Icons */}
       <div className="navbar-right">
         <div className="navbar-right-top">
-          <span className="notif">
-            <ForumIcon />
-            <span className="badge">4</span>
-          </span>
           <span><QueryBuilderIcon /> </span>
-          <span><ConstructionIcon /></span>
+        <Link to={'/setting'}><span><ConstructionIcon /></span></Link>
           <span className="organisationNameshow">{OrganizationName}</span>
           <button className="avatar" title={fullname} onClick={() => setUserProfile(!UserProfile)}>{firstLetter}</button>
           {UserProfile ? <UserIconDropDown /> : " "}
