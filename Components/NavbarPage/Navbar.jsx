@@ -160,7 +160,7 @@ function Navbar() {
                 <Link to={'/config/tags'}><div className="menu-btn"> Tags</div></Link>
                 <Link to={'/config/lostreason'}><div className="menu-btn"> Lost Reason</div></Link>
                 <div className="menu-btn"><b>Lead Generation</b></div>
-                <Link> <div className="menu-btn">Lead Mining Request</div></Link>
+                <Link to={'/config/leadmining'}> <div className="menu-btn">Lead Mining Request</div></Link>
               </div>
             </div>
           )}
@@ -238,7 +238,7 @@ function Navbar() {
                   <Link to={'/config/tags'}> <div className="dropdown-item" onClick={() => handleSelect("tags")}> Tags </div></Link>
                   <Link to={'/config/lostreason'} > <div className="dropdown-item" onClick={() => handleSelect("LostReason")}>Lost Reasons</div></Link>
                   <div className="dropdown-item-heading"><b>Lead Generation</b></div>
-                  <Link> <div className="dropdown-item" onClick={() => handleSelect("Lead_Mining")}>Lead Mining Request</div></Link>
+                  <Link to={'/config/leadmining'}> <div className="dropdown-item" onClick={() => handleSelect("Lead_Mining")}>Lead Mining Request</div></Link>
                 </div>
               )}
             </span>
@@ -248,19 +248,29 @@ function Navbar() {
         {/* Buttons */}
         <div className="navbar-left-bottom">
           <div className="actions">
-            {!["Team", "Pipeline Analysis", "Leads Analysis", "Activities"].includes(selectedOption) && (
+            {!["Team", "Pipeline Analysis", "Leads Analysis", "Activities", "Setting"].includes(selectedOption) && (
               <button
                 className="new-lead-btn"
                 onClick={() => setOpenMenu(openMenu === "newLead" ? null : "newLead")}
               >
                 New
               </button>)}
-              
+            {/* This is used when user click on config >> Setting  */}
+            {selectedOption === "Setting" && (
+              <button
+                className="new-lead-btn">
+                Save
+              </button>
+            )}
+
+
+
+
             {/* Lead box*/}
             {openMenu === "newLead" && <NewLead onAdd={(leadData) => { addLead("new", leadData) }} />}
 
             {/*  desktop code  */}
-            {!["Team", "Customers", "Pipeline Analysis", "Leads Analysis", "Activities", "Salesteam", "Activity_Types", "Activity-plans"].includes(selectedOption) && (
+            {!["Team", "Customers", "Pipeline Analysis", "Leads Analysis", "Activities", "Salesteam", "Activity_Types", "Activity-plans", "Setting"].includes(selectedOption) && (
               <button className="generate-lead"
                 onClick={() => setOpenLead(true)}>
                 Generate Leads
@@ -268,6 +278,14 @@ function Navbar() {
             )}
             <GenerateLead isOpen={openLead} onClose={() => setOpenLead(false)} />
 
+            {/* this use when user click on config >> setting */}
+            {
+              selectedOption === 'Setting' && (
+                <button className="generate-lead">
+                  Discard
+                </button>
+              )
+            }
 
             {/* for phone responsive code  */}
             <button
@@ -284,7 +302,7 @@ function Navbar() {
                 </button>
               </div>
             )}
-            
+
 
 
 
@@ -371,7 +389,7 @@ function Navbar() {
       <div className="navbar-right">
         <div className="navbar-right-top">
           <span><QueryBuilderIcon /> </span>
-        <Link to={'/setting'}><span><ConstructionIcon /></span></Link>
+          <Link to={'/setting'}><span><ConstructionIcon /></span></Link>
           <span className="organisationNameshow">{OrganizationName}</span>
           <button className="avatar" title={fullname} onClick={() => setUserProfile(!UserProfile)}>{firstLetter}</button>
           {UserProfile ? <UserIconDropDown /> : " "}

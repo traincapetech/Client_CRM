@@ -1,5 +1,6 @@
 import "./Customer.css";
 import { useState,useEffect,useRef } from "react";
+
 const customerData = [
   { 
     id: 1, 

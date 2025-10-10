@@ -21,6 +21,7 @@ import SettingSideBar from '../Components/SettingPage/SettingSideBar';
 import GeneralSetting from '../Components/SettingPage/GeneralSetting';
 import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
+import LeadMiningPage from '../Components/Teams/LeadMiningPage';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
           <Route path='/config/tags' element={<Tags />} />
           <Route path='/config/lostreason' element={<Lost_Reason/>} />
+          <Route path='/config/leadmining' element={<LeadMiningPage/>} />
 
           {/* Setting Router */}
           <Route path='/setting' element={<Setting />} />

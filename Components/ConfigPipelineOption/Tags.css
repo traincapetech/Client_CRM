@@ -1,9 +1,10 @@
+
 /* ------------------------------------------------ */
-/* === Enhanced CSS for tagsActivityTypes Table === */
+/* === Enhanced CSS for LostReasonActivityTypes Table === */
 /* ------------------------------------------------ */
 
 /* Table Container */
-.tags-table {
+.LostReason-table {
     overflow-x: auto;
     background-color: #ffffff;
     border-radius: 0.5rem; /* Rounded corners */
@@ -13,7 +14,7 @@
 }
 
 /* === Header Row === */
-.tags-header {
+.LostReason-header {
     display: flex;
     justify-content: space-between;
     background-color: #f3f4f6; /* Light gray */
@@ -26,7 +27,7 @@
 }
 
 /* Header Cells */
-.tags-header > div {
+.LostReason-header > div {
     display: flex;
     align-items: center;
     gap: 10;
@@ -34,17 +35,17 @@
 }
 
 /* Header Checkbox + Text */
-.tags-header-name {
+.LostReason-header-name {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.Lost.tags-table-checkbox{
+.Lost.LostReason-table-checkbox{
     width: 16px;
 }
 
-.tags-checkbox {
+.LostReason-checkbox {
     width: 1rem;
     height: 1rem;
     accent-color: #6b3fa0; /* Purple checkbox */
@@ -53,12 +54,12 @@
     gap: 10px;
 }
 
-.tags-header-text {
+.LostReason-header-text {
     font-weight: 600;
 }
 
 /* Filter Icon */
-.tags-filter-icon {
+.LostReason-filter-icon {
     width: 1.25rem;
     height: 1.25rem;
     color: #6b7280;
@@ -66,11 +67,11 @@
 }
 
 /* === Data Rows === */
-/* .tags-body {
+/* .LostReason-body {
     display: flex;
 } */
 
-.tags-row {
+.LostReason-row {
     display: flex;
     align-items: center;
     padding: 0.75rem 1.5rem;
@@ -80,18 +81,18 @@
     justify-content: space-between;
 }
 
-.tags-row:hover {
+.LostReason-row:hover {
     background-color: #f9fafb;
 }
 
 /* Name Cell */
-.tags-cell-name {
+.LostReason-cell-name {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.tags-name-text {
+.LostReason-name-text {
     font-weight: 500;
     color: #111827;
 }
@@ -105,39 +106,39 @@
 }
 
 /* Other Cells */
-.tags-cell-summary,
-.tags-cell-planned,
-.tags-cell-type,
-.tags-cell-actions {
+.LostReason-cell-summary,
+.LostReason-cell-planned,
+.LostReason-cell-type,
+.LostReason-cell-actions {
     padding: 0.5rem 0.75rem;
     font-size: 0.95rem;
     color: #4b5563;
 }
 
 /* Planned & Type cells text alignment */
-.tags-cell-planned,
-.tags-cell-type {
+.LostReason-cell-planned,
+.LostReason-cell-type {
     display: flex;
     align-items: flex-end; /* bottom alignment */
 }
 
 /* Actions cell alignment */
-.tags-cell-actions {
+.LostReason-cell-actions {
     justify-content: flex-end;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .tags-header,
-    .tags-row {
+    .LostReason-header,
+    .LostReason-row {
         grid-template-columns: 2fr 2fr 2fr 3fr 1fr;
         padding: 0.5rem 1rem;
     }
 
-    .tags-name-text {
+    .LostReason-name-text {
         font-size: 0.9rem;
     }
 }
-.tags-cell-planned{
+.LostReason-cell-planned{
 justify-items: right;
 }

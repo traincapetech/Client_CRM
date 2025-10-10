@@ -1,0 +1,170 @@
+/* --- Color Variables --- */
+:root {
+    --color-primary: #7262c3; /* Purple, for accents */
+    --color-text-dark: #333;
+    --color-text-light: #555;
+    --color-border: #e0e0e0;
+    --color-bg-light: #f9f9f9;
+    --color-tag-country-bg: #f5edef; /* Afghanistan, India */
+    --color-tag-industry-bg: #eedad6; /* Media, Software */
+    --color-tag-urgent-bg: #e8d0e2; /* Need Urgent */
+    --color-status-done-bg: #e1f4e1; /* Light Green */
+    --color-status-done-text: #4caf50; /* Darker Green */
+    --color-avatar-bg: #5fcc83; /* Green Avatar */
+}
+
+/* --- Container & Table Base Styles --- */
+
+.lead-mining-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.lead-mining-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+/* --- Table Header Styles --- */
+
+.table-header tr {
+    border-bottom: 2px solid var(--color-border);
+    background-color: var(--color-bg-light);
+}
+
+.table-header th {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    text-transform: capitalize;
+    cursor: pointer;
+    white-space: nowrap; /* Prevent headers from wrapping */
+}
+
+.header-sort {
+    /* Add a small arrow icon placeholder if needed for sortable columns */
+}
+
+.status-col {
+    text-align: right;
+}
+
+.sort-icon {
+    font-size: 0.7em;
+    margin-left: 0.25rem;
+    color: var(--color-text-light);
+}
+
+/* --- Table Body and Row Styles --- */
+
+.table-row {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row td {
+    padding: 0.75rem 0.5rem;
+    vertical-align: middle;
+}
+
+.data-id {
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+/* --- Pill/Tag Styles (Countries, Industries, Tags) --- */
+
+.tag-pill {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px; /* Fully rounded */
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    margin-right: 0.25rem;
+}
+
+.tag-country {
+    background-color: var(--color-tag-country-bg);
+}
+
+.tag-industry {
+    background-color: var(--color-tag-industry-bg);
+}
+
+.tag-urgent {
+    background-color: var(--color-tag-urgent-bg);
+    color: #8b5cf6; /* A slightly darker purple text color */
+}
+
+/* --- Salesperson Avatar --- */
+
+.salesperson-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.salesperson-avatar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+}
+
+.avatar-green {
+    background-color: var(--color-avatar-bg);
+}
+
+.salesperson-name {
+    color: var(--color-text-dark);
+}
+
+/* --- Status Pill Styles --- */
+
+.status-pill {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-done {
+    background-color: var(--color-status-done-bg);
+    color: var(--color-status-done-text);
+}
+
+.data-status {
+    text-align: right;
+}
+
+/* --- Checkbox Styling --- */
+/* Simple style to match the UI appearance */
+
+.header-checkbox input[type="checkbox"],
+.data-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    accent-color: var(--color-primary); /* Uses system color, but can be customized */
+    cursor: pointer;
+}

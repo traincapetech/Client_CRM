@@ -55,6 +55,7 @@
 .setting-icon-pipeline {
   cursor: pointer;
   color: #666;
+  background:#f3f9ff ;
 }
 
 
@@ -423,4 +424,98 @@
   /* Gray tone */
   font-weight: 500;
   margin-left: 20px;
+}
+
+
+/* --- Pipeline Cards Animation --- */
+
+/* Smooth card lift on hover */
+.product-card{
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dragging animation */
+.product-card.dragging {
+  opacity: 0.8;
+  transform: scale(1.05) rotate(1deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Pipeline AddStage fade-in */
+.pipeline-AddStage {
+  transition: opacity 0.3s ease;
+}
+
+.pipeline-AddStage.show {
+  opacity: 1;
+}
+
+/* Pipeline Board smooth scroll & grabbing cursor */
+.pipeline-board.active {
+  cursor: grabbing;
+  transition: all 0.2s ease;
+}
+
+/* AddStage Button bounce effect */
+.addstage-btn {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.addstage-btn:hover {
+  transform: scale(1.05) rotate(90deg);
+}
+
+/* Product action button pulse */
+.action-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.35);
+}
+
+/* Product tag pop effect */
+.product-tag {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.product-tag:hover {
+  transform: scale(1.05);
+}
+
+/* Popup fade-in for mobile add stage */
+.pipeline-AddStage-mobile {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.pipeline-AddStage-mobile.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar hover animation */
+.pipeline-board::-webkit-scrollbar-thumb {
+  transition: background-color 0.2s ease;
+}
+
+.pipeline-board::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Smooth stage probability update */
+.stage-probability {
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.stage-probability:hover {
+  transform: scale(1.05);
+  color: #3b82f6; /* subtle highlight on hover */
 }
