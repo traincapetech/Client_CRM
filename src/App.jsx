@@ -22,6 +22,7 @@ import GeneralSetting from '../Components/SettingPage/GeneralSetting';
 import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 import LeadMiningPage from '../Components/Teams/LeadMiningPage';
+import NavbarSettingsDropdown from '../Components/Homepage/NavbarSettingsDropdown';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path='/' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/home' element={<Homepage />} />
+          <Route path='/import' element={<NavbarSettingsDropdown/>} />
 
           {/* Sales routes */}
           <Route path='/pipeline' element={<PipelinePage />} />
@@ -61,6 +63,8 @@ function App() {
           {/* Setting Router */}
           <Route path='/setting' element={<Setting />} />
           <Route path='/generalsetting' element={<GeneralSetting />} />
+
+``
         </Routes>
 
 

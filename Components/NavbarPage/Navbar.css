@@ -994,3 +994,7 @@ input:checked+.slider:before {
 
 
 }
+
+.configurationIn-hamburger a{
+  text-decoration: none;
+}

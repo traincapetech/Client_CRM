@@ -27,6 +27,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import FilterSelectedComponent from "../FilterSelectComponent/FilterSelectedComponent";
 import { useContext } from "react";
 import { LeadContext } from "../../leadProvider/LeadContext"
+import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
 
 
 function Navbar() {
@@ -41,6 +42,37 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [showRightMenu, setShowRightMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+  const [data, setData] = useState([]);
+
+  // ✅ EXPORT CSV
+  const handleExport = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(blob, "exported_data.xlsx");
+  };
+
+  // ✅ IMPORT CSV/EXCEL
+  const handleImport = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const bstr = evt.target.result;
+      const workbook = XLSX.read(bstr, { type: "binary" });
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+      const importedData = XLSX.utils.sheet_to_json(worksheet);
+      setData(importedData);
+      alert("File imported successfully!");
+    };
+    reader.readAsBinaryString(file);
+  };
+
 
   const handleSelect = (option) => {
     setSelectedOption(option); // update selected option
@@ -104,6 +136,16 @@ function Navbar() {
       setUser(JSON.parse(storedUser));
     }
   }, []);
+
+  const typeMap = {
+  Pipeline: "leads",
+  Customers: "customers",
+  SalesTeam: "salesTeam"
+};
+
+const type = typeMap[selectedOption] || "other";
+
+
 
 
 
@@ -303,10 +345,7 @@ function Navbar() {
               </div>
             )}
 
-
-
-
-            <span className="selected-field">
+           <span className="selected-field">
               {selectedOption ? selectedOption : "pipeline "}
             </span>
 
@@ -316,15 +355,26 @@ function Navbar() {
               title="Action"
             > <SettingsIcon fontSize="small" />
             </button>
+
             {openMenu === "setting" && (
+              <NavbarSettingsDropdown
+                data={data}
+                setData={setData}
+                addLead={addLead}
+                type={selectedOption === "Pipeline" ? "leads" : "other"}
+                page={selectedOption}
+              />
+            )}
+
+            {/* {openMenu === "setting" && (
               <div className="dropdown-menu-setting">
-                <div className="dropdown-item"><FileUploadIcon /> Import</div>
-                <div className="dropdown-item"><GetAppIcon /> Export</div>
+                <div className="dropdown-item" onClick={handleExport}><FileUploadIcon /> Import</div>
+                <div className="dropdown-item" onChange={handleImport}><GetAppIcon /> Export</div>
                 <div className="dropdown-item"><CameraAltIcon /> Import Bussiness Card</div>
                 <hr />
                 <div className="dropdown-item"><BorderStyleIcon /> Spreadsheet</div>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

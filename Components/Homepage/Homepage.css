@@ -445,3 +445,148 @@ body {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
 }
+
+
+/* ===========================
+   Responsive Dashboard Grid
+=========================== */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    /* Small screens (sm) */
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Large screens (lg) */
+    .dashboard-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+}
+
+/* Columns flex on smaller screens */
+.main-content-column,
+.center-content-column,
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===========================
+   KPI Card Responsiveness
+=========================== */
+.kpi-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.kpi-card {
+    flex: 1 1 150px; /* minimum width of 150px, grow as needed */
+    min-width: 120px;
+}
+
+/* ===========================
+   Pipeline Cards
+=========================== */
+.pipeline-card {
+    flex: 1 1 200px;
+    margin-bottom: 1rem;
+}
+
+/* ===========================
+   Activity Gauges
+=========================== */
+.activity-gauges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+/* ===========================
+   Tasks & Deals
+=========================== */
+.task-item,
+.deal-item {
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .task-item,
+    .deal-item {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (min-width: 1024px) {
+    .task-item,
+    .deal-item {
+        width: calc(33.33% - 1rem);
+    }
+}
+
+/* ===========================
+   Funnel Stages
+=========================== */
+.funnel-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.funnel-stage {
+    flex: 1 1 100px;
+    min-width: 100px;
+}
+
+/* ===========================
+   Misc Responsive Tweaks
+=========================== */
+.dashboard-title {
+    font-size: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .dashboard-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-title {
+        font-size: 1.875rem;
+    }
+}
+
+.filter-select {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Progress bars responsiveness */
+.performance-bar-item {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .performance-bar-item {
+        width: 48%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .performance-bar-item {
+        width: 32%;
+    }
+}
