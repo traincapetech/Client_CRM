@@ -550,6 +550,7 @@ const type = typeMap[selectedOption] || "other";
         )}
 
         {/* Desktop view */}
+         {!["Salesteam"].includes(selectedOption) && (
         <div className="navbar-right-bottom">
           <span title="kanban" className={getClass("kanban")} onClick={() => setActive("kanban")}>
             <ViewKanbanIcon />
@@ -557,6 +558,7 @@ const type = typeMap[selectedOption] || "other";
           <span title="list" className={getClass("list")} onClick={() => setActive("list")}>
             <ReorderIcon />
           </span>
+         
           <span
             title="calender"
             className={getClass("calendar")}
@@ -592,7 +594,8 @@ const type = typeMap[selectedOption] || "other";
           >
             <AccessTimeIcon />
           </span>
-        </div>
+          </div>
+      )}
       </div>
     </div>
   );

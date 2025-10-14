@@ -246,7 +246,7 @@ const ShowLeadCardOption = ({ col, index }) => {
   return (
     <div className="editCard-container-pipeline">
       <div className="editCard-model">
-         <button className="edit-btn" >Edit</button>
+         <button className="edit-btn">Edit</button>
         <button className="delete-btn" onClick={() => deleteLead(col, index)}>Delete</button>
       </div>
     </div>
@@ -288,4 +288,7 @@ const AddStageInputBox = ({ onClose, onAddStage }) => {
     </div>
   );
 };
+
+
+
 

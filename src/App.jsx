@@ -23,6 +23,7 @@ import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 import LeadMiningPage from '../Components/Teams/LeadMiningPage';
 import NavbarSettingsDropdown from '../Components/Homepage/NavbarSettingsDropdown';
+import EditLeadPage from '../Components/Homepage/EditLeadPage';
 
 
 function App() {
@@ -64,7 +65,10 @@ function App() {
           <Route path='/setting' element={<Setting />} />
           <Route path='/generalsetting' element={<GeneralSetting />} />
 
-``
+          {/* Edit page Route  */}
+          <Route path='/edit' element={<EditLeadPage />} />
+
+          
         </Routes>
 
 
