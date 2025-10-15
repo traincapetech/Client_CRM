@@ -1,5 +1,7 @@
+// import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
 import "./Customer.css";
 import { useState, useEffect, useRef } from "react";
+
 
 // Sample customer data (ensure unique IDs)
 const customerData = [
@@ -14,6 +16,7 @@ function Customer({ customers = customerData }) {
   const [showOptionsCustomer, setShowOptionsCustomer] = useState(false);
   const OptionCustomerRef = useRef(null);
 
+  // const [customersState, setCustomersState] = useState(customers);
   // Close popup on outside click
   useEffect(() => {
     function handleClickOutside(event) {
@@ -33,7 +36,9 @@ function Customer({ customers = customerData }) {
   );
 
   return (
+    
     <div className="customer-table-container" style={{ position: "relative" }}>
+      
       <table className="customer-table">
         <thead>
           <tr>

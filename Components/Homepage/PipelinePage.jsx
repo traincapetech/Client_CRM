@@ -8,7 +8,7 @@ import { LeadContext } from "../../leadProvider/LeadContext";
 import FastForwardIcon from '@mui/icons-material/FastForward';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
-
+import {Link} from 'react-router-dom'
 
 function PipelinePage() {
   const { leads, addLead } = useContext(LeadContext);
@@ -242,11 +242,14 @@ export default PipelinePage;
 // This is used to show the Edit and Delete option for each card
 const ShowLeadCardOption = ({ col, index }) => {
   const { deleteLead } = useContext(LeadContext);
-
+ 
   return (
     <div className="editCard-container-pipeline">
       <div className="editCard-model">
-         <button className="edit-btn">Edit</button>
+
+        <Link to={`/edit/${col}/${index}`}>
+          <button className="edit-btn">Edit</button>
+        </Link>
         <button className="delete-btn" onClick={() => deleteLead(col, index)}>Delete</button>
       </div>
     </div>

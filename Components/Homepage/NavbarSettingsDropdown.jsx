@@ -6,32 +6,56 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
 const NavbarSettingsDropdown = ({ data, setData, type = "leads", addLead, page }) => {
-  const fieldsMap = {
-    Customers: ["Name", "Email", "Phone", "Country", "Activities"],
-    Pipeline: ["Stage", "Probability", "Expected Revenue", "Expected Closing"],
-    SalesTeam: ["Name", "Role", "Team", "Contact"],
+ const fieldsMap = {
+    leads: ["Company", "Value", "Rating", "Stage"],
+    customers: ["Name", "Email", "Phone", "Country", "Activities"],
+    pipeline: ["Company", "Value", "Rating", "Stage"],
   };
 
-  const fields = fieldsMap[page] || [];
-
-  // Export data to Excel
+  // Export function
   const handleExport = () => {
     let dataToExport = [];
-    if (type === "leads") {
-      Object.keys(data).forEach((col) => {
-        data[col].forEach((item) => dataToExport.push({ ...item, stage: col }));
-      });
-    } else {
-      dataToExport = data;
+
+    if (!data || (Array.isArray(data) && data.length === 0) || (typeof data === "object" && Object.keys(data).length === 0)) {
+      alert("No data to export!");
+      return;
     }
 
-    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+    if (type === "leads" || type === "pipeline") {
+      Object.keys(data).forEach((col) => {
+        if (Array.isArray(data[col]) && data[col].length > 0) {
+          data[col].forEach((item) => dataToExport.push({ ...item, stage: col }));
+        }
+      });
+    } else {
+      dataToExport = Array.isArray(data) ? data : [];
+    }
+
+    if (!dataToExport || dataToExport.length === 0) {
+      alert("No data to export!");
+      return;
+    }
+
+    // Pick only the relevant fields
+    const fields = fieldsMap[type] || Object.keys(dataToExport[0]);
+    const finalData = dataToExport.map((item) => {
+      const obj = {};
+      fields.forEach((f) => {
+        obj[f] = item[f.toLowerCase()] ?? item[f]; // map JS keys
+      });
+      return obj;
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(finalData);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, type === "leads" ? "Leads" : "Data");
+    XLSX.utils.book_append_sheet(workbook, worksheet, page || "Data");
+
     const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-    saveAs(blob, `${type}_export.xlsx`);
+    const blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    saveAs(blob, `${page}_export.xlsx`);
   };
+
+
 
   // Import data from Excel
   const handleImport = (e) => {
@@ -80,20 +104,6 @@ const NavbarSettingsDropdown = ({ data, setData, type = "leads", addLead, page }
       <div className="dropdown-item">
         <BorderStyleIcon /> Spreadsheet
       </div>
-
-      {/* Field checkboxes */}
-      {/* {fields.length > 0 && (
-        <>
-          <hr />
-          {fields.map((field, idx) => (
-            <div key={idx} className="dropdown-item">
-              <label>
-                <input type="checkbox" /> {field}
-              </label>
-            </div>
-          ))}
-        </>
-      )} */}
     </div>
   );
 };

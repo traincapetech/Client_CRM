@@ -28,10 +28,12 @@ import FilterSelectedComponent from "../FilterSelectComponent/FilterSelectedComp
 import { useContext } from "react";
 import { LeadContext } from "../../leadProvider/LeadContext"
 import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 
 function Navbar() {
-  const { addLead } = useContext(LeadContext);
+  const { leads,addLead } = useContext(LeadContext);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
@@ -47,14 +49,38 @@ function Navbar() {
 
   // ✅ EXPORT CSV
   const handleExport = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    let dataToExport = [];
+
+    if (!data || Object.keys(data).length === 0) {
+      alert("No data to export!");
+      return;
+    }
+
+    if (type === "leads") {
+      Object.keys(data).forEach((col) => {
+        if (Array.isArray(data[col]) && data[col].length > 0) {
+          data[col].forEach((item) => dataToExport.push({ ...item, stage: col }));
+        }
+      });
+    } else {
+      dataToExport = Array.isArray(data) ? data : [];
+    }
+
+    if (!dataToExport || dataToExport.length === 0) {
+      alert("No data to export!");
+      return;
+    }
+
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Leads");
 
     const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-    saveAs(blob, "exported_data.xlsx");
+    const blob = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    saveAs(blob, `pipeline_export.xlsx`);
   };
+
+
 
   // ✅ IMPORT CSV/EXCEL
   const handleImport = (e) => {
@@ -138,12 +164,12 @@ function Navbar() {
   }, []);
 
   const typeMap = {
-  Pipeline: "leads",
-  Customers: "customers",
-  SalesTeam: "salesTeam"
-};
+    Pipeline: "leads",
+    Customers: "customers",
+    SalesTeam: "salesTeam"
+  };
 
-const type = typeMap[selectedOption] || "other";
+  const type = typeMap[selectedOption] || "other";
 
 
 
@@ -345,7 +371,7 @@ const type = typeMap[selectedOption] || "other";
               </div>
             )}
 
-           <span className="selected-field">
+            <span className="selected-field">
               {selectedOption ? selectedOption : "pipeline "}
             </span>
 
@@ -358,11 +384,10 @@ const type = typeMap[selectedOption] || "other";
 
             {openMenu === "setting" && (
               <NavbarSettingsDropdown
-                data={data}
-                setData={setData}
+                data={leads}
+                type="leads"
                 addLead={addLead}
-                type={selectedOption === "Pipeline" ? "leads" : "other"}
-                page={selectedOption}
+                page={openMenu}
               />
             )}
 
@@ -550,52 +575,52 @@ const type = typeMap[selectedOption] || "other";
         )}
 
         {/* Desktop view */}
-         {!["Salesteam"].includes(selectedOption) && (
-        <div className="navbar-right-bottom">
-          <span title="kanban" className={getClass("kanban")} onClick={() => setActive("kanban")}>
-            <ViewKanbanIcon />
-          </span>
-          <span title="list" className={getClass("list")} onClick={() => setActive("list")}>
-            <ReorderIcon />
-          </span>
-         
-          <span
-            title="calender"
-            className={getClass("calendar")}
-            onClick={() => setActive("calendar")}
-          >
-            <CalendarMonthIcon />
-          </span>
-          <span
-            title="pivot"
-            className={getClass("pivot")}
-            onClick={() => setActive("pivot")}
-          >
-            <PivotTableChartIcon />
-          </span>
-          <span
-            title="Areachart"
-            className={getClass("areaChart")}
-            onClick={() => setActive("areaChart")}
-          >
-            <AreaChartIcon />
-          </span>
-          <span
-            title="location"
-            className={getClass("location")}
-            onClick={() => setActive("location")}
-          >
-            <LocationOnIcon />
-          </span>
-          <span
-            title="Activity"
-            className={getClass("activity")}
-            onClick={() => setActive("activity")}
-          >
-            <AccessTimeIcon />
-          </span>
+        {!["Salesteam"].includes(selectedOption) && (
+          <div className="navbar-right-bottom">
+            <span title="kanban" className={getClass("kanban")} onClick={() => setActive("kanban")}>
+              <ViewKanbanIcon />
+            </span>
+            <span title="list" className={getClass("list")} onClick={() => setActive("list")}>
+              <ReorderIcon />
+            </span>
+
+            <span
+              title="calender"
+              className={getClass("calendar")}
+              onClick={() => setActive("calendar")}
+            >
+              <CalendarMonthIcon />
+            </span>
+            <span
+              title="pivot"
+              className={getClass("pivot")}
+              onClick={() => setActive("pivot")}
+            >
+              <PivotTableChartIcon />
+            </span>
+            <span
+              title="Areachart"
+              className={getClass("areaChart")}
+              onClick={() => setActive("areaChart")}
+            >
+              <AreaChartIcon />
+            </span>
+            <span
+              title="location"
+              className={getClass("location")}
+              onClick={() => setActive("location")}
+            >
+              <LocationOnIcon />
+            </span>
+            <span
+              title="Activity"
+              className={getClass("activity")}
+              onClick={() => setActive("activity")}
+            >
+              <AccessTimeIcon />
+            </span>
           </div>
-      )}
+        )}
       </div>
     </div>
   );
@@ -632,10 +657,6 @@ const UserIconDropDown = () => {
       <ul className="menu-list">
         <li className="menu-item">
           <button href="#" className="menu-link">Help</button>
-        </li>
-        <li className="menu-item">
-          <span className="menu-text">Shortcuts</span>
-          <span className="menu-shortcut">CTRL+K</span>
         </li>
         <li className="menu-item">
           <span className="menu-text">Dark Mode</span>

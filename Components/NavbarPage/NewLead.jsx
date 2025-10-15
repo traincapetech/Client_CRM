@@ -71,7 +71,7 @@ function NewLead({ onAdd,onClose }) {
                     <button className="add-btn" onClick={handleAdd} >
                         Add
                     </button>
-                    <button className="edit-btn" >Edit</button>
+                   
                 </div>
                 <button className="right-button" onClick={onClose} >
                     <DeleteIcon fontSize="small" />

@@ -460,6 +460,7 @@ hr {
 
 .menu-item span {
   padding: 10px 16px;
+  font-size: 16px;
 }
 
 .menu-item:hover {

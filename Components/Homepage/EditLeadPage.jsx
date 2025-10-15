@@ -1,21 +1,24 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './EditLeadPage.css';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import DatePicker from 'react-datepicker'; // 💡 Import the DatePicker component
 import 'react-datepicker/dist/react-datepicker.css'; // 💡 Import the DatePicker styles
 import SearchIcon from '@mui/icons-material/Search';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import PersonIcon from '@mui/icons-material/Person';
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { LeadContext } from "../../leadProvider/LeadContext";
+
+
 
 // Link to the external CSS file
-
 // ===============================================
 // Reusable Components
 // ===============================================
-
 // Helper component for standard editable fields
+
 const EditableField = ({ label, type = 'text', initialValue, className }) => (
     <div className={`info-field ${className || ''}`}>
         {/* Only show info icon if the label includes a '?' */}
@@ -157,6 +160,26 @@ const EditLeadPage = () => {
     const [isSearchVisible, setIsSearchVisible] = useState(false);
     const [isFollowerVisible, setIsFollowerVisible] = useState(false);
 
+    const { col, index } = useParams();
+    const { leads } = useContext(LeadContext);
+
+    // Get the specific lead
+    const lead = leads[col]?.[index];
+
+    if (!lead) {
+        return <div>Lead not found!</div>;
+    }
+
+    useEffect(() => {
+        if (lead && lead.star !== undefined) {
+            setValue(lead.star);
+        }
+    }, [lead]);
+
+    // Now you can use lead.company, lead.value, lead.rating, etc.
+    // Use them as initialValue in your input fields.
+
+
     // Function to toggle the state (true <-> false)
     const handleSearchClick = () => {
         setIsSearchVisible(!isSearchVisible);
@@ -213,7 +236,7 @@ const EditLeadPage = () => {
                     {/* Opportunity Title (Editable) */}
                     <input
                         type="text"
-                        defaultValue="TTTT's opportunity"
+                        defaultValue={lead.company || "TTTT Opp"}
                         className="opportunity-title-input"
                     />
 
@@ -225,7 +248,7 @@ const EditLeadPage = () => {
                                 <span className="currency-symbol">₹</span>
                                 <input
                                     type="number"
-                                    defaultValue="5445.00"
+                                    defaultValue={lead.value || "5445.00"}
                                     className="metric-value amount editable-input"
                                 />
                             </div>
@@ -248,8 +271,8 @@ const EditLeadPage = () => {
                     <div className="info-grid">
                         <div className="info-group contact-info">
                             <EditableField label="Contact" initialValue="" />
-                            <EditableField label="Email" type="email" initialValue="abc3@gmail.com" />
-                            <EditableField label="Phone" type="tel" initialValue="455678912" />
+                            <EditableField label="Email" type="email" initialValue={lead.email || "abc3@gmail.com"} />
+                            <EditableField label="Phone" type="tel" initialValue={lead.phone || "455678912"} />
                         </div>
 
                         <div className="info-group sales-info">
@@ -276,15 +299,14 @@ const EditLeadPage = () => {
                                     label="Expected Closing ?"
                                     initialValue="No closing estimate"
                                 />
-
                                 <div className="rating">
                                     <Box sx={{ '& > legend': { mt: 2 } }}>
                                         <Rating
                                             name="simple-controlled"
-                                            value={value}
+                                            value={value ?? lead.star ?? 0} // ✅ Show existing stars or default 0
                                             max={3}
                                             onChange={(event, newValue) => {
-                                                setValue(newValue);
+                                                setValue(newValue); // ✅ Updates UI immediately
                                             }}
                                         />
                                     </Box>
