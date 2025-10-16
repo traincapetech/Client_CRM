@@ -1,0 +1,49 @@
+/* View Mode Selector Container */
+.view-mode-selector {
+  display: flex;
+  gap: 4px; /* space between icons */
+  align-items: center;
+}
+
+/* Individual icons inherit .icon-btn */
+.view-mode-selector .icon-btn {
+  padding: 6px; /* slightly bigger than default */
+  border-radius: 6px;
+  background-color: #edeff3;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-mode-selector .icon-btn:hover {
+  background-color: #d1d5db;
+}
+
+.view-mode-selector .icon-btn.active {
+  border: 2px solid #7c3aed; /* match your theme color */
+  background-color: #f3e8ff; /* subtle highlight for active */
+}
+
+/* Icon size */
+.view-mode-selector .icon-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #374151; /* default dark gray */
+}
+
+.view-mode-selector .icon-btn.active svg {
+  color: #7c3aed; /* active color */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .view-mode-selector {
+    gap: 6px;
+  }
+
+  .view-mode-selector .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

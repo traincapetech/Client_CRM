@@ -1,0 +1,81 @@
+/* ===== Navbar Settings Dropdown Styles ===== */
+
+.dropdown-menu-setting-container {
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    width: 200px;
+    z-index: 999;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Each item (Import, Export, etc.) */
+.dropdown-item-setting-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.dropdown-item-setting-icon:hover {
+    background-color: #f5f7fa;
+    color: #1976d2;
+}
+
+/* Divider line */
+.dropdown-menu-setting-container hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 6px 0;
+}
+
+/* File input hidden by default */
+.dropdown-item-setting-icon input[type="file"] {
+    display: none;
+}
+
+/* Icons styling */
+.dropdown-item-setting-icon svg {
+    color: #555;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.dropdown-item-setting-icon:hover svg {
+    color: #1976d2;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .dropdown-menu-setting-container {
+        right: 0;
+        width: 180px;
+    }
+
+    .dropdown-item-setting-icon {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}

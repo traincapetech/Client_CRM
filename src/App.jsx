@@ -22,56 +22,54 @@ import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 import LeadMiningPage from '../Components/Teams/LeadMiningPage';
 import EditLeadPage from '../Components/Homepage/EditLeadPage';
-
-
+import KanbanView from '../Components/NavbarPage/KanbanView';
 
 function App() {
   const location = useLocation()
   const hideNavbar = location.pathname === "/" || location.pathname === "/login";
 
   return (
-  
+
     <div>
 
-        {!hideNavbar && <Navbar />}
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path='/' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/home' element={<Homepage />} />
 
-        <Routes>
-          <Route path='/' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/home' element={<Homepage />} />
+        {/* Sales routes */}
+        <Route path='/pipeline' element={<PipelinePage />} />
+        {/* pipeline sub route  */}
+          <Route path={'/kanban'} element={<KanbanView />} />
+        <Route path='/myActivity' element={<My_Activity />} />
+        <Route path='/team' element={<Team />} />
+        <Route path='/customer' element={<Customer />} />
 
-          {/* Sales routes */}
-          <Route path='/pipeline' element={<PipelinePage />} />
-          <Route path='/myActivity' element={<My_Activity />} />
-          <Route path='/team' element={<Team />} />
-          <Route path='/customer' element={<Customer />} />
+        {/* Reporting Routes */}
+        <Route path='/report/forecast' element={<Forecast />} />
+        <Route path='/report/pipeline' element={<ReportPipeline />} />
+        <Route path='/report/activity' element={<ReportActivity />} />
+        <Route path='/report/leads' element={<ReportLeads />} />
 
-          {/* reporting Routes */}
-          <Route path='/report/forecast' element={<Forecast />} />
-          <Route path='/report/pipeline' element={<ReportPipeline />} />
-          <Route path='/report/activity' element={<ReportActivity />} />
-          <Route path='/report/leads' element={<ReportLeads />} />
+        {/* Configuration Routes */}
+        <Route path='/config/team' element={<TeamConfig />} />
+        <Route path='/config/activitytypes' element={<ConfigActivityTypes />} />
+        <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
+        <Route path='/config/tags' element={<Tags />} />
+        <Route path='/config/lostreason' element={<Lost_Reason />} />
+        <Route path='/config/leadmining' element={<LeadMiningPage />} />
 
-          {/* Configuration Routes */}
-          <Route path='/config/team' element={<TeamConfig />} />
-          <Route path='/config/activitytypes' element={<ConfigActivityTypes />} />
-          <Route path='/config/activityplans' element={<ConfigActivityPlans />} />
-          <Route path='/config/tags' element={<Tags />} />
-          <Route path='/config/lostreason' element={<Lost_Reason />} />
-          <Route path='/config/leadmining' element={<LeadMiningPage />} />
+        {/* Setting Routes */}
+        <Route path='/setting' element={<Setting />} />
+        <Route path='/generalsetting' element={<GeneralSetting />} />
 
-          {/* Setting Router */}
-          <Route path='/setting' element={<Setting />} />
-          <Route path='/generalsetting' element={<GeneralSetting />} />
+        {/* Edit page */}
+        <Route path="/edit/:col/:index" element={<EditLeadPage />} />
+      </Routes>
 
-          {/* Edit page Route  */}
-          <Route path="/edit/:col/:index" element={<EditLeadPage />} />
+    </div>
 
-
-        </Routes>
-
- </div>
-   
   )
 }
 

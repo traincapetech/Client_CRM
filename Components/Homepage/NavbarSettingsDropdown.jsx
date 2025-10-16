@@ -3,7 +3,8 @@ import GetAppIcon from "@mui/icons-material/GetApp";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import BorderStyleIcon from "@mui/icons-material/BorderStyle";
 import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+import { saveAs } from "file-saver"
+import './NavbarSettingDropdown.css'
 
 const NavbarSettingsDropdown = ({ data, setData, type = "leads", addLead, page }) => {
  const fieldsMap = {
@@ -84,24 +85,24 @@ const NavbarSettingsDropdown = ({ data, setData, type = "leads", addLead, page }
   };
 
   return (
-    <div className="dropdown-menu-setting">
+    <div className="dropdown-menu-setting-container">
       {/* Import / Export / Other buttons */}
-      <label className="dropdown-item">
+      <label className="dropdown-item-setting-icon">
         <FileUploadIcon /> Import
         <input type="file" accept=".xlsx, .xls, .csv" style={{ display: "none" }} onChange={handleImport} />
       </label>
 
-      <div className="dropdown-item" onClick={handleExport}>
+      <div className="dropdown-item-setting-icon" onClick={handleExport}>
         <GetAppIcon /> Export
       </div>
 
-      <div className="dropdown-item">
+      <div className="dropdown-item-setting-icon">
         <CameraAltIcon /> Import Business Card
       </div>
 
       <hr />
 
-      <div className="dropdown-item">
+      <div className="dropdown-item-setting-icon">
         <BorderStyleIcon /> Spreadsheet
       </div>
     </div>

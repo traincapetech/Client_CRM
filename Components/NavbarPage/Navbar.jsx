@@ -30,10 +30,13 @@ import { LeadContext } from "../../leadProvider/LeadContext"
 import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
+import ViewModeSelector from "./ViewModeSelector";
+import {ViewContext} from '../ContextView/ViewContext'
 
 
 function Navbar() {
   const { leads,addLead } = useContext(LeadContext);
+  const { activeMode, setActiveMode } = useContext(ViewContext);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
@@ -492,27 +495,7 @@ function Navbar() {
         {/* Dropdown menu when Kanban clicked (mobile only) */}
         {showRightMenu && (
           <div className="kanban-dropdown">
-            <span title="kanban" className={getClass("kanban")} onClick={() => setActive("kanban")}>
-              <ViewKanbanIcon /> Kanban
-            </span>
-            <span title="list" className={getClass("list")} onClick={() => setActive("list")}>
-              <ReorderIcon /> List
-            </span>
-            <span title="calendar" className={getClass("calendar")} onClick={() => setActive("calendar")}>
-              <CalendarMonthIcon /> Calendar
-            </span>
-            <span title="pivot" className={getClass("pivot")} onClick={() => setActive("pivot")}>
-              <PivotTableChartIcon /> Pivot
-            </span>
-            <span title="areaChart" className={getClass("areaChart")} onClick={() => setActive("areaChart")}>
-              <AreaChartIcon /> Area Chart
-            </span>
-            <span title="location" className={getClass("location")} onClick={() => setActive("location")}>
-              <LocationOnIcon /> Location
-            </span>
-            <span title="activity" className={getClass("activity")} onClick={() => setActive("activity")}>
-              <AccessTimeIcon /> Activity
-            </span>
+             <ViewModeSelector activeMode={activeMode} setActiveMode={setActiveMode} />
           </div>
         )}
 
@@ -576,50 +559,9 @@ function Navbar() {
 
         {/* Desktop view */}
         {!["Salesteam"].includes(selectedOption) && (
-          <div className="navbar-right-bottom">
-            <span title="kanban" className={getClass("kanban")} onClick={() => setActive("kanban")}>
-              <ViewKanbanIcon />
-            </span>
-            <span title="list" className={getClass("list")} onClick={() => setActive("list")}>
-              <ReorderIcon />
-            </span>
-
-            <span
-              title="calender"
-              className={getClass("calendar")}
-              onClick={() => setActive("calendar")}
-            >
-              <CalendarMonthIcon />
-            </span>
-            <span
-              title="pivot"
-              className={getClass("pivot")}
-              onClick={() => setActive("pivot")}
-            >
-              <PivotTableChartIcon />
-            </span>
-            <span
-              title="Areachart"
-              className={getClass("areaChart")}
-              onClick={() => setActive("areaChart")}
-            >
-              <AreaChartIcon />
-            </span>
-            <span
-              title="location"
-              className={getClass("location")}
-              onClick={() => setActive("location")}
-            >
-              <LocationOnIcon />
-            </span>
-            <span
-              title="Activity"
-              className={getClass("activity")}
-              onClick={() => setActive("activity")}
-            >
-              <AccessTimeIcon />
-            </span>
-          </div>
+           <div className="navbar-right-bottom">
+          <ViewModeSelector activeMode={active} setActiveMode={setActive} />
+           </div>
         )}
       </div>
     </div>
