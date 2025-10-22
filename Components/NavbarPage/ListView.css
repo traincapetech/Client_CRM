@@ -1,0 +1,119 @@
+/* --- Global Table Container/Reset --- */
+.list-view {
+    /* Ensure the table is visually contained */
+    max-width: 1000px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+    /* The main table area should look like it's on a clean background */
+    background-color: #fff;
+}
+
+/* --- Core Table Structure --- */
+.list-view table {
+    width: 100%;
+    /* Key to the clean look: only horizontal borders */
+    border-collapse: collapse;
+    /* Subtle outer border */
+    border: 1px solid #e0e0e0;
+    /* Optional: Small radius for a softer look */
+    border-radius: 4px;
+    overflow: hidden; /* Important for border-radius to work on children */
+}
+
+/* --- Table Header Styling --- */
+.list-view thead {
+    /* Light background color for the header row */
+    background-color: #f5f7fa;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Header Cell Styling */
+.list-view th {
+    /* Padding for comfortable spacing */
+    padding: 12px 15px;
+    text-align: left;
+    /* Subtle line separating the header from the data */
+    border-bottom: 1px solid #e0e0e0;
+    /* As seen in the image, the text color is slightly muted/dark gray */
+    color: #5c6c7b;
+    font-size: 0.9em;
+}
+
+/* Remove border from the last column in the header if you want a clean edge */
+.list-view th:last-child {
+    /* If you have a menu/action icon like the image, style the cell accordingly */
+    width: 40px;
+    text-align: center;
+    padding-right: 15px; /* Adjust if needed */
+}
+
+/* Style for the checkbox column (if used) */
+.list-view th:first-child {
+    width: 40px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+
+/* --- Table Body Styling (The Rows) --- */
+.list-view tbody tr {
+    /* White background by default */
+    background-color: #ffffff;
+    /* Subtle horizontal line between rows */
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.15s ease-in-out;
+}
+
+/* Hover effect for interactivity */
+.list-view tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Remove the border from the very last row */
+.list-view tbody tr:last-child {
+    border-bottom: none;
+}
+
+
+/* --- Table Data Cell Styling --- */
+.list-view td {
+    padding: 10px 15px;
+    font-size: 0.95em;
+    vertical-align: middle;
+    /* Set the default color for the data */
+    color: #333;
+}
+
+/* Style for the first column (checkbox/handle) */
+.list-view td:first-child {
+    text-align: center;
+    color: #888; /* Muted color for the drag handle */
+}
+
+/* Styling for the last column (e.g., status/action) */
+.list-view td:last-child {
+    /* The text "after previous activity deadline" is smaller and right-aligned */
+    text-align: right;
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* --- Specific Element Styles (To-Do, 5 days, etc.) --- */
+
+/* Style for the "To-Do" item (likely the main name/title) */
+.list-view tbody tr td:nth-child(1) {
+    /* Bolder text for the primary item name */
+    font-weight: 500;
+    color: #007bff; /* Example: A blue link/primary color */
+}
+
+/* Style for the "Value" or "Type" column (e.g., 5 days) */
+.list-view tbody tr td:nth-child(4) {
+    /* Specific width might be useful for Type columns */
+    width: 100px;
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+}

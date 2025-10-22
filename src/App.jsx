@@ -22,7 +22,9 @@ import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 import LeadMiningPage from '../Components/Teams/LeadMiningPage';
 import EditLeadPage from '../Components/Homepage/EditLeadPage';
-import KanbanView from '../Components/NavbarPage/KanbanView';
+// import KanbanView from '../Components/NavbarPage/KanbanView';
+// import ListView from '../Components/NavbarPage/ListView';
+// import { ViewModeProvider } from '../ContextViewProvider/ViewModeProvider';
 
 function App() {
   const location = useLocation()
@@ -31,17 +33,17 @@ function App() {
   return (
 
     <div>
-
       {!hideNavbar && <Navbar />}
       <Routes>
         <Route path='/' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Homepage />} />
 
-        {/* Sales routes */}
-        <Route path='/pipeline' element={<PipelinePage />} />
+        <Route path="/pipeline" element={<PipelinePage view="kanban" />} />
+           {/* List view route */}
+           <Route path="/pipeline/list" element={<PipelinePage view="list" />} />
+
         {/* pipeline sub route  */}
-          <Route path={'/kanban'} element={<KanbanView />} />
         <Route path='/myActivity' element={<My_Activity />} />
         <Route path='/team' element={<Team />} />
         <Route path='/customer' element={<Customer />} />
@@ -67,10 +69,13 @@ function App() {
         {/* Edit page */}
         <Route path="/edit/:col/:index" element={<EditLeadPage />} />
       </Routes>
-
+{/* </ViewModeProvider> */}
     </div>
 
   )
 }
 
 export default App
+
+
+ 

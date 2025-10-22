@@ -6,19 +6,23 @@ import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 import AreaChartIcon from '@mui/icons-material/AreaChart';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import "./ViewModelSelector.css"; // optional separate styling
 
+import "./ViewModelSelector.css"; // optional separate styling
+import { Link } from 'react-router-dom';
 const ViewModeSelector = ({ activeMode, setActiveMode }) => {
   const getClass = (name) => `icon-btn ${activeMode === name ? "active" : ""}`;
 
   return (
     <div className="view-mode-selector">
-      <span title="kanban" className={getClass("kanban")} onClick={() => setActiveMode("kanban")}>
-        <ViewKanbanIcon />
-      </span>
+      <Link to={'/pipeline'}>
+        <span title="kanban" className={getClass("kanban")} onClick={() => setActiveMode("kanban")}>
+          <ViewKanbanIcon />
+        </span></Link>
+        <Link to={'/pipeline/list'}>
       <span title="list" className={getClass("list")} onClick={() => setActiveMode("list")}>
         <ReorderIcon />
       </span>
+      </Link>
       <span title="calendar" className={getClass("calendar")} onClick={() => setActiveMode("calendar")}>
         <CalendarMonthIcon />
       </span>

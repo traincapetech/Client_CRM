@@ -2,25 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import "./Navbar.css"; // Import external CSS
 import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ForumIcon from '@mui/icons-material/Forum';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
-import ReorderIcon from '@mui/icons-material/Reorder';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
-import AreaChartIcon from '@mui/icons-material/AreaChart';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-import GetAppIcon from '@mui/icons-material/GetApp';
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import BorderStyleIcon from '@mui/icons-material/BorderStyle';
 import CloseIcon from '@mui/icons-material/Close';
 import NewLead from "./NewLead";
 import SearchIcon from '@mui/icons-material/Search';
 import GenerateLead from "../Homepage/GenerateLead";
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Filter from "../SearchDropDown/Filter";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import EditIcon from '@mui/icons-material/Edit';
@@ -31,12 +20,11 @@ import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import ViewModeSelector from "./ViewModeSelector";
-import {ViewContext} from '../ContextView/ViewContext'
+
 
 
 function Navbar() {
-  const { leads,addLead } = useContext(LeadContext);
-  const { activeMode, setActiveMode } = useContext(ViewContext);
+  const { leads, addLead } = useContext(LeadContext);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
   const [selectedOption, setSelectedOption] = useState("Pipeline");
@@ -495,7 +483,7 @@ function Navbar() {
         {/* Dropdown menu when Kanban clicked (mobile only) */}
         {showRightMenu && (
           <div className="kanban-dropdown">
-             <ViewModeSelector activeMode={activeMode} setActiveMode={setActiveMode} />
+            <ViewModeSelector activeMode={viewMode} setActiveMode={toggleView} />
           </div>
         )}
 
@@ -559,9 +547,9 @@ function Navbar() {
 
         {/* Desktop view */}
         {!["Salesteam"].includes(selectedOption) && (
-           <div className="navbar-right-bottom">
-          <ViewModeSelector activeMode={active} setActiveMode={setActive} />
-           </div>
+          <div className="navbar-right-bottom">
+            <ViewModeSelector activeMode={active} setActiveMode={setActive} />
+          </div>
         )}
       </div>
     </div>
@@ -571,6 +559,15 @@ function Navbar() {
 export default Navbar;
 
 const UserIconDropDown = () => {
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  const handleToggle = () => setDarkMode(!darkMode);
+
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -600,10 +597,10 @@ const UserIconDropDown = () => {
         <li className="menu-item">
           <button href="#" className="menu-link">Help</button>
         </li>
-        <li className="menu-item">
+       <li className="menu-item">
           <span className="menu-text">Dark Mode</span>
           <label className="switch">
-            <input type="checkbox" />
+            <input type="checkbox" checked={darkMode} onChange={handleToggle} />
             <span className="slider"></span>
           </label>
         </li>

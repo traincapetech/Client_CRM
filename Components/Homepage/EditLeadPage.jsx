@@ -15,9 +15,10 @@ import { LeadContext } from "../../leadProvider/LeadContext";
 
 // Link to the external CSS file
 // ===============================================
-// Reusable Components
+// Reusable Components 
 // ===============================================
 // Helper component for standard editable fields
+
 
 const EditableField = ({ label, type = 'text', initialValue, className }) => (
     <div className={`info-field ${className || ''}`}>
@@ -27,7 +28,7 @@ const EditableField = ({ label, type = 'text', initialValue, className }) => (
             type={type}
             defaultValue={initialValue}
             className="editable-input"
-            placeholder={`Enter ${label.replace(' ?', '')}`}
+            placeholder={`Enter ${label.replace(' ?','')}`}
         />
     </div>
 );

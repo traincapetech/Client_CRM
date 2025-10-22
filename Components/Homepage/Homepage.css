@@ -16,8 +16,28 @@
     --color-blue: #3b82f6;
     --color-green: #10b981;
 
-    /* Animation timing */
     --transition-speed: 0.3s ease;
+
+    /* Gradient overrides */
+    --gradient-kpi-card: linear-gradient(145deg, #f3f4ff, #e0e7ff);
+    --gradient-kpi-card-hover: linear-gradient(145deg, #e0e7ff, #c7d2fe);
+    --gradient-dashboard-card-hover: linear-gradient(160deg, #eef2ff, #e0e7ff);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+    --color-primary: #8b5cf6;
+    --color-positive: #22c55e;
+    --color-negative: #f87171;
+    --color-text-dark: #f3f4f6;
+    --color-text-medium: #d1d5db;
+    --color-background: #1e1b2f;
+    --color-card-bg: #2a2540;
+    --color-border: #3f3b5a;
+
+    --gradient-kpi-card: linear-gradient(145deg, #3b2c5f, #4f3d7f);
+    --gradient-kpi-card-hover: linear-gradient(145deg, #4f3d7f, #6b4fa0);
+    --gradient-dashboard-card-hover: linear-gradient(160deg, #3b2c5f, #4f3d7f);
 }
 
 /* Global Reset */
@@ -28,23 +48,31 @@ body {
     background-color: var(--color-background);
     line-height: 1.6;
     scroll-behavior: smooth;
-    transition: background-color var(--transition-speed);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Smooth fade-in for the whole dashboard */
+/* Dashboard Container */
 .dashboard-container {
-    min-height: 100vh;
+    height: 100px;
     padding: 1.5rem;
     animation: fadeInUp 0.6s ease forwards;
     background-color: var(--color-background);
 }
 
 .dashboard-title {
-    font-size: 1.875rem;
     font-weight: 800;
     color: var(--color-text-dark);
     margin-bottom: 1.5rem;
     position: relative;
+    font-size: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .dashboard-title { font-size: 1.75rem; }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-title { font-size: 1.875rem; }
 }
 
 .dashboard-title::after {
@@ -60,61 +88,47 @@ body {
 }
 
 /* ===========================
-   Responsive Grid
+   Grid Layout
 =========================== */
-
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
-@media (min-width: 1024px) {
-    .dashboard-grid {
-        grid-template-columns: 2fr 1fr 1fr;
-    }
+@media (min-width: 640px) {
+    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
-    .main-content-column,
-    .center-content-column,
-    .sidebar-column {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
+@media (min-width: 1024px) {
+    .dashboard-grid { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+.main-content-column,
+.center-content-column,
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 /* ===========================
-   Card Animations & Styling
+   Cards
 =========================== */
-
 .dashboard-card {
     background-color: var(--color-card-bg);
     padding: 1.5rem;
     border-radius: 1rem;
     border: 1px solid var(--color-border);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     animation: fadeInUp 0.6s ease both;
-
-}
-.pipeline-card{
-  text-align: center;
-}
-.filter-select{
-    padding: 10px 16px;
-    border-radius: 10px;
-    background-color: var(--color-card-bg)#ffffff;
-;
-
-}
-.filter-select:hover{
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .dashboard-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    background: var(--gradient-dashboard-card-hover);
 }
 
 .card-title {
@@ -131,28 +145,40 @@ body {
     color: var(--color-primary);
 }
 
+.pipeline-card { text-align: center; }
+.filter-select {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: var(--color-card-bg);
+    width: 100%;
+    max-width: 200px;
+}
+
+.filter-select:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
 /* ===========================
    KPI Cards
 =========================== */
-
 .kpi-card {
-    background-color: var(--color-card-bg);
+    background: var(--gradient-kpi-card);
     padding: 1.25rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    border: none;
     flex-grow: 1;
-    min-width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
+    min-width: 150px;
+    box-shadow: 0 8px 25px rgba(79,70,229,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.kpi-group {
-    width: fit-content;
-    display: flex;
-    gap: 90px;
-
+.kpi-card:hover {
+    transform: translateY(-6px);
+    background: var(--gradient-kpi-card-hover);
+    box-shadow: 0 12px 30px rgba(79,70,229,0.25);
 }
 
 .kpi-card::after {
@@ -166,9 +192,7 @@ body {
     transition: width 0.3s ease;
 }
 
-.kpi-card:hover::after {
-    width: 100%;
-}
+.kpi-card:hover::after { width: 100%; }
 
 .kpi-value {
     font-size: 2.25rem;
@@ -178,28 +202,35 @@ body {
     transition: transform 0.3s ease;
 }
 
-.kpi-card:hover .kpi-value {
-    transform: scale(1.05);
+.kpi-card:hover .kpi-value { transform: scale(1.05); }
+
+.kpi-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
 }
 
 /* ===========================
-   Animation for Gauges
+   Gauges, Progress Bars, Funnel
 =========================== */
+.activity-gauges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
 
 .circle-chart {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     background-image: conic-gradient(var(--color) calc(var(--progress) * 1%),
-            var(--bg-color) calc(var(--progress) * 1%));
+                                    var(--bg-color) calc(var(--progress) * 1%));
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     animation: rotateChart 1.2s ease-out forwards;
 }
-
-/* ===========================
-   Progress Bars (Performers)
-=========================== */
 
 .progress-bar-fill {
     height: 100%;
@@ -212,27 +243,46 @@ body {
     transform: scaleY(1.1);
 }
 
-/* ===========================
-   Funnel Animation
-=========================== */
-
 .funnel-stage {
     transition: transform 0.3s ease;
     cursor: pointer;
+    flex: 1 1 100px;
+    min-width: 100px;
 }
 
 .funnel-stage:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(59,130,246,0.2);
 }
 
-.stage-metrics {
-    animation: fadeIn 0.6s ease;
-}
+.stage-metrics { animation: fadeIn 0.6s ease; }
 
 /* ===========================
-   Filter & Sidebar Enhancements
+   Deals & Tasks
 =========================== */
+.deal-item,
+.task-item {
+    width: 100%;
+    transition: all 0.3s ease;
+}
 
+@media (min-width: 640px) {
+    .deal-item, .task-item { width: calc(50% - 0.5rem); }
+}
+
+@media (min-width: 1024px) {
+    .deal-item, .task-item { width: calc(33.33% - 1rem); }
+}
+
+.deal-item { padding: 0.75rem; border-radius: 0.5rem; cursor: pointer; }
+.deal-item:hover { transform: translateX(5px); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+.task-item { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-radius: 0.75rem; padding: 0.75rem; }
+.task-item:hover { transform: translateY(-3px); background: linear-gradient(135deg, #dbeafe, #bfdbfe); box-shadow: 0 6px 18px rgba(59,130,246,0.15); }
+
+/* ===========================
+   Buttons & Filters
+=========================== */
 .time-filter-button {
     padding: 0.35rem 0.9rem;
     border-radius: 9999px;
@@ -248,345 +298,28 @@ body {
     background-color: var(--color-primary);
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.25);
-}
-
-/* ===========================
-   Deals & Tasks Interaction
-=========================== */
-
-.deal-item {
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.deal-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.task-item {
-    transition: all 0.3s ease;
-}
-
-.task-item:hover {
-    transform: translateX(4px);
+    box-shadow: 0 3px 8px rgba(79,70,229,0.25);
 }
 
 /* ===========================
    Key Animations
 =========================== */
-
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes rotateChart {
-    from {
-        transform: rotate(-90deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
+    from { transform: rotate(-90deg); }
+    to { transform: rotate(0deg); }
 }
 
 @keyframes growLine {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 60px;
-    }
-}
-
-/* ===========================
-   Card Colors & Gradients
-=========================== */
-
-/* KPI Cards with subtle gradient backgrounds */
-.kpi-card {
-    background: linear-gradient(145deg, #f3f4ff, #e0e7ff);
-    /* soft indigo gradient */
-    padding: 1.25rem;
-    border-radius: 1rem;
-    border: none;
-    /* remove plain border for gradient feel */
-    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
-    /* soft indigo shadow */
-    flex-grow: 1;
-    min-width: 200px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.activity-gauges-container{
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.kpi-card:hover {
-    transform: translateY(-6px);
-    background: linear-gradient(145deg, #e0e7ff, #c7d2fe);
-    /* slightly stronger gradient on hover */
-    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.25);
-}
-
-/* Dashboard cards with playful but professional colors */
-/* .dashboard-card {
-    background: linear-gradient(160deg, #ffffff, #f0f4ff);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-} */
-
-.dashboard-card:hover {
-    transform: translateY(-5px);
-    background: linear-gradient(160deg, #eef2ff, #e0e7ff);
-    box-shadow: 0 14px 30px rgba(79, 70, 229, 0.18);
-}
-
-/* Activity cards with vibrant backgrounds */
-.activity-card {
-    background: linear-gradient(145deg, #fef9c3, #fef3c7);
-    /* yellow vibe */
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 6px 20px rgba(249, 205, 44, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-
-.activity-card:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(145deg, #fef3c7, #fde68a);
-    box-shadow: 0 8px 25px rgba(249, 205, 44, 0.25);
-}
-
-/* Deals list with color cues */
-.deal-item.warning-red {
-    background: linear-gradient(145deg, #fef2f2, #fee2e2);
-    border: none;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
-}
-
-.deal-item.warning-red:hover {
-    background: linear-gradient(145deg, #fee2e2, #fecaca);
-    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
-}
-
-.deal-item.warning-amber {
-    background: linear-gradient(145deg, #fffbeb, #fef3c7);
-    border: none;
-    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.15);
-}
-
-.deal-item.warning-amber:hover {
-    background: linear-gradient(145deg, #fef3c7, #fde68a);
-    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.25);
-}
-
-/* Tasks with soft pastel cards */
-.task-item {
-    background: linear-gradient(135deg, #eff6ff, #dbeafe);
-    border-radius: 0.75rem;
-    padding: 0.75rem;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.task-item:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.15);
-}
-
-/* Funnel stages colored for gradient vibe */
-.funnel-stage-0 {
-    background: linear-gradient(90deg, #dbeafe, #bfdbfe);
-}
-
-.funnel-stage-1 {
-    background: linear-gradient(90deg, #bfdbfe, #93c5fd);
-}
-
-.funnel-stage-2 {
-    background: linear-gradient(90deg, #93c5fd, #60a5fa);
-}
-
-.funnel-stage-3 {
-    background: linear-gradient(90deg, #60a5fa, #3b82f6);
-}
-
-.funnel-stage:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
-}
-
-
-/* ===========================
-   Responsive Dashboard Grid
-=========================== */
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-}
-
-@media (min-width: 640px) {
-    /* Small screens (sm) */
-    .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    /* Large screens (lg) */
-    .dashboard-grid {
-        grid-template-columns: 2fr 1fr 1fr;
-    }
-}
-
-/* Columns flex on smaller screens */
-.main-content-column,
-.center-content-column,
-.sidebar-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-/* ===========================
-   KPI Card Responsiveness
-=========================== */
-.kpi-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
-}
-
-.kpi-card {
-    flex: 1 1 150px; /* minimum width of 150px, grow as needed */
-    min-width: 120px;
-}
-
-/* ===========================
-   Pipeline Cards
-=========================== */
-.pipeline-card {
-    flex: 1 1 200px;
-    margin-bottom: 1rem;
-}
-
-/* ===========================
-   Activity Gauges
-=========================== */
-.activity-gauges-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
-}
-
-/* ===========================
-   Tasks & Deals
-=========================== */
-.task-item,
-.deal-item {
-    width: 100%;
-}
-
-@media (min-width: 640px) {
-    .task-item,
-    .deal-item {
-        width: calc(50% - 0.5rem);
-    }
-}
-
-@media (min-width: 1024px) {
-    .task-item,
-    .deal-item {
-        width: calc(33.33% - 1rem);
-    }
-}
-
-/* ===========================
-   Funnel Stages
-=========================== */
-.funnel-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
-}
-
-.funnel-stage {
-    flex: 1 1 100px;
-    min-width: 100px;
-}
-
-/* ===========================
-   Misc Responsive Tweaks
-=========================== */
-.dashboard-title {
-    font-size: 1.5rem;
-}
-
-@media (min-width: 640px) {
-    .dashboard-title {
-        font-size: 1.75rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .dashboard-title {
-        font-size: 1.875rem;
-    }
-}
-
-.filter-select {
-    width: 100%;
-    max-width: 200px;
-}
-
-/* Progress bars responsiveness */
-.performance-bar-item {
-    width: 100%;
-}
-
-@media (min-width: 768px) {
-    .performance-bar-item {
-        width: 48%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .performance-bar-item {
-        width: 32%;
-    }
+    from { width: 0; }
+    to { width: 60px; }
 }

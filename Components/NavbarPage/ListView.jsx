@@ -1,8 +1,9 @@
 
+import "./ListView.css"
 
-const ListView = ({ leads }) => {
-  // flatten leads object into array
-  const allLeads = Object.values(leads).flat();
+const ListView = ({ leads = {} }) => {
+  // flatten leads object into array safely
+  const allLeads = Object.values(leads || {}).flat();
 
   return (
     <div className="list-view">
