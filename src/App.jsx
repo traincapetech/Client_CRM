@@ -22,26 +22,35 @@ import Tags from '../Components/ConfigPipelineOption/Tags';
 import Lost_Reason from '../Components/ConfigPipelineOption/Lost_Reason';
 import LeadMiningPage from '../Components/Teams/LeadMiningPage';
 import EditLeadPage from '../Components/Homepage/EditLeadPage';
-// import KanbanView from '../Components/NavbarPage/KanbanView';
-// import ListView from '../Components/NavbarPage/ListView';
-// import { ViewModeProvider } from '../ContextViewProvider/ViewModeProvider';
+import { useState , useEffect} from 'react';
+
+// import { ThemeProvider } from '../Components/ThemeContext/ThemeContext';
 
 function App() {
   const location = useLocation()
   const hideNavbar = location.pathname === "/" || location.pathname === "/login";
+ const [darkMode, setDarkMode] = useState(false);
+
+  // Update HTML data-theme when darkMode changes
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
+  const handleToggle = () => setDarkMode(prev => !prev);
+
 
   return (
 
     <div>
-      {!hideNavbar && <Navbar />}
+      {!hideNavbar && <Navbar darkMode={darkMode} handleToggle={handleToggle}  />}
       <Routes>
         <Route path='/' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/home' element={<Homepage />} />
 
         <Route path="/pipeline" element={<PipelinePage view="kanban" />} />
-           {/* List view route */}
-           <Route path="/pipeline/list" element={<PipelinePage view="list" />} />
+        {/* List view route */}
+        <Route path="/pipeline/list" element={<PipelinePage view="list" />} />
 
         {/* pipeline sub route  */}
         <Route path='/myActivity' element={<My_Activity />} />
@@ -69,7 +78,7 @@ function App() {
         {/* Edit page */}
         <Route path="/edit/:col/:index" element={<EditLeadPage />} />
       </Routes>
-{/* </ViewModeProvider> */}
+
     </div>
 
   )
@@ -78,4 +87,3 @@ function App() {
 export default App
 
 
- 

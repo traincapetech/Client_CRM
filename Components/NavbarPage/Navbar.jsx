@@ -20,10 +20,10 @@ import NavbarSettingsDropdown from "../Homepage/NavbarSettingsDropdown";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import ViewModeSelector from "./ViewModeSelector";
+import { useLocation } from "react-router-dom";
 
 
-
-function Navbar() {
+function Navbar({ toggleTheme, currentTheme }) {
   const { leads, addLead } = useContext(LeadContext);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(null); // always string or null
@@ -37,6 +37,9 @@ function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
 
   const [data, setData] = useState([]);
+  const location = useLocation();
+  const isPipelinePage = location.pathname.includes("pipeline");
+  
 
   // ✅ EXPORT CSV
   const handleExport = () => {
@@ -229,8 +232,6 @@ function Navbar() {
           <nav className="menu">
             {/* Sales */}
             <span
-              onMouseEnter={() => setOpenMenu("sales")}
-              onMouseLeave={() => setOpenMenu(null)}
             >
               <button
                 onClick={() =>
@@ -252,8 +253,6 @@ function Navbar() {
 
             {/* Report */}
             <span
-              onMouseEnter={() => setOpenMenu("report")}
-              onMouseLeave={() => setOpenMenu(null)}
             >
               <button
                 onClick={() =>
@@ -274,9 +273,7 @@ function Navbar() {
             </span>
 
             {/* Configuration */}
-            <span
-              onMouseEnter={() => setOpenMenu("configuration")}
-              onMouseLeave={() => setOpenMenu(null)}
+            <span             
             >
               <button
                 onClick={() =>
@@ -382,15 +379,6 @@ function Navbar() {
               />
             )}
 
-            {/* {openMenu === "setting" && (
-              <div className="dropdown-menu-setting">
-                <div className="dropdown-item" onClick={handleExport}><FileUploadIcon /> Import</div>
-                <div className="dropdown-item" onChange={handleImport}><GetAppIcon /> Export</div>
-                <div className="dropdown-item"><CameraAltIcon /> Import Bussiness Card</div>
-                <hr />
-                <div className="dropdown-item"><BorderStyleIcon /> Spreadsheet</div>
-              </div>
-            )} */}
           </div>
         </div>
       </div>
@@ -546,7 +534,7 @@ function Navbar() {
         )}
 
         {/* Desktop view */}
-        {!["Salesteam"].includes(selectedOption) && (
+        {!["Salesteam"].includes(selectedOption) && isPipelinePage && (
           <div className="navbar-right-bottom">
             <ViewModeSelector activeMode={active} setActiveMode={setActive} />
           </div>
@@ -597,7 +585,7 @@ const UserIconDropDown = () => {
         <li className="menu-item">
           <button href="#" className="menu-link">Help</button>
         </li>
-       <li className="menu-item">
+        <li className="menu-item">
           <span className="menu-text">Dark Mode</span>
           <label className="switch">
             <input type="checkbox" checked={darkMode} onChange={handleToggle} />

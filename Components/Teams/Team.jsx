@@ -22,7 +22,7 @@ function Team() {
             <div className="contact-card-border"></div>
             <div className="contact-card-content">
                 <div className="card-header">
-                    <h3 className="card-title">Sales</h3>
+                    <h3 className="card-title-sales">Sales</h3>
                     <button className="options-menu" onClick={()=>setOpenTeamOption(!OpenTeamOption)}>
                        <MoreVertIcon />
                     </button>

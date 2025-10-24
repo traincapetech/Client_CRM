@@ -1,3 +1,5 @@
+
+
 .navbar {
   display: flex;
   align-items: center;
@@ -7,42 +9,6 @@
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-:root {
-  --primary-color: #4f46e5;
-  --positive-color: #10b981;
-  --negative-color: #ef4444;
-
-  --bg-color: #f9fafb;
-  --text-color: #1f2937;
-  --navbar-bg: #ffffff;
-  --navbar-text: #000000;
-  --border-color: #f3f4f6;
-  --hover-bg: #eef2ff;
-  --card-bg: #ffffff;
-
-  --gradient-kpi-card: linear-gradient(145deg, #f3f4ff, #e0e7ff);
-  --gradient-dashboard-card-hover: linear-gradient(160deg, #eef2ff, #e0e7ff);
-
-  --transition-speed: 0.3s ease;
-}
-
-[data-theme="dark"] {
-  --primary-color: #8b5cf6;
-  --positive-color: #22c55e;
-  --negative-color: #f87171;
-
-  --bg-color: #1e1b2f;
-  --text-color: #f3f4f6;
-  --navbar-bg: #09080c;
-  --navbar-text: #ffffff;
-  --border-color: #3f3b5a;
-  --hover-bg: #3b2c5f;
-  --card-bg: #2a2540;
-
-  --gradient-kpi-card: linear-gradient(145deg, #3b2c5f, #4f3d7f);
-  --gradient-dashboard-card-hover: linear-gradient(160deg, #3b2c5f, #4f3d7f);
-}
-
 
 /* Apply variables */
 body {

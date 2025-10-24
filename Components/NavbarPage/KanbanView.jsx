@@ -1,6 +1,6 @@
 import { useContext, useState,useRef,useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
-import NewLead from "../NavbarPage/NewLead";
+import NewLead from "./NewLead";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { LeadContext } from "../../leadProvider/LeadContext";
@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import CheckIcon from '@mui/icons-material/Check';
 import {Link} from 'react-router-dom'
 
+import './KanbanView.css'
 const KanbanView = () => {
   const { leads, addLead } = useContext(LeadContext);
   const [activeColumn, setActiveColumn] = useState(null);

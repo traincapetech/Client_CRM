@@ -141,7 +141,7 @@ const Homepage = () => {
   );
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container-main">
       
       {/* Header/Title */}
       <h1 className="dashboard-title">DASHBOARD</h1>

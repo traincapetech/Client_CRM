@@ -1,0 +1,26 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #ffffff;
+  --navbar-bg: #ffffff;
+  --navbar-text: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #2e3238;
+  --text-color: #b2b8be;
+  --navbar-bg: #252a35;
+  --navbar-text: #e7ecf1;
+   --color-text-dark: #cecece;
+    --color-text-medium: #c1d0e7;
+}
+
+/* Apply variables globally */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+}
