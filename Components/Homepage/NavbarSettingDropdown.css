@@ -1,81 +1,117 @@
-/* ===== Navbar Settings Dropdown Styles ===== */
+/* ======================================================= */
+/* === Themed CSS for Navbar Settings Dropdown Menu ====== */
+/* ======================================================= */
 
+/* ===== Light Theme (Default) ===== */
+:root {
+  --dropdown-bg: #ffffff;
+  --dropdown-text: #333;
+  --dropdown-hover-bg: #f5f7fa;
+  --dropdown-hover-text: #1976d2;
+  --dropdown-divider: #eee;
+  --dropdown-icon: #555;
+  --dropdown-icon-hover: #1976d2;
+  --dropdown-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --dropdown-bg: #1f2937;
+  --dropdown-text: #e5e7eb;
+  --dropdown-hover-bg: #374151;
+  --dropdown-hover-text: #93c5fd;
+  --dropdown-divider: #374151;
+  --dropdown-icon: #9ca3af;
+  --dropdown-icon-hover: #60a5fa;
+  --dropdown-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* ======================================================= */
+/* === Dropdown Container === */
+/* ======================================================= */
 .dropdown-menu-setting-container {
-    position: absolute;
-    top: 100px;
-    left: 10%;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
-    width: 200px;
-    z-index: 999;
-    animation: fadeIn 0.2s ease-in-out;
+  position: absolute;
+  top: 100px;
+  left: 10%;
+  background: var(--dropdown-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px var(--dropdown-shadow);
+  padding: 8px 0;
+  width: 200px;
+  z-index: 999;
+  animation: fadeIn 0.2s ease-in-out;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-/* Each item (Import, Export, etc.) */
+/* ======================================================= */
+/* === Dropdown Items === */
+/* ======================================================= */
 .dropdown-item-setting-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: #333;
-    padding: 10px 16px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--dropdown-text);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Hover effect */
 .dropdown-item-setting-icon:hover {
-    background-color: #f5f7fa;
-    color: #1976d2;
+  background-color: var(--dropdown-hover-bg);
+  color: var(--dropdown-hover-text);
 }
 
-/* Divider line */
+/* Divider */
 .dropdown-menu-setting-container hr {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 6px 0;
+  border: none;
+  border-top: 1px solid var(--dropdown-divider);
+  margin: 6px 0;
+  transition: border-color 0.3s;
 }
 
-/* File input hidden by default */
+/* Hide file input */
 .dropdown-item-setting-icon input[type="file"] {
-    display: none;
+  display: none;
 }
 
-/* Icons styling */
+/* Icons */
 .dropdown-item-setting-icon svg {
-    color: #555;
-    font-size: 18px;
-    transition: color 0.2s;
+  color: var(--dropdown-icon);
+  font-size: 18px;
+  transition: color 0.2s;
 }
 
 .dropdown-item-setting-icon:hover svg {
-    color: #1976d2;
+  color: var(--dropdown-icon-hover);
 }
 
-/* Animation */
+/* ======================================================= */
+/* === Animation === */
+/* ======================================================= */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsive */
+/* ======================================================= */
+/* === Responsive === */
+/* ======================================================= */
 @media (max-width: 600px) {
-    .dropdown-menu-setting-container {
-        right: 0;
-        width: 180px;
-    }
+  .dropdown-menu-setting-container {
+    right: 0;
+    width: 180px;
+  }
 
-    .dropdown-item-setting-icon {
-        font-size: 13px;
-        padding: 8px 14px;
-    }
+  .dropdown-item-setting-icon {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
 }

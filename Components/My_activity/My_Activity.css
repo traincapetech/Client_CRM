@@ -43,7 +43,7 @@
   justify-content: center;
 }
 
-.header-checkbox {
+.header-checkboxmyactivity {
   cursor: pointer;
   width: 16px;
   height: 16px;
@@ -331,7 +331,7 @@
 /* Checkbox */
 .header-checkbox {
   border: 1px solid var(--border-color, #bbb);
-  background-color: var(--checkbox-bg, #fff);
+  
 }
 
 /* Sort button */

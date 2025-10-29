@@ -1,3 +1,44 @@
+
+:root {
+  /* Light Theme */
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --section-bg: #d1d5dd;
+  --border-color: gray;
+  --link-color: rgb(12, 101, 235);
+  --link-hover: #934cbf;
+  --button-bg: #934cbf;
+  --button-hover: #733c92;
+  --input-bg: #f8f8f8;
+  --title-bg-color:#6d6d6da8;
+  --title-bg:#212122;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --section-bg: #1e293b;
+  --border-color: #475569;
+  --link-color: #60a5fa;
+  --link-hover: #c084fc;
+  --button-bg: #7c3aed;
+  --button-hover: #5b21b6;
+  --input-bg: #1e293b;
+  --title-bg:#ffffff;
+    --title-bg-color:#484848a8;
+}
+h2{
+    background-color: var(--title-bg-color);
+}
+span,p{
+    color: var(--title-bg);
+}
+
+h1, h3, h4, h5, h6,  label, a, li, div {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
 .generalsetting-container {
     display: flex;
     padding: auto;
@@ -14,9 +55,9 @@
 .general-section-title-user {
     font-size: 1.25rem;
     font-weight: 500;
-    color: #374151;
+    color: var(--title-bg);
     margin-bottom: 2rem;
-    background-color: #d1d5dd;
+    background-color: var(--title-bg-color);
     padding: 15px;
     margin-left: -20px;
     margin-top: -1px;
@@ -61,7 +102,7 @@
     width: 100px;
     font-weight: 600;
     font-family: emoji;
-    background-color: #934cbf;
+    background-color:#724e86 ;
     color: white;
     border-radius: 5px;
 }
@@ -102,8 +143,7 @@
 
 
 .general-settings-section-user {
-    background-color: #ffffff;
-    max-width: 100%;
+     background-color: var(--bg-color);
     padding-left: 20px;
     margin-right: auto;
     border-top: 1px solid #e5e7eb;
@@ -130,9 +170,9 @@
 .general-section-title-about {
     font-size: 1.25rem;
     font-weight: 500;
-    color: #374151;
+    color:var(--title-bg);
     margin-bottom: 2rem;
-    background-color: #d1d5dd;
+    background-color: var(--title-bg-color);
     padding: 15px;
     margin-left: 0px;
     margin-top: 10px;
@@ -392,7 +432,7 @@ a:hover {
     border-bottom: 1px solid #ccc;
     border-radius: 3px;
     font-size: 0.9em;
-    background-color: #f8f8f8;
+    background-color:var(--bg-color);
     /* Light background for read-only */
     margin-right: 5px;
 }
@@ -688,7 +728,7 @@ a:hover {
 .general-section-title-integrations {
     font-size: 1.1em;
     font-weight: 500;
-    color: #4c4c4c;
+    color: var(--title-bg);
     margin-bottom: 20px;
 }
 
@@ -815,7 +855,7 @@ a:hover {
     /* Use the same styling as other section headers */
     font-size: 1.1em;
     font-weight: 500;
-    color: #4c4c4c;
+    color: var(--title-bg);
     margin-bottom: 20px;
 }
 

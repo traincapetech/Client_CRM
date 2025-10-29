@@ -1,18 +1,50 @@
+/* ===================================== */
+/* 🌗 THEME VARIABLES */
+/* ===================================== */
+:root {
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --checkbox-border: #d1d5db;
+  --accent-color: #4f46e5;
+  --badge-color: #10b981;
+  --hover-bg: #f9fafb;
+  --focus-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--accent-color);
+}
+
+/* 🌙 Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --checkbox-border: #475569;
+  --accent-color: #22c55e;
+  --badge-color: #22c55e;
+  --hover-bg: #1e293b;
+  --focus-shadow: 0 0 0 2px #1e293b, 0 0 0 4px var(--accent-color);
+}
+
+/* ===================================== */
 /* ===== Container & List Structure ===== */
+/* ===================================== */
 .configTeam-table-container {
   overflow-x: auto;
-  background-color: white;
-  border: 1px solid #e5e7eb; /* border-gray-200 */
-  border-radius: 0.5rem; /* rounded-lg */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* ===== Header Section ===== */
 .configTeam-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb; /* Divider below header */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .configTeam-header-cell {
@@ -20,7 +52,7 @@
   text-align: left;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -45,14 +77,14 @@
 
 /* ===== Table Body ===== */
 .configTeam-body {
-  background-color: white;
+  background-color: var(--bg-color);
 }
 
 /* ===== Data Rows ===== */
 .configTeam-row {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .configTeam-row:last-child {
@@ -64,22 +96,22 @@
   padding: 1rem 1.5rem;
   white-space: nowrap;
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
 }
 
 .configTeam-team {
   font-weight: 500;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .configTeam-alias {
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .configTeam-leader {
-  color: #6b7280;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
 }
@@ -88,7 +120,7 @@
 .configTeam-leader-badge {
   height: 1rem;
   width: 1rem;
-  background-color: #10b981; /* green */
+  background-color: var(--badge-color);
   border-radius: 0.125rem;
   margin-right: 0.5rem;
   display: flex;
@@ -103,12 +135,10 @@
 .configTeam-table-checkbox {
   height: 1rem;
   width: 1rem;
-  border-color: #d1d5db;
+  border-color: var(--checkbox-border);
   border-radius: 0.25rem;
-  color: #4f46e5;
-  transition-property: all;
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--accent-color);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-checkbox {
@@ -130,13 +160,13 @@
 }
 
 .configTeam-add-custom-field-button:hover {
-  background-color: #f9fafb;
+  background-color: var(--hover-bg);
 }
 
 .configTeam-add-custom-field-button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4f46e5;
+  box-shadow: var(--focus-shadow);
 }
 
 .configTeam-button-icon {

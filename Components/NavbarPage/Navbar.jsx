@@ -442,8 +442,8 @@ function Navbar({ toggleTheme, currentTheme }) {
       {/* Right Section - Icons */}
       <div className="navbar-right">
         <div className="navbar-right-top">
-          <span><QueryBuilderIcon /> </span>
-          <Link to={'/setting'}><span><ConstructionIcon /></span></Link>
+          <span className="activities-icon"><QueryBuilderIcon /> </span>
+          <Link to={'/setting'}  className="construction-icon"><span><ConstructionIcon /></span></Link>
           <span className="organisationNameshow">{OrganizationName}</span>
           <button className="avatar" title={fullname} onClick={() => setUserProfile(!UserProfile)}>{firstLetter}</button>
           {UserProfile ? <UserIconDropDown /> : " "}

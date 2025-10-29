@@ -86,7 +86,7 @@ const My_Activity = () => {
       <div className="table-header-row">
         <div className='header-container-items'>
           <div className="header-cell checkbox-cell">
-            <input type="checkbox" className="header-checkbox" />
+            <input type="checkbox" className="header-checkboxmyactivity" />
           </div>
           {optionMyActivity.map((item, index) => (
             <div className="header-cell" key={index}>{item}</div>

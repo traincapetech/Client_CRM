@@ -135,7 +135,7 @@
     border-radius: 5px;
     padding: 30px 20px 0 60px;
     position: relative;
-    height: 90%;
+    height: 95%;
     min-height: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -342,4 +342,136 @@
     .report-toolbar-header {
         flex-wrap: nowrap;
     }
+}
+
+/* ==========================
+   🌗 THEME VARIABLES
+========================== */
+
+:root {
+  /* 🌞 Light Mode */
+  --report-bg: #f8f8f8;
+  --toolbar-bg: #f0eeee;
+  --toolbar-text: #333;
+  --border-color: #ddd;
+  --button-bg: #e5e5e5;
+  --button-text: #444;
+  --button-hover: #e6e6e6;
+  --active-bg: #bebebe;
+  --chart-bg: #ffffff;
+  --chart-border: #ddd;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #777;
+  --placeholder: #888;
+  --legend-opacity: 0.2;
+  --sample-banner-bg: #eb6161;
+  --sample-banner-text: #ffffff;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --report-bg: #0f172a;
+  --toolbar-bg: #1e293b;
+  --toolbar-text: #e2e8f0;
+  --border-color: #334155;
+  --button-bg: #334155;
+  --button-text: #e2e8f0;
+  --button-hover: #475569;
+  --active-bg: #3b4252;
+  --chart-bg: #1e293b;
+  --chart-border: #475569;
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --placeholder: #64748b;
+  --legend-opacity: 0.4;
+  --sample-banner-bg: #ef4444;
+  --sample-banner-text: #ffffff;
+}
+
+/* ==========================
+   APPLY THEME VARIABLES
+========================== */
+
+.report-dashboard-container-Activity {
+  background-color: var(--report-bg);
+  color: var(--text-primary);
+}
+
+/* Toolbar */
+.report-toolbar-header {
+  background-color: var(--toolbar-bg);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--toolbar-text);
+}
+
+/* Buttons */
+.report-measures-dropdown {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+}
+
+.report-insert-spreadsheet {
+  background-color: var(--active-bg);
+  color: var(--button-text);
+}
+
+/* View Icons */
+.report-view-icons {
+  background-color: var(--chart-bg);
+  border: 1px solid var(--chart-border);
+}
+
+.report-icon-btn {
+  color: var(--text-muted);
+  border-right: 1px solid var(--border-color);
+}
+
+.report-icon-btn.report-active {
+  background-color: var(--button-hover);
+  color: var(--text-secondary);
+}
+
+/* Chart Area */
+.report-chart-area {
+  background-color: var(--chart-bg);
+  border: 1px solid var(--chart-border);
+}
+
+.report-y-axis-label {
+  color: var(--text-muted);
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.report-x-axis-labels {
+  color: var(--text-muted);
+  opacity: var(--legend-opacity);
+}
+
+/* No Data Placeholder */
+.report-no-data-placeholder {
+  color: var(--placeholder);
+}
+
+.report-no-data-title {
+  color: var(--text-secondary);
+}
+
+.report-no-data-tip {
+  color: var(--text-muted);
+}
+
+/* Measure Options */
+.report-measure-options-container {
+  background-color: var(--chart-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Sample Data Banner */
+.report-sample-data-banner {
+  background-color: var(--sample-banner-bg);
+  color: var(--sample-banner-text);
 }

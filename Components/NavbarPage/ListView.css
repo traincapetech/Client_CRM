@@ -1,103 +1,128 @@
-/* --- Core Table Structure --- */
-.list-view table {
-    width: 100%;
-    border-collapse: collapse; /* Essential for border control */
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    table-layout: fixed;
+/* ==========================
+   🎨 THEME VARIABLES
+========================== */
+:root {
+  --table-bg: #ffffff;
+  --table-header-bg: #f5f7fa;
+  --table-header-text: #5c6c7b;
+  --table-border: #e0e0e0;
+  --table-row-border: #f0f0f0;
+  --table-hover-bg: #f9f9f9;
+  --table-text: #333333;
 }
 
-/* --- Uniform Cell Styling (TH and TD) --- */
+[data-theme="dark"] {
+  --table-bg: #1e1e2f;
+  --table-header-bg: #2a2a3d;
+  --table-header-text: #c0c5d2;
+  --table-border: #38384b;
+  --table-row-border: #333344;
+  --table-hover-bg: #2e2e45;
+  --table-text: #e5e7eb;
+}
+
+/* ==========================
+   🧾 CORE TABLE STRUCTURE
+========================== */
+.list-view table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  overflow: hidden;
+  table-layout: fixed;
+  background-color: var(--table-bg);
+}
+
+/* ==========================
+   🧩 CELL STYLING
+========================== */
 .list-view th,
 .list-view td {
-    /* 💡 CHANGE 1: Increase overall horizontal padding for separation */
-    padding: 10px 20px; 
-    
-    /* Subtle vertical line separation on the right of every cell */
-    border-right: 1px solid #f0f0f0; 
-
-    /* Uniform height and overflow control */
-    height: 40px; 
-    line-height: 20px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: middle;
+  padding: 10px 20px;
+  border-right: 1px solid var(--table-row-border);
+  height: 40px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  color: var(--table-text);
 }
 
-/* --- Header Styling --- */
+/* ==========================
+   🧠 HEADER STYLING
+========================== */
 .list-view th {
-    background-color: #f5f7fa;
-    color: #5c6c7b;
-    font-weight: 600;
-    font-size: 0.9em;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-weight: 600;
+  font-size: 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
 }
 
-/* --- Data Cell Styling --- */
+/* ==========================
+   🧮 DATA CELL STYLING
+========================== */
 .list-view td {
-    font-size: 0.95em;
-    color: #333;
+  font-size: 0.95em;
 }
 
-/* 💡 Professional Look: Remove the border from the last column for a clean table edge */
+/* Remove border from last column */
 .list-view th:last-child,
 .list-view td:last-child {
-    border-right: none;
-    padding-right: 15px; /* Maintain padding on the right edge */
+  border-right: none;
+  padding-right: 15px;
 }
 
-/* --- Column-Specific Alignment and Widths (The Key to Separation) --- */
-
-/* COLUMN 1: Company */
+/* ==========================
+   📊 COLUMN-SPECIFIC RULES
+========================== */
 .list-view th:nth-child(1),
-.list-view td:nth-child(1) { 
-    width: 20%; 
-    text-align: left;
-    padding-left: 30px; /* Adjusted left edge padding */
+.list-view td:nth-child(1) {
+  width: 20%;
+  text-align: left;
+  padding-left: 30px;
 }
 
-/* COLUMN 2: Value - Right alignment helps separate numbers from text */
 .list-view th:nth-child(2),
 .list-view td:nth-child(2) {
-    width: 120px;
-   /* 💡 CHANGE 2: Right alignment for numerical data */
+  width: 120px;
+  text-align: right;
 }
 
-/* COLUMN 3: Email - Needs left alignment and ample space */
 .list-view th:nth-child(3),
 .list-view td:nth-child(3) {
-    width: 30%; 
-    text-align: left; /* Ensures email starts far from the Value field */
+  width: 30%;
+  text-align: left;
 }
 
-/* COLUMN 4: Salesperson */
 .list-view th:nth-child(4),
 .list-view td:nth-child(4) {
-    width: 120px;
-    text-align: left;
+  width: 120px;
+  text-align: left;
 }
 
-/* COLUMN 5: Stage */
 .list-view th:nth-child(5),
 .list-view td:nth-child(5) {
-    width: 100px;
-   /* Center-aligning status/stage often looks professional */
+  width: 100px;
+  text-align: center;
 }
 
-/* --- Row and Hover Effects --- */
+/* ==========================
+   🪄 ROW EFFECTS
+========================== */
 .list-view tbody tr {
-    background-color: #ffffff;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background-color 0.15s ease-in-out;
+  background-color: var(--table-bg);
+  border-bottom: 1px solid var(--table-row-border);
+  transition: background-color 0.2s ease-in-out;
 }
 
 .list-view tbody tr:hover {
-    background-color: #f9f9f9;
+  background-color: var(--table-hover-bg);
 }
 
 .list-view tbody tr:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }

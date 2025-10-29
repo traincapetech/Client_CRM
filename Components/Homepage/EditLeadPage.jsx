@@ -96,7 +96,7 @@ const OpportunityContactsTab = ({ EditableField }) => {
                 {/* --- LEFT COLUMN: Company Information & Marketing --- */}
                 <div className="info-column left-column">
 
-                    <h3 className="section-header">COMPANY INFORMATION</h3>
+                    <h3 className="section-header-editpage">COMPANY INFORMATION</h3>
 
                     <EditableField label="Company Name ?" initialValue="TTTT" className="contact-info-field" />
 
@@ -115,7 +115,7 @@ const OpportunityContactsTab = ({ EditableField }) => {
                         </div>
                     </div>
 
-                    <h3 className="section-header marketing-header">MARKETING</h3>
+                    <h3 className="section-header-editpage marketing-header">MARKETING</h3>
                     <EditableField label="Campaign ?" initialValue="" className="contact-info-field" />
                     <EditableField label="Medium ?" initialValue="" className="contact-info-field" />
                     <EditableField label="Source ?" initialValue="" className="contact-info-field" />
@@ -126,7 +126,7 @@ const OpportunityContactsTab = ({ EditableField }) => {
                 {/* --- RIGHT COLUMN: Contact Information & Ownership --- */}
                 <div className="info-column right-column">
 
-                    <h3 className="section-header">CONTACT INFORMATION</h3>
+                    <h3 className="section-header-editpage">CONTACT INFORMATION</h3>
                     <EditableField label="Contact Name" initialValue="" className="contact-info-field" />
                     <EditableField label="Job Position" initialValue="" className="contact-info-field" />
 
@@ -141,7 +141,7 @@ const OpportunityContactsTab = ({ EditableField }) => {
                         />
                     </div>
 
-                    <h3 className="section-header ownership-header">OWNERSHIP</h3>
+                    <h3 className="section-header-editpage ownership-header">OWNERSHIP</h3>
                     <EditableField label="Sales Team" initialValue="Sales" className="contact-info-field" />
 
                 </div>

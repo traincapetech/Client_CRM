@@ -132,7 +132,7 @@
     border-radius: 5px;
     padding: 30px 20px 0 60px;
     position: relative;
-    height: 90%;
+    height: 95%;
     min-height: 400px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -338,5 +338,106 @@
     .reportlead-toolbar-header {
         flex-wrap: nowrap;
     }
+}
+/* ==========================
+   THEME VARIABLES
+========================== */
+
+:root {
+  /* 🌞 Light Mode */
+  --reportlead-bg: #f8f8f8;
+  --reportlead-toolbar-bg: #f0eeee;
+  --reportlead-text: #333;
+  --reportlead-subtext: #555;
+  --reportlead-border: #ddd;
+  --reportlead-btn-bg: #e5e5e5;
+  --reportlead-btn-border: #ccc;
+  --reportlead-card-bg: #ffffff;
+  --reportlead-placeholder: #888;
+  --reportlead-hover: #e6e6e6;
+  --reportlead-active: #bebebe;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --reportlead-bg: #0f172a;
+  --reportlead-toolbar-bg: #1e293b;
+  --reportlead-text: #e2e8f0;
+  --reportlead-subtext: #94a3b8;
+  --reportlead-border: #334155;
+  --reportlead-btn-bg: #334155;
+  --reportlead-btn-border: #475569;
+  --reportlead-card-bg: #1e293b;
+  --reportlead-placeholder: #64748b;
+  --reportlead-hover: #475569;
+  --reportlead-active: #3b4252;
+}
+
+/* ==========================
+   APPLY THEME VARIABLES
+========================== */
+
+.reportlead-dashboard-container {
+  background-color: var(--reportlead-bg);
+  color: var(--reportlead-text);
+}
+
+.reportlead-toolbar-header {
+  background-color: var(--reportlead-toolbar-bg);
+  border-bottom: 1px solid var(--reportlead-border);
+}
+
+.reportlead-measures-dropdown {
+  background-color: var(--reportlead-btn-bg);
+  border: 1px solid var(--reportlead-btn-border);
+  color: var(--reportlead-text);
+}
+
+.reportlead-insert-spreadsheet {
+  background-color: var(--reportlead-active);
+  color: var(--reportlead-text);
+}
+
+.reportlead-view-icons {
+  background-color: var(--reportlead-card-bg);
+  border: 1px solid var(--reportlead-border);
+}
+
+.reportlead-icon-btn {
+  color: var(--reportlead-subtext);
+  border-right: 1px solid var(--reportlead-border);
+}
+
+.reportlead-icon-btn.reportlead-active {
+  background-color: var(--reportlead-hover);
+  color: var(--reportlead-text);
+}
+
+.reportlead-chart-area {
+  background-color: var(--reportlead-card-bg);
+  border: 1px solid var(--reportlead-border);
+}
+
+.reportlead-y-axis-label,
+.reportlead-x-axis-label {
+  color: var(--reportlead-subtext);
+}
+
+.reportlead-no-data-placeholder {
+  color: var(--reportlead-placeholder);
+}
+
+.reportlead-no-data-title {
+  color: var(--reportlead-text);
+}
+
+.reportlead-no-data-tip {
+  color: var(--reportlead-subtext);
+}
+
+.reportlead-measure-options-container {
+  background: var(--reportlead-card-bg);
+  border: 1px solid var(--reportlead-border);
+  color: var(--reportlead-text);
 }
 
