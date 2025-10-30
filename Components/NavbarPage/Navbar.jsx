@@ -39,7 +39,7 @@ function Navbar({ toggleTheme, currentTheme }) {
   const [data, setData] = useState([]);
   const location = useLocation();
   const isPipelinePage = location.pathname.includes("pipeline");
-  
+
 
   // ✅ EXPORT CSV
   const handleExport = () => {
@@ -273,7 +273,7 @@ function Navbar({ toggleTheme, currentTheme }) {
             </span>
 
             {/* Configuration */}
-            <span             
+            <span
             >
               <button
                 onClick={() =>
@@ -443,9 +443,18 @@ function Navbar({ toggleTheme, currentTheme }) {
       <div className="navbar-right">
         <div className="navbar-right-top">
           <span className="activities-icon"><QueryBuilderIcon /> </span>
-          <Link to={'/setting'}  className="construction-icon"><span><ConstructionIcon /></span></Link>
+          <Link to={'/setting'} className="construction-icon"><span><ConstructionIcon /></span></Link>
           <span className="organisationNameshow">{OrganizationName}</span>
-          <button className="avatar" title={fullname} onClick={() => setUserProfile(!UserProfile)}>{firstLetter}</button>
+          <button
+            className="avatar" title={fullname}
+            onClick={(e) => {
+              e.stopPropagation();
+              setUserProfile((prev) => !prev);
+            }}
+          >
+            {firstLetter}
+          </button>
+          
           {UserProfile ? <UserIconDropDown /> : " "}
         </div>
 
@@ -554,7 +563,10 @@ const UserIconDropDown = () => {
     document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  const handleToggle = () => setDarkMode(!darkMode);
+  const handleToggle = (e) =>{
+    e.stopPropagation();
+    setDarkMode(!darkMode);
+  }
 
   const navigate = useNavigate();
 

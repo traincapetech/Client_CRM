@@ -164,13 +164,13 @@ const Homepage = () => {
             
             {/* Sales Pipeline Funnel */}
             <div className="dashboard-card pipeline-card">
-              <h2 className="card-title">SALES PIPELINE</h2>
+              <h2 className="card-title-homePage">SALES PIPELINE</h2>
               <SalesFunnel pipeline={data.pipeline} />
             </div>
             
             {/* Daily Activities */}
             <div className="dashboard-card activity-card">
-              <h2 className="card-title">DAILY ACTIVITIES</h2>
+              <h2 className="card-title-homePage">DAILY ACTIVITIES</h2>
               <div className="activity-gauges-container">
                 {data.dailyActivities.map(activity => (
                   <ActivityGauge key={activity.label} {...activity} />
@@ -185,7 +185,7 @@ const Homepage = () => {
           
           {/* Top Performers (Revenue) */}
           <div className="dashboard-card">
-            <h2 className="card-title">TOP PERFORMERS (REVENUE)</h2>
+            <h2 className="card-title-homePage">TOP PERFORMERS (REVENUE)</h2>
             <div className="performer-list">
               {data.topPerformers.map(performer => (
                 <PerformanceBar key={performer.name} {...performer} />
@@ -195,7 +195,7 @@ const Homepage = () => {
 
           {/* Monthly Revenue Forecast */}
           <div className="dashboard-card">
-            <h2 className="card-title">MONTHLY REVENUE FORECAST</h2>
+            <h2 className="card-title-homePage">MONTHLY REVENUE FORECAST</h2>
             
             <div className="chart-legend-container">
               <span className="chart-legend actual-legend">
@@ -339,7 +339,7 @@ const Homepage = () => {
 
           {/* Deals to Watch */}
           <div className="dashboard-card">
-            <h2 className="card-title">DEALS TO WATCH</h2>
+            <h2 className="card-title-homePage">DEALS TO WATCH</h2>
             <div className="deal-list">
               <div className="deal-item warning-red">
                 <p className="deal-name">Acme Corp - $150K</p>
@@ -354,7 +354,7 @@ const Homepage = () => {
 
           {/* Upcoming Tasks */}
           <div className="dashboard-card">
-            <h2 className="card-title">UPCOMING TASKS</h2>
+            <h2 className="card-title-homePage">UPCOMING TASKS</h2>
             <div className="task-list">
               {data.upcomingTasks.map((task, index) => (
                 <div key={index} className="task-item">

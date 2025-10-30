@@ -28,7 +28,7 @@
   --title-bg:#ffffff;
     --title-bg-color:#484848a8;
 }
-h2{
+.generalsetting-container h2{
     background-color: var(--title-bg-color);
 }
 span,p{

@@ -102,7 +102,7 @@ body {
 
 /* Card content */
 .dashboard-card,
-.card-title,
+.card-title-homePage,
 .deal-item,
 .task-item,
 .filter-select {
@@ -170,7 +170,7 @@ body {
     background: var(--gradient-dashboard-card-hover);
 }
 
-.card-title {
+.card-title-homePage {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-dash-text);
@@ -180,7 +180,7 @@ body {
     transition: color var(--transition-speed);
 }
 
-.dashboard-card:hover .card-title {
+.dashboard-card:hover .card-title-homePage {
     color: var(--color-primary);
 }
 
