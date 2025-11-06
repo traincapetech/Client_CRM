@@ -1,0 +1,168 @@
+/* ------------------------------------------------ */
+/* === Themed CSS for LostReasonActivityTypes Table === */
+/* ------------------------------------------------ */
+
+/* === Theme Variables === */
+:root {
+  --lost-bg: #ffffff;
+  --lost-border: #e5e7eb;
+  --lost-header-bg: #f3f4f6;
+  --lost-header-text: #374151;
+  --lost-body-text: #4b5563;
+  --lost-strong-text: #111827;
+  --lost-muted-text: #6b7280;
+  --lost-hover-bg: #f9fafb;
+  --lost-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --lost-accent: #6b3fa0;
+}
+
+[data-theme="dark"] {
+  --lost-bg: #1e1e2e;
+  --lost-border: #2e2e3f;
+  --lost-header-bg: #2a2a3d;
+  --lost-header-text: #d1d5db;
+  --lost-body-text: #e5e7eb;
+  --lost-strong-text: #f3f4f6;
+  --lost-muted-text: #9ca3af;
+  --lost-hover-bg: #2f2f44;
+  --lost-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+  --lost-accent: #a78bfa; /* lighter purple for dark theme */
+}
+
+/* === Table Container === */
+.LostReason-table {
+  overflow-x: auto;
+  background-color: var(--lost-bg);
+  border-radius: 0.5rem;
+  box-shadow: var(--lost-shadow);
+  border: 1px solid var(--lost-border);
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* === Header Row === */
+.LostReason-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--lost-header-bg);
+  border-bottom: 1px solid var(--lost-border);
+  font-weight: 600;
+  color: var(--lost-header-text);
+  padding: 0.75rem 1.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header Cells */
+.LostReason-header > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+}
+
+/* Header Checkbox + Text */
+.LostReason-header-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Checkbox */
+.LostReason-checkbox {
+  display: flex;
+  accent-color: var(--lost-accent);
+  cursor: pointer;
+  gap: 10px;
+}
+
+/* Header Text */
+.LostReason-header-text {
+  font-weight: 600;
+  color: var(--lost-header-text);
+}
+
+/* Filter Icon */
+.LostReason-filter-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--lost-muted-text);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.LostReason-filter-icon:hover {
+  color: var(--lost-accent);
+}
+
+/* === Data Rows === */
+.LostReason-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--lost-border);
+  transition: background-color 0.2s, color 0.3s;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.LostReason-row:hover {
+  background-color: var(--lost-hover-bg);
+}
+
+/* === Name Cell === */
+.LostReason-cell-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.LostReason-name-text {
+  font-weight: 500;
+  color: var(--lost-strong-text);
+}
+
+/* Drag Handle Icon */
+.drag-handle-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--lost-muted-text);
+  cursor: grab;
+}
+
+/* === Other Cells === */
+.LostReason-cell-summary,
+.LostReason-cell-planned,
+.LostReason-cell-type,
+.LostReason-cell-actions {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--lost-body-text);
+}
+
+.LostReason-cell-planned,
+.LostReason-cell-type {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.LostReason-cell-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .LostReason-header,
+  .LostReason-row {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .LostReason-name-text {
+    font-size: 0.9rem;
+  }
+}

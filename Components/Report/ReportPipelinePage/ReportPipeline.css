@@ -1,0 +1,585 @@
+/* =========================================
+   1. Global Styles and Layout
+   ========================================= */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f8f8f8;
+    /* Light gray background */
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* =========================================
+   2. Toolbar Header
+   ========================================= */
+
+.toolbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: #f0eeee;
+    /* Slightly darker gray for the header */
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.toolbar-left,
+.toolbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Measures Dropdown Button */
+.measures-dropdown {
+    background-color: #e5e5e5;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #444;
+}
+
+.insertSpreadsheet {
+    background-color: #bebebe;
+    border: none;
+    padding: 4px 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #444;
+    opacity: 0.8;
+}
+
+/* View Icons Group */
+.view-icons {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: white;
+    height: 30px;
+    /* Standard height for toolbar buttons */
+}
+
+.report-icon-btn {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #777;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #eee;
+}
+
+.report-icon-btn:last-child {
+    border-right: none;
+}
+
+.report-icon-btn.active {
+    background-color: #e6e6e6;
+    color: #555;
+}
+
+/* Header Legend (Months) */
+.header-legend {
+    margin-right: 20px;
+    font-size: 13px;
+    display: flex;
+    gap: 15px;
+}
+
+.legend-item::before {
+    content: '•';
+    margin-right: 4px;
+    font-size: 1.5em;
+    line-height: 0.5;
+    vertical-align: middle;
+}
+
+/* Legend Colors (Approximate matches to the image's faint header colors) */
+.legend-blue::before {
+    color: #80c2d3;
+}
+
+/* October 2023 */
+.legend-green::before {
+    color: #9fccb9;
+}
+
+/* August 2023 */
+.legend-pink::before {
+    color: #f2a6b4;
+}
+
+/* November 2023 */
+.legend-red::before {
+    color: #f8c983;
+}
+
+/* September 2023 */
+
+/* SAMPLE DATA Banner */
+.sample-data-banner {
+    position: absolute;
+    top: 130px;
+    /* Pull it up slightly to look 'cut' from the top edge */
+    right: 2px;
+
+    background-color: #eb6161;
+    /* Red color */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 3px 15px;
+    /* Smaller padding */
+
+    /* New Transformation: Use skew to give it the 'cut' angle */
+    transform: skewX(-15deg);
+    /* Skew the shape diagonally */
+    transform-origin: 100% 0;
+
+    /* Ensure text remains legible by counter-skewing or by using white-space nowrap */
+    white-space: nowrap;
+    line-height: 1.5;
+    /* Vertical centering */
+
+    /* Visual Overrides */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+    /* Ensure it is above the header elements */
+    overflow: hidden;
+    transform: rotateZ(45deg);
+}
+
+/* =========================================
+   3. Main Content and Chart Area
+   ========================================= */
+
+.main-content {
+    flex-grow: 1;
+    position: relative;
+    overflow: auto;
+    /* In case the chart area exceeds the screen height */
+}
+
+.chart-area {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 30px 20px 0 60px;
+    /* Padding for y-axis labels and chart space */
+    position: relative;
+    height: 95%;
+    /* Occupy most of the main content space */
+    min-height: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   4. Background Chart Elements (Axes and Faint Bars)
+   ========================================= */
+
+.background-chart-elements {
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    right: 20px;
+    bottom: 0;
+    pointer-events: none;
+    /* Allows clicks to pass through to the main area */
+}
+
+/* Y-Axis Labels */
+.y-axis-labels {
+    position: absolute;
+    top: 0;
+    left: -60px;
+    height: calc(100% - 40px);
+    /* Height minus space for X-axis labels */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+
+.y-axis-label {
+    font-size: 12px;
+    color: #777;
+    text-align: right;
+    width: 50px;
+    border-bottom: 1px dashed #eee;
+    /* Faint horizontal lines */
+    padding-bottom: 2px;
+}
+
+.y-axis-label:last-child {
+    border-bottom: 1px solid #aaa;
+    /* Thicker line for the 0.0 (x-axis base) */
+}
+
+/* X-Axis Labels (Under the chart) */
+.x-axis-labels {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    white-space: nowrap;
+    opacity: 0.2;
+}
+
+.x-axis-label {
+    /* Create space for the ghost bars */
+    flex: 1;
+    max-width: 25%;
+    padding: 0 5px;
+}
+
+/* Faint Background Bars */
+.background-chart-elements::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    /* Above the X-axis labels */
+    left: 0;
+    right: 0;
+    /* Create the faint, colored background bars using linear-gradient */
+    background-image:
+        /* Bar 1: Lead/Call ID (Blue/White gradient) */
+        linear-gradient(to top, rgba(173, 216, 230, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        /* Bar 2: Volus/Shared (Red/White gradient) */
+        linear-gradient(to top, rgba(255, 192, 203, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        /* Bar 3: Manager notes (Orange/White gradient) */
+        linear-gradient(to top, rgba(255, 222, 173, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+        /* Bar 4: Internal notes (Light Blue/White gradient) */
+        linear-gradient(to top, rgba(173, 230, 226, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    background-size: calc(25% - 20px) 100%;
+    /* Adjust size to be less than 25% for bar width */
+    background-repeat: no-repeat;
+    background-position:
+        2% 0,
+        /* Position for Bar 1 */
+        27% 0,
+        /* Position for Bar 2 */
+        52% 0,
+        /* Position for Bar 3 */
+        77% 0;
+    /* Position for Bar 4 */
+}
+
+
+/* =========================================
+   5. No Data Placeholder
+   ========================================= */
+
+.no-data-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 300px;
+    color: #888;
+    padding-bottom: 50px;
+    /* Offset it slightly up due to the chart base */
+    z-index: 20;
+    /* Ensure it appears above the background elements */
+}
+
+.icon-folder {
+    color: #b0b0b0;
+    /* Sad folder icon color */
+    font-size: 80px;
+    /* Larger icon size */
+    margin-bottom: 10px;
+}
+
+.no-data-title {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 5px 0;
+    color: #555;
+}
+
+.no-data-tip {
+    font-size: 13px;
+    color: #777;
+}
+
+/* This is a crucial element from the image not in the JSX. You may need to add it. */
+.activate-windows-ad {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 10px;
+    color: #555;
+    background: #f7f7f7;
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+    z-index: 50;
+}
+
+.icon-btn-report {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #777;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #eee;
+}
+
+.icon-btn-report.active {
+   background-color: #ccc;
+    /* active border */
+}
+
+.measureOption-container {
+    background: white;
+    padding: 10px 16px;
+    position: absolute;
+    top: 100%;
+    z-index: 100;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+.measureOption-container div{
+    padding: 10px;
+    font-size: 14px;
+
+}
+
+/* 📱 Mobile (up to 600px) */
+@media (max-width: 600px) {
+    .toolbar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .toolbar-left, 
+    .toolbar-right {
+        width: 100%;
+        display: block;
+    }
+
+    .measures-dropdown,
+    .insertSpreadsheet {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .report-icon-btn,
+    .icon-btn-report {
+        font-size: 14px;
+        padding: 0 6px;
+    }
+
+    .chart-area {
+        padding: 20px 10px;
+        min-height: 300px;
+    }
+
+    .header-legend {
+        font-size: 11px;
+        gap: 10px;
+    }
+
+    .no-data-title {
+        font-size: 16px;
+    }
+
+    .no-data-tip {
+        font-size: 12px;
+    }
+
+    .sample-data-banner {
+        top: 160px;
+    }
+
+    .view-icons {
+        width: 75%;
+    }
+}
+
+/* 💻 Tablet (601px - 900px) */
+@media (max-width: 900px) and (min-width: 601px) {
+    .toolbar-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .chart-area {
+        padding: 25px 15px;
+    }
+
+    .header-legend {
+        gap: 12px;
+        font-size: 12px;
+    }
+}
+
+/* 🖥️ Desktop (above 900px) */
+@media (min-width: 901px) {
+    .toolbar-header {
+        flex-wrap: nowrap;
+    }
+}
+/* ==========================
+   🌗 THEME VARIABLES
+========================== */
+
+:root {
+  /* 🌞 Light Mode */
+  --dashboard-bg: #f8f8f8;
+  --toolbar-bg: #f0eeee;
+  --toolbar-text: #333;
+  --border-color: #ddd;
+  --button-bg: #e5e5e5;
+  --button-text: #444;
+  --button-hover: #e6e6e6;
+  --active-bg: #bebebe;
+  --view-bg: #ffffff;
+  --view-border: #ccc;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #777;
+  --placeholder: #888;
+  --chart-bg: #ffffff;
+  --chart-border: #ddd;
+  --legend-opacity: 0.2;
+  --sample-banner-bg: #eb6161;
+  --sample-banner-text: #ffffff;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --dashboard-bg: #0f172a;
+  --toolbar-bg: #1e293b;
+  --toolbar-text: #e2e8f0;
+  --border-color: #334155;
+  --button-bg: #334155;
+  --button-text: #e2e8f0;
+  --button-hover: #475569;
+  --active-bg: #3b4252;
+  --view-bg: #1e293b;
+  --view-border: #475569;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --placeholder: #94a3b8;
+  --chart-bg: #1e293b;
+  --chart-border: #475569;
+  --legend-opacity: 0.4;
+  --sample-banner-bg: #ef4444;
+  --sample-banner-text: #fff;
+}
+
+/* ==========================
+   APPLY THEME VARIABLES
+========================== */
+
+/* 1️⃣ Layout */
+.dashboard-container {
+  background-color: var(--dashboard-bg);
+  color: var(--text-primary);
+}
+
+/* 2️⃣ Toolbar */
+.toolbar-header {
+  background-color: var(--toolbar-bg);
+  color: var(--toolbar-text);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.measures-dropdown {
+  background-color: var(--button-bg);
+  border: 1px solid var(--view-border);
+  color: var(--button-text);
+}
+
+.insertSpreadsheet {
+  background-color: var(--active-bg);
+  color: var(--button-text);
+  opacity: 0.85;
+}
+
+.view-icons {
+  background-color: var(--view-bg);
+  border: 1px solid var(--view-border);
+}
+
+.report-icon-btn {
+  color: var(--text-muted);
+  border-right: 1px solid var(--border-color);
+}
+
+.report-icon-btn.active {
+  background-color: var(--button-hover);
+  color: var(--text-secondary);
+}
+
+/* 3️⃣ Chart Area */
+.chart-area {
+  background-color: var(--chart-bg);
+  border: 1px solid var(--chart-border);
+}
+
+.y-axis-label {
+  color: var(--text-muted);
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.x-axis-labels {
+  color: var(--text-muted);
+  opacity: var(--legend-opacity);
+}
+
+/* 4️⃣ No Data Placeholder */
+.no-data-placeholder {
+  color: var(--placeholder);
+}
+
+.no-data-title {
+  color: var(--text-secondary);
+}
+
+.no-data-tip {
+  color: var(--text-muted);
+}
+
+/* 5️⃣ Measure Option Dropdown */
+.measureOption-container {
+  background-color: var(--view-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* 6️⃣ Sample Data Banner */
+.sample-data-banner {
+  background-color: var(--sample-banner-bg);
+  color: var(--sample-banner-text);
+}

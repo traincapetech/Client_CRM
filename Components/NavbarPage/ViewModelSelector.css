@@ -1,0 +1,81 @@
+/* ================================================ */
+/* === Themed CSS for View Mode Selector Component === */
+/* ================================================ */
+
+/* ===== Light Theme (Default) ===== */
+:root {
+  --color-primary: #7c3aed;
+  --color-icon-default: #374151;
+  --color-icon-active: #7c3aed;
+  --color-bg-icon: #edeff3;
+  --color-bg-icon-hover: #d1d5db;
+  --color-bg-icon-active: #f3e8ff;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --color-primary: #a78bfa;
+  --color-icon-default: #d1d5db;
+  --color-icon-active: #a78bfa;
+  --color-bg-icon: #2d2d3b;
+  --color-bg-icon-hover: #3b3b4f;
+  --color-bg-icon-active: #3c2f4a;
+}
+
+/* ================================================ */
+/* === View Mode Selector Styles === */
+/* ================================================ */
+
+/* Container */
+.view-mode-selector {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+/* Individual icons */
+.view-mode-selector .icon-btn {
+  padding: 6px;
+  border-radius: 6px;
+  background-color: var(--color-bg-icon);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+
+.view-mode-selector .icon-btn:hover {
+  background-color: var(--color-bg-icon-hover);
+}
+
+.view-mode-selector .icon-btn.active {
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg-icon-active);
+}
+
+/* Icon size & color */
+.view-mode-selector .icon-btn svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-icon-default);
+  transition: color 0.3s;
+}
+
+.view-mode-selector .icon-btn.active svg {
+  color: var(--color-icon-active);
+}
+
+/* ================================================ */
+/* === Responsive (Mobile) === */
+/* ================================================ */
+@media (max-width: 900px) {
+  .view-mode-selector {
+    gap: 6px;
+  }
+
+  .view-mode-selector .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}

@@ -1,0 +1,157 @@
+/* ------------------------------------------------ */
+/* === Themed CSS for tagsActivityTypes Table === */
+/* ------------------------------------------------ */
+
+/* Table Container */
+.tags-table {
+  overflow-x: auto;
+  background-color: var(--color-card-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-dark);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* === Header Row === */
+.tags-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  padding: 0.75rem 1.5rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Header Cells */
+.tags-header > div {
+  display: flex;
+  align-items: center;
+  gap: 10;
+  width: fit-content;
+}
+
+/* Header Checkbox + Text */
+.tags-header-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tags-checkbox {
+  accent-color: var(--color-primary);
+  display: flex;
+  width: fit-content;
+  gap: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Filter Icon */
+.tags-filter-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-text-medium);
+  cursor: pointer;
+}
+
+/* === Data Rows === */
+.tags-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.tags-row:hover {
+  background-color: var(--color-background);
+}
+
+/* Name Cell */
+.tags-cell-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tags-name-text {
+  font-weight: 500;
+  color: var(--color-text-dark);
+  transition: color 0.3s;
+}
+
+/* Drag Handle Icon */
+.drag-handle-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-medium);
+  cursor: grab;
+}
+
+/* Other Cells */
+.tags-cell-summary,
+.tags-cell-planned,
+.tags-cell-type,
+.tags-cell-actions {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text-medium);
+  transition: color 0.3s;
+}
+
+/* Planned & Type cells text alignment */
+.tags-cell-planned,
+.tags-cell-type {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Actions cell alignment */
+.tags-cell-actions {
+  justify-content: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tags-header,
+  .tags-row {
+    grid-template-columns: 2fr 2fr 2fr 3fr 1fr;
+    padding: 0.5rem 1rem;
+  }
+
+  .tags-name-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Alignment Fix */
+.tags-cell-planned {
+  justify-items: right;
+}
+
+/* ===== Theme Variables ===== */
+:root {
+  --color-primary: #6b3fa0;
+  --color-background: #f9fafb;
+  --color-card-bg: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text-dark: #1f2937;
+  --color-text-medium: #6b7280;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-primary: #a78bfa;
+  --color-background: #1f2937;
+  --color-card-bg: #111827;
+  --color-border: #374151;
+  --color-text-dark: #f9fafb;
+  --color-text-medium: #9ca3af;
+}

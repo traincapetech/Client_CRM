@@ -1,0 +1,157 @@
+/* ========================================
+   1. Theme Variables
+======================================== */
+:root {
+  --config-bg: #ffffff;
+  --config-border: #e5e7eb;
+  --config-header-text: #6b7280;
+  --config-body-text: #4b5563;
+  --config-strong-text: #111827;
+  --config-muted-text: #6b7280;
+  --config-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --config-hover-bg: #f9fafb;
+  --config-focus-ring: #4f46e5;
+  --config-success: #10b981;
+}
+
+[data-theme="dark"] {
+  --config-bg: #53535c;
+  --config-border: #2e2e3f;
+  --config-header-text: #9ca3af;
+  --config-body-text: #d1d5db;
+  --config-strong-text: #f3f4f6;
+  --config-muted-text: #9ca3af;
+  --config-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.05),
+    0 1px 2px 0 rgba(255, 255, 255, 0.05);
+  --config-hover-bg: #0e101d;
+  --config-focus-ring: #6366f1;
+  --config-success: #10b981;
+}
+
+/* ========================================
+   2. Table Container
+======================================== */
+.configActivityPlans-table-container {
+  overflow-x: auto;
+  background-color: var(--config-bg);
+  border: 1px solid var(--config-border);
+  border-radius: 0.5rem;
+  box-shadow: var(--config-shadow);
+}
+
+/* ========================================
+   3. Table Layout
+======================================== */
+.configActivityPlans-header,
+.configActivityPlans-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 1fr 1fr; /* checkbox, name, apply to, step count */
+  align-items: center;
+  text-align: left;
+}
+
+/* ========================================
+   4. Header Cells
+======================================== */
+.configActivityPlans-header {
+  border-bottom: 1px solid var(--config-border);
+  background-color: var(--config-hover-bg);
+}
+
+.configActivityPlans-header-cell {
+  padding: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--config-header-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   5. Body and Rows
+======================================== */
+.configActivityPlans-body {
+  background-color: var(--config-bg);
+}
+
+.configActivityPlans-row {
+  border-bottom: 1px solid var(--config-border);
+  transition: background-color 0.2s ease;
+}
+
+.configActivityPlans-row:last-child {
+  border-bottom: none;
+}
+
+.configActivityPlans-row:hover {
+  background-color: var(--config-hover-bg);
+}
+
+/* ========================================
+   6. Data Cells
+======================================== */
+.configActivityPlans-cell {
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: var(--config-body-text);
+  display: flex;
+  align-items: center;
+}
+
+.configActivityPlans-team {
+  font-weight: 500;
+  color: var(--config-strong-text);
+}
+
+.configActivityPlans-alias {
+  color: var(--config-muted-text);
+}
+
+.configActivityPlans-leader {
+  color: var(--config-muted-text);
+  display: flex;
+  align-items: center;
+}
+
+/* ========================================
+   7. Checkbox
+======================================== */
+.configActivityPlans-table-checkbox {
+  height: 1rem;
+  width: 1rem;
+  border-color: var(--config-border);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.header-checkbox {
+  margin-left: 1rem;
+}
+
+/* ========================================
+   8. Team Leader Badge
+======================================== */
+.configActivityPlans-leader-badge {
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--config-success);
+  border-radius: 0.125rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ========================================
+   9. Smooth Theme Transition
+======================================== */
+.configActivityPlans-table-container,
+.configActivityPlans-row,
+.configActivityPlans-header,
+.configActivityPlans-cell {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

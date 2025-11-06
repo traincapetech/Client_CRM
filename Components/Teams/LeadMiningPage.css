@@ -1,0 +1,221 @@
+/* ------------------------------------------------ */
+/* === Themed CSS for Lead Mining Table === */
+/* ------------------------------------------------ */
+
+/* ===== Light Theme (Default) ===== */
+:root {
+  --color-primary: #7262c3; /* Purple accent */
+  --color-text-dark: #1f2937;
+  --color-text-light: #4b5563;
+  --color-border: #e5e7eb;
+  --color-bg-light: #f9fafb;
+  --color-card-bg: #ffffff;
+
+  /* Tag colors */
+  --color-tag-country-bg: #f5edef;
+  --color-tag-industry-bg: #eedad6;
+  --color-tag-urgent-bg: #e8d0e2;
+
+  /* Status colors */
+  --color-status-done-bg: #e1f4e1;
+  --color-status-done-text: #4caf50;
+
+  /* Avatar color */
+  --color-avatar-bg: #5fcc83;
+
+  /* Checkbox checkmark color */
+  --color-checkmark: #ffffff;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"] {
+  --color-primary: #a78bfa;
+  --color-text-dark: #f9fafb;
+  --color-text-light: #d1d5db;
+  --color-border: #374151;
+  --color-bg-light: #1f2937;
+  --color-card-bg: #111827;
+
+  --color-tag-country-bg: #3b2f41;
+  --color-tag-industry-bg: #44363a;
+  --color-tag-urgent-bg: #523b4a;
+
+  --color-status-done-bg: #234c2a;
+  --color-status-done-text: #86efac;
+
+  --color-avatar-bg: #10b981;
+
+  /* Adjusted checkmark for dark mode */
+  --color-checkmark: #ffffff;
+}
+
+/* --- Container & Table Base Styles --- */
+.lead-mining-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.lead-mining-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  transition: color 0.3s;
+}
+
+/* --- Table Header Styles --- */
+.table-header tr {
+  border-bottom: 2px solid var(--color-border);
+  background-color: var(--color-bg-light);
+}
+
+.table-header th {
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  text-transform: capitalize;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+/* --- Table Body and Row Styles --- */
+.table-row {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.table-row:hover {
+  background-color: var(--color-bg-light);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row td {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+}
+
+.data-id {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* --- Tag Styles --- */
+.tag-pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin-right: 0.25rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tag-country {
+  background-color: var(--color-tag-country-bg);
+}
+
+.tag-industry {
+  background-color: var(--color-tag-industry-bg);
+}
+
+.tag-urgent {
+  background-color: var(--color-tag-urgent-bg);
+  color: var(--color-primary);
+}
+
+/* --- Salesperson Avatar --- */
+.salesperson-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.salesperson-avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--color-avatar-bg);
+  transition: background-color 0.3s;
+}
+
+.salesperson-name {
+  color: var(--color-text-dark);
+}
+
+/* --- Status Pill --- */
+.status-pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--color-status-done-bg);
+  color: var(--color-status-done-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.data-status {
+  text-align: right;
+}
+
+/* --- Checkbox Styling (fixed for dark mode) --- */
+.header-checkbox input[type="checkbox"],
+.data-checkbox input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  appearance: none; /* Remove default style */
+  outline: none;
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Checked State */
+.header-checkbox input[type="checkbox"]:checked,
+.data-checkbox input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Checkmark (custom) */
+.header-checkbox input[type="checkbox"]:checked::after,
+.data-checkbox input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 0.9rem;
+  color: var(--color-checkmark);
+}
+
+/* Hover & Focus */
+.header-checkbox input[type="checkbox"]:hover,
+.data-checkbox input[type="checkbox"]:hover {
+  border-color: var(--color-primary);
+}
+
+.header-checkbox input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px rgba(114, 98, 195, 0.3);
+}

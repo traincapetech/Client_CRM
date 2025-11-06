@@ -1,0 +1,223 @@
+/* ========================================== */
+/* === THEME VARIABLES (Light + Dark) === */
+/* ========================================== */
+
+:root {
+    --bg-color: #ffffff;
+    --header-bg: #f3f4f6;
+    --text-color: #374151;
+    --border-color: #e5e7eb;
+    --hover-bg: #f9fafb;
+    --checkbox-color: #6b3fa0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1f2937;
+    --header-bg: #374151;
+    --text-color: #f9fafb;
+    --border-color: #4b5563;
+    --hover-bg: #2d3748;
+    --checkbox-color: #a78bfa;
+    --shadow-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ========================================== */
+/* === ConfigActivityTypes Table Styles === */
+/* ========================================== */
+
+/* Table Container */
+.config-activity-table {
+    overflow-x: auto;
+    background-color: var(--bg-color);
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+/* === Header Row === */
+.config-activity-header {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 4fr 1fr;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.config-activity-header > div {
+    display: flex;
+    align-items: center;
+}
+
+/* Header Checkbox + Text */
+.config-header-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.config-checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--checkbox-color);
+}
+
+.config-header-text {
+    font-weight: 600;
+}
+
+/* Filter Icon */
+.config-filter-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/* === Data Rows === */
+.config-activity-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.config-activity-row {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 4fr 1fr;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.config-activity-row:hover {
+    background-color: var(--hover-bg);
+}
+
+/* === Name Cell === */
+.config-cell-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.config-name-text {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Drag Handle Icon */
+.drag-handle-icon {
+    width: 1rem;
+    height: 1rem;
+    color: #9ca3af;
+    cursor: grab;
+}
+
+/* === Other Cells === */
+.config-cell-summary,
+.config-cell-planned,
+.config-cell-type,
+.config-cell-actions {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* Planned & Type cells alignment */
+.config-cell-planned,
+.config-cell-type {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+/* Actions alignment */
+.config-cell-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ========================================== */
+/* === RESPONSIVE DESIGN === */
+/* ========================================== */
+
+@media (max-width: 1024px) {
+    .config-activity-header,
+    .config-activity-row {
+        grid-template-columns: 2fr 2fr 2fr 3fr 1fr;
+        padding: 0.5rem 1rem;
+    }
+
+    .config-name-text {
+        font-size: 0.9rem;
+    }
+
+    .config-cell-summary,
+    .config-cell-planned,
+    .config-cell-type {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .config-activity-header,
+    .config-activity-row {
+        grid-template-columns: 3fr 4fr 1fr;
+    }
+
+    .config-cell-summary,
+    .config-cell-planned {
+        display: none;
+    }
+
+    .config-name-text {
+        font-size: 0.85rem;
+    }
+
+    .drag-handle-icon {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .config-activity-header,
+    .config-activity-row {
+        grid-template-columns: 1fr 1fr;
+        padding: 0.5rem;
+    }
+
+    .config-activity-table {
+        font-size: 0.85rem;
+    }
+
+    .config-cell-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* ========================================== */
+/* === THEME TOGGLE BUTTON (Optional) === */
+/* ========================================== */
+
+.theme-toggle-btn {
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--checkbox-color);
+    color: #ffffff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.theme-toggle-btn:hover {
+    opacity: 0.9;
+}

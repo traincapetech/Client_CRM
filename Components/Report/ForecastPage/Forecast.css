@@ -1,0 +1,377 @@
+/* ==========================
+   Forecast Board Styling
+   (Light + Dark Mode Support)
+========================== */
+
+/* 🌤️ Default (Light Mode) Variables */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-card-bg: #ffffff;
+  --color-border: #e0e0e0;
+  --color-text: #1f2937;
+  --color-muted: #666;
+  --color-accent: #6b3fa0;
+  --color-hover: #f0f8ff;
+  --color-danger-bg: #fce6e6;
+  --color-danger-text: #c94c4c;
+  --color-success: #4caf50;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-card-bg: #1e293b;
+  --color-border: #334155;
+  --color-text: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-accent: #8b5cf6;
+  --color-hover: #243250;
+  --color-danger-bg: #3b2b2b;
+  --color-danger-text: #f87171;
+  --color-success: #22c55e;
+}
+
+/* ==========================
+   Container & Board
+========================== */
+
+.ForecastContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  cursor: grab;
+  background: var(--color-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ForecastContainer:active {
+  cursor: grabbing;
+}
+
+.forecast-board {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  gap: 16px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================
+   Columns
+========================== */
+.forecast-column {
+  flex: 1;
+  background: var(--color-surface);
+  border-radius: 8px;
+  padding: 12px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text);
+}
+
+.forecast-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forecast-setting-icon {
+  cursor: pointer;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+}
+.forecast-setting-icon:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================
+   Items & Add Buttons
+========================== */
+
+.forecast-items {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.left-side-forecastItems {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.left-side-forecastClick {
+  display: flex;
+  align-items: center;
+  margin-left: 60%;
+}
+
+.forecast-createLead-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.forecast-createLead-btn:hover {
+  background-color: var(--color-hover);
+}
+
+/* Popup */
+.forecast-lead-popup {
+  position: relative;
+  top: 0;
+  left: 100%;
+  z-index: 1000;
+  width: fit-content;
+}
+
+/* Add Stage */
+.forecast-addstage-btn {
+  padding: 6px 12px;
+  border: none;
+  background: var(--color-accent);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transform: rotate(90deg);
+  margin-top: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.forecast-addstage-btn:hover {
+  background: #532d80;
+}
+
+.forecast-iconshowAddStage {
+  transform: rotate(90deg);
+  width: fit-content;
+}
+
+.forecast-AddStage {
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  opacity: 0.2;
+  width: fit-content;
+  transition: opacity 0.3s ease;
+}
+
+.forecast-AddStage:hover {
+  opacity: 1;
+}
+
+/* ==========================
+   Product Card
+========================== */
+
+.forecast-product-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.forecast-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-product-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.forecast-options-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+}
+.forecast-options-button:hover {
+  color: var(--color-accent);
+}
+
+.forecast-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-muted);
+  border-radius: 50%;
+}
+
+.forecast-product-price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.forecast-product-tag-container {
+  display: flex;
+}
+
+.forecast-product-tag {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.forecast-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.forecast-star {
+  font-size: 1em;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+}
+.forecast-star.selected {
+  color: goldenrod;
+}
+
+.forecast-clock-icon {
+  font-size: 1em;
+  color: var(--color-muted);
+  margin-left: 4px;
+}
+
+.forecast-product-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forecast-action-button {
+  background-color: var(--color-success);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================
+   Edit Popup
+========================== */
+.editCard-container {
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: var(--color-surface);
+  position: absolute;
+  margin-left: 290px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.forecast-showoptionCardEdit {
+  position: absolute;
+}
+
+/* ==========================
+   Mobile Responsive
+========================== */
+.forecast-AddStage-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .forecast-AddStage {
+    display: none;
+  }
+
+  .forecast-addstage-btn {
+    width: 100%;
+  }
+
+  .forecast-AddStage-mobile {
+    display: inline;
+    background: var(--color-surface);
+  }
+
+  .ForecastContainer {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .forecast-board {
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .forecast-column {
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .forecast-product-card {
+    padding: 12px;
+  }
+
+  .forecast-product-title {
+    font-size: 1em;
+  }
+
+  .forecast-product-price {
+    font-size: 1em;
+  }
+
+  .forecast-product-tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+  }
+
+  .forecast-action-button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9em;
+  }
+
+  .forecast-createLead-btn {
+    font-size: 0.9em;
+    padding: 4px;
+  }
+}

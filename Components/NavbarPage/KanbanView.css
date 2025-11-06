@@ -1,0 +1,378 @@
+/* ===============================
+   Base Theme Variables
+=============================== */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+  --card-bg: #ffffff;
+  --header-bg: #f3f9ff;
+  --accent-color: #6b3fa0;
+  --accent-hover: #532d80;
+  --border-color: #e0e0e0;
+  --tag-bg: #fce6e6;
+  --tag-text: #c94c4c;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #888;
+  --edit-bg: #e8f5f3;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e5e5e5;
+  --card-bg: #32445f;
+  --header-bg: #29204a;
+  --accent-color: #8b5cf6;
+  --accent-hover: #7c3aed;
+  --border-color: #3a3a3a;
+  --tag-bg: #3b1c1c;
+  --tag-text: #f87171;
+  --scrollbar-thumb: #444;
+  --scrollbar-thumb-hover: #666;
+  --edit-bg: #243c38;
+}
+
+/* ===============================
+   Pipeline Layout
+=============================== */
+.pipeline-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.pipeline-board {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  gap: 10px;
+}
+
+.pipeline-board.active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* Columns */
+.pipeline-column {
+  flex: 0 0 350px;
+}
+
+.pipeline-board::-webkit-scrollbar {
+  height: 10px;
+}
+
+.pipeline-board::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 8px;
+}
+
+.pipeline-board::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.pipeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-bg);
+  margin-bottom: 20px;
+}
+
+.pipeline-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.setting-icon-pipeline {
+  cursor: pointer;
+  color: var(--text-color);
+  background: var(--header-bg);
+}
+
+.pipeline-items {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.left-side-pipelineItems {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.left-side-pipelineClick {
+  display: flex;
+  align-items: center;
+  margin-left: 60%;
+}
+
+/* Create button */
+.createLead-btn {
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Popup appears relative to column */
+.lead-popup {
+  position: relative;
+  top: 0;
+  left: 100%;
+  z-index: 1000;
+  width: fit-content;
+}
+
+.addstage-btn {
+  padding: 6px 12px;
+  border: none;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transform: rotate(90deg);
+  margin-top: 85px;
+  width: max-content;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.addstage-btn:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05) rotate(90deg);
+}
+
+.iconshowAddStage.active {
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+}
+
+.pipeline-AddStage {
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  opacity: 0.2;
+  width: fit-content;
+  transition: opacity 0.3s ease;
+}
+
+.pipeline-AddStage:hover {
+  opacity: 1;
+}
+
+/* AddStage Input Box */
+.addStageBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  margin-top: 8px;
+}
+
+.addStageInput {
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.addStageButtons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.closeBtn,
+.checkBtn {
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.closeBtn {
+  background: #f44336;
+}
+
+.checkBtn {
+  background: #4caf50;
+}
+
+/* ===============================
+   Product Cards
+=============================== */
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  margin-left: 10px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.product-price {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.product-tag-container {
+  display: flex;
+}
+
+.product-tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 600;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.product-tag:hover {
+  transform: scale(1.05);
+}
+
+.editCard-container-pipeline {
+  position: absolute;
+  margin-left: 190px;
+  align-items: center;
+  padding: 6px 6px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  background-color: var(--edit-bg);
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.editCard-container-pipeline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===============================
+   Responsive + Animations
+=============================== */
+.pipeline-AddStage-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .pipeline-AddStage {
+    display: none;
+  }
+
+  .addstage-btn {
+    width: 100%;
+  }
+
+  .pipeline-AddStage-mobile {
+    display: inline;
+    background: var(--card-bg);
+  }
+
+  .pipeline-container {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .pipeline-board {
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .pipeline-column {
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-title {
+    font-size: 1em;
+  }
+
+  .product-price {
+    font-size: 1em;
+  }
+
+  .product-tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+  }
+
+  .action-button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9em;
+  }
+
+  .createLead-btn {
+    font-size: 0.9em;
+    padding: 4px;
+  }
+}
+
+.stage-probability {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-left: 20px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.stage-probability:hover {
+  transform: scale(1.05);
+  color: #3b82f6;
+}

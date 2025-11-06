@@ -1,0 +1,128 @@
+/* ==========================
+   🎨 THEME VARIABLES
+========================== */
+:root {
+  --table-bg: #ffffff;
+  --table-header-bg: #f5f7fa;
+  --table-header-text: #5c6c7b;
+  --table-border: #e0e0e0;
+  --table-row-border: #f0f0f0;
+  --table-hover-bg: #f9f9f9;
+  --table-text: #333333;
+}
+
+[data-theme="dark"] {
+  --table-bg: #1e1e2f;
+  --table-header-bg: #2a2a3d;
+  --table-header-text: #c0c5d2;
+  --table-border: #38384b;
+  --table-row-border: #333344;
+  --table-hover-bg: #2e2e45;
+  --table-text: #e5e7eb;
+}
+
+/* ==========================
+   🧾 CORE TABLE STRUCTURE
+========================== */
+.list-view table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  overflow: hidden;
+  table-layout: fixed;
+  background-color: var(--table-bg);
+}
+
+/* ==========================
+   🧩 CELL STYLING
+========================== */
+.list-view th,
+.list-view td {
+  padding: 10px 20px;
+  border-right: 1px solid var(--table-row-border);
+  height: 40px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  color: var(--table-text);
+}
+
+/* ==========================
+   🧠 HEADER STYLING
+========================== */
+.list-view th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-weight: 600;
+  font-size: 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+}
+
+/* ==========================
+   🧮 DATA CELL STYLING
+========================== */
+.list-view td {
+  font-size: 0.95em;
+}
+
+/* Remove border from last column */
+.list-view th:last-child,
+.list-view td:last-child {
+  border-right: none;
+  padding-right: 15px;
+}
+
+/* ==========================
+   📊 COLUMN-SPECIFIC RULES
+========================== */
+.list-view th:nth-child(1),
+.list-view td:nth-child(1) {
+  width: 20%;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.list-view th:nth-child(2),
+.list-view td:nth-child(2) {
+  width: 120px;
+  text-align: right;
+}
+
+.list-view th:nth-child(3),
+.list-view td:nth-child(3) {
+  width: 30%;
+  text-align: left;
+}
+
+.list-view th:nth-child(4),
+.list-view td:nth-child(4) {
+  width: 120px;
+  text-align: left;
+}
+
+.list-view th:nth-child(5),
+.list-view td:nth-child(5) {
+  width: 100px;
+  text-align: center;
+}
+
+/* ==========================
+   🪄 ROW EFFECTS
+========================== */
+.list-view tbody tr {
+  background-color: var(--table-bg);
+  border-bottom: 1px solid var(--table-row-border);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.list-view tbody tr:hover {
+  background-color: var(--table-hover-bg);
+}
+
+.list-view tbody tr:last-child {
+  border-bottom: none;
+}

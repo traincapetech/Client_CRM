@@ -1,0 +1,205 @@
+/* ==========================
+   🎨 THEME VARIABLES
+========================== */
+:root {
+  --crm-bg: #ffffff;
+  --crm-sidebar-border: #d1d5db;
+  --crm-title-bg: #d1d5dd;
+  --crm-title-text: #374151;
+  --crm-border: #e5e7eb;
+  --crm-text-primary: #111827;
+  --crm-text-secondary: #6b7280;
+  --crm-accent: #7c3aed;
+  --crm-accent-hover: #6b21a8;
+  --crm-link: #059669;
+  --crm-link-hover: #047857;
+}
+
+[data-theme="dark"] {
+  --crm-bg: #0f172a;
+  --crm-sidebar-border: #2e2e40;
+  --crm-title-bg: #1e293b;
+  --crm-title-text: #e2e8f0;
+  --crm-border: #2d3748;
+  --crm-text-primary: #e5e7eb;
+  --crm-text-secondary: #94a3b8;
+  --crm-accent: #8b5cf6;
+  --crm-accent-hover: #7c3aed;
+  --crm-link: #34d399;
+  --crm-link-hover: #10b981;
+}
+
+/* ==========================
+   🧩 CORE CONTAINERS
+========================== */
+.crm-settings-container {
+  background-color: var(--crm-bg);
+  max-width: 100%;
+  padding-left: 20px;
+  margin-right: auto;
+  border-top: 1px solid var(--crm-border);
+  color: var(--crm-text-primary);
+}
+
+.setting-container {
+  display: flex;
+  padding: auto;
+}
+
+.crm-setting-sidebar-container {
+  width: 16%;
+  border-right: 1px solid var(--crm-sidebar-border);
+  border-top: 1px solid var(--crm-sidebar-border);
+}
+
+/* ==========================
+   🏷️ TITLES & SECTIONS
+========================== */
+.crm-title,
+.crm-section-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--crm-title-text);
+  margin-bottom: 2rem;
+  background-color: var(--crm-title-bg);
+  padding: 15px;
+  margin-left: -20px;
+  margin-top: -1px;
+  border-top: 1px solid var(--crm-sidebar-border);
+}
+
+.crm-settings-section {
+  padding-top: 2rem;
+}
+
+.section-separator {
+  margin: 2rem 0;
+  border-top: 1px solid var(--crm-border);
+}
+
+/* ==========================
+   🧱 FEATURE GRID
+========================== */
+.feature-grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .feature-grid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 4rem;
+  }
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding-right: 3rem;
+}
+
+.feature-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ==========================
+   ✅ CHECKBOX & RADIO
+========================== */
+.feature-checkbox,
+.sub-option-radio {
+  margin-top: 0.25rem;
+  height: 1rem;
+  width: 1rem;
+  color: var(--crm-accent);
+  border-color: var(--crm-border);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* ==========================
+   ✏️ FEATURE TEXTS
+========================== */
+.feature-text-container {
+  margin-left: 0.75rem;
+}
+
+.feature-title {
+  display: flex;
+  align-items: center;
+  color: var(--crm-text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.feature-help-icon {
+  margin-left: 0.25rem;
+  color: var(--crm-text-secondary);
+  cursor: help;
+}
+
+.feature-description {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--crm-text-secondary);
+}
+
+.feature-description .font-semibold {
+  font-weight: 600;
+}
+
+/* ==========================
+   🔗 ACTION LINKS
+========================== */
+.action-link {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--crm-link);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.action-link:hover {
+  color: var(--crm-link-hover);
+}
+
+.sub-options-group {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.sub-option-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--crm-text-secondary);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.sub-options-group .action-link {
+  margin-top: 0.25rem;
+}
+
+/* ==========================
+   🚀 BUTTON STYLES
+========================== */
+.update-probabilities-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  background-color: var(--crm-accent);
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: fit-content;
+}
+
+.update-probabilities-btn:hover {
+  background-color: var(--crm-accent-hover);
+}

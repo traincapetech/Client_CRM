@@ -42,9 +42,8 @@ const Dateoption = {
 }
 
 
-const Filter = () => {
+const Filter = ({onClose}) => {
   const [openFilterDates, setOpenFilterDates] = useState({});
-
   const [selectedFilters, setSelectedFilters] = useState(['My Pipeline']);
   const [selectedGroups, setSelectedGroups] = useState([]);
   const [selectedDatefilter, setSelectedDatefilter] = useState([])
@@ -108,9 +107,13 @@ const Filter = () => {
         {/* Filters Section */}
         <div className="section">
           <div className='section-filter'>
+         <div className='section-filter-top'>
             <h4 className="section-header">
               <span className="icon">▼</span> Filters
             </h4>
+            <button className="close-button" onClick={onClose}>×</button>
+            </div>
+           
             {options.filters.map((filter) => (
               <div
                 key={filter}
@@ -235,10 +238,9 @@ const Filter = () => {
 
             <hr />
             <div className="option">
-              Pipeline
+              Properties 
               <span className='dropdown-field'
-              >
-
+              ><ArrowDropDownIcon />
               </span>
             </div>
             <hr />

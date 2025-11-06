@@ -1,0 +1,261 @@
+:root {
+  /* Light Theme */
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --text-primary: #1f2937;
+  --text-secondary: #555;
+  --menu-bg: #ffffff;
+  --menu-hover: #2196f3;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --action-bg: #4caf50;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --card-bg: #1f1f2e;
+  --card-border: #3a3a4a;
+  --text-primary: #f3f4f6;
+  --text-secondary: #b0b0b0;
+  --menu-bg: #2a2a3a;
+  --menu-hover: #64b5f6;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --action-bg: #10b981;
+}
+
+.contact-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  overflow: hidden;
+  width: 400px;
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  color: var(--text-primary);
+}
+
+.contact-card-border {
+  width: 4px;
+  background-color: var(--menu-hover);
+}
+
+.contact-card-content {
+  flex-grow: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title-sales {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.options-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+}
+
+.card-email {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.email-icon {
+  font-size: 1.2em;
+  color: var(--text-secondary);
+}
+
+.email-address {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+.card-action {
+  display: flex;
+  justify-content: end;
+  padding: 8px 16px;
+}
+
+.action-button {
+  background-color: var(--action-bg);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.opened-editCard {
+  position: absolute;
+  top: 25%;
+  z-index: 100;
+  left: 20%;
+}
+
+.edit-ContainerTeam {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--menu-bg);
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+/* Dropdown Menu */
+.card-container {
+  position: relative;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 400px;
+  background-color: var(--menu-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  z-index: 100;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-columns {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 16px;
+}
+
+.menu-column {
+  flex: 1;
+  padding: 0 8px;
+}
+
+.column-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: var(--menu-hover);
+}
+
+.menu-divider {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 8px 0;
+}
+
+.dropdown-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+/* Palette Colors (unchanged) */
+.color-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.configuration-text {
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-card {
+    max-width: 98%;
+  }
+  .dropdown-menu {
+    max-width: 80%;
+    left: 28%;
+    transform: translateX(-50%);
+  }
+  .dropdown-columns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .menu-column {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1em;
+  }
+  .opened-editCard {
+    width: 100%;
+  }
+  .email-address {
+    font-size: 0.8em;
+  }
+  .action-button {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9em;
+  }
+}

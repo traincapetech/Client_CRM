@@ -1,11 +1,23 @@
 .custom-filter-container {
-  width: 600px;
+  position: fixed; /* fixed so it stays centered */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* true centering */
+  width: 50%;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   overflow: hidden;
   border: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+
+.custom-filter-model-overlay{
+   position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* make sure modal is above page */
 }
 
 .custom-filter-header {
@@ -27,7 +39,7 @@
 .close-button {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
   color: #666;
   padding: 0;
@@ -126,20 +138,19 @@ input:checked + .slider:before {
   flex-grow: 1;
   padding: 8px 12px;
   border: 1px solid #ccc;
- 
   font-size: 14px;
 }
 
 .rule-input {
   width: 150px;
   border: none;
-  border-bottom: 1px solid black ;
+  border-bottom: 1px solid black;
 }
 
 .rule-dropdown {
   width: 100px;
   border: none;
-  border-bottom: 1px solid black ;
+  border-bottom: 1px solid black;
 }
 
 .rule-action-button {
@@ -195,24 +206,24 @@ input:checked + .slider:before {
 }
 
 
-/* Styling for the field selection pop-up to match the provided image */
+/* Styling for the field selection pop-up */
 .field-selection-popup {
-  position: absolute;
+  position: relative;
   top: 50%;
-  left: 60%;
-  transform: translate(-50%, -50%); /* Centering the popup */
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #ffffff;
   border: 1px solid #dcdcdc;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 280px;
-  z-index: 1000; /* Ensure it appears on top */
+  z-index: 1100;
   font-family: Arial, sans-serif;
 }
-.filterfieldshow{
-    position: absolute;
-    left: 10%;
-    
+
+.filterfieldshow {
+  position: absolute;
+  left: 10%;
 }
 
 .field-selection-popup .popup-header {
@@ -272,7 +283,7 @@ input:checked + .slider:before {
   transition: background-color 0.2s;
   display: flex;
   align-items: center;
-  gap: 8px; /* For the chevron icon */
+  gap: 8px;
 }
 
 .field-selection-popup .field-list li:hover {
@@ -280,10 +291,124 @@ input:checked + .slider:before {
   color: #000000;
 }
 
-/* Optional: Adding a small icon for nested fields, as seen in the image */
 .field-selection-popup .field-list li.has-children:after {
   content: '›';
   margin-left: auto;
   font-weight: bold;
   color: #999;
 }
+
+
+/* ================== RESPONSIVE DESIGN ================== */
+
+/* Tablets and smaller laptops */
+@media (max-width: 1024px) {
+  .custom-filter-container {
+    width: 70%;
+  }
+
+  .rule-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rule-input,
+  .rule-dropdown {
+    flex: 1 1 45%;
+    min-width: 120px;
+  }
+  /* Compact inline icons for actions */
+.rule-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* space between icons */
+  justify-content: center;
+}
+
+.rule-actions .rule-action-button {
+  padding: 4px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+
+ 
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  .custom-filter-container {
+    width: 85%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .match-rules-container,
+  .include-archived-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .rule-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rule-input,
+  .rule-dropdown {
+    width: 100%;
+  }
+
+  .custom-filter-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-button,
+  .discard-button {
+    width: 100%;
+  }
+}
+
+/* Small mobile portrait */
+@media (max-width: 480px) {
+  .custom-filter-container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .custom-filter-header h2 {
+    font-size: 16px;
+  }
+
+  .rule-input,
+  .rule-dropdown {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  .rule-action-button {
+    font-size: 14px;
+  }
+
+  .new-rule-link {
+    font-size: 13px;
+  }
+  .section-filter-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+  .field-selection-popup {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+

@@ -70,24 +70,26 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .password-wrapper input {
   width: 100%;
-  padding-right: 2.5rem; /* ✅ adds space for the eye icon */
+  padding-right: 2.5rem;
+  /* ✅ adds space for the eye icon */
   box-sizing: border-box;
 }
 
 .eye-icon {
   position: absolute;
-  right: -20px;
+  right: 0;
   cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
-    background-color:rgb(175, 172, 169);
-    padding: 10px;
-    border-radius: 10px;
+
+  padding: 10px;
+  border-radius: 10px;
 
 }
 
@@ -124,4 +126,46 @@
 
 .footer-text .login-link:hover {
   text-decoration: underline;
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .card {
+    padding: 1.8rem 2rem;
+    max-width: 360px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.98rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Large screens / Desktop */
+@media (min-width: 769px) {
+  .card {
+    padding: 2rem 2.5rem;
+    max-width: 400px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
 }
