@@ -102,11 +102,11 @@ function Login() {
               onChange={handleChange}
             />
           </div>
-       
+          <Link to={'/home'}>
             <button type="submit" className="btn">
               Login
-            </button>
-          
+            </button></Link>
+
 
         </form>
 
