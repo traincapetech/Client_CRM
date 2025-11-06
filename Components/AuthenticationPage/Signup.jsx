@@ -138,10 +138,11 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
-
-          <button type="submit" className="btn">
-            Sign Up
-          </button>
+          <Link to={'/home'}>
+            <button type="submit" className="btn">
+              Sign Up
+            </button>
+          </Link>
         </form>
 
         {/* Footer */}
